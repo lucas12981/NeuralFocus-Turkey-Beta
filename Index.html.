@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neural Focus | Turkey Beta</title>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
-        .logo-placeholder { font-size: 4rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px #00FFFF); }
-        h1 { color: #00FFFF; font-size: 1.8rem; margin: 5px 0; text-transform: uppercase; letter-spacing: 2px; }
-        .tagline { color: #00FFFF; font-weight: bold; font-size: 0.9rem; margin-bottom: 20px; display: block; }
-        p.intro { color: #ccc; max-width: 600px; line-height: 1.5; font-size: 1rem; margin-bottom: 30px; }
-        .services { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; }
-        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; transition: 0.3s; }
-        .card h3 { color: #00FFFF; margin: 0 0 10px 0; font-size: 1.2rem; }
-        .card p { font-size: 0.9rem; color: #bbb; margin: 0; }
-        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
-        .badge { background: #00FFFF; color: #000; padding: 3px 10px; border-radius: 5px; font-weight: bold; font-size: 0.7rem; vertical-align: middle; margin-left: 5px; }
-        .btn { background: #00FFFF; color: #000; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 1rem; }
-        footer { margin-top: auto; padding: 20px; color: #444; font-size: 0.8rem; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
+        .logo-placeholder { font-size: 3.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px #00FFFF); }
+        h1 { color: #00FFFF; font-size: 1.8rem; margin: 5px 0; text-transform: uppercase; }
+        .tagline { color: #00FFFF; font-weight: bold; font-size: 0.8rem; margin-bottom: 20px; display: block; }
+        .services { display: grid; grid-template-columns: 1fr; gap: 15px; width: 100%; max-width: 500px; margin-bottom: 30px; }
+        .card { border: 1px solid #333; padding: 15px; border-radius: 12px; background: #0a0a0a; }
+        .card h3 { color: #00FFFF; margin: 0 0 8px 0; font-size: 1.1rem; }
+        .card p { font-size: 0.85rem; color: #bbb; margin: 0; }
+        .special-card { border: 2px solid #00FFFF; background: #001a1a; }
+        
+        .contact-form { width: 100%; max-width: 500px; background: #111; padding: 20px; border-radius: 15px; border: 1px solid #00FFFF; text-align: left; box-sizing: border-box; }
+        .contact-form h2 { color: #00FFFF; font-size: 1.3rem; margin-top: 0; text-align: center; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #000; color: #fff; box-sizing: border-box; }
+        .btn-submit { background: #00FFFF; color: #000; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1rem; margin-top: 10px; }
+        
+        .social-links { margin-top: 20px; display: flex; gap: 15px; justify-content: center; }
+        .social-links a { color: #00FFFF; text-decoration: none; font-size: 0.9rem; border: 1px solid #00FFFF; padding: 8px 15px; border-radius: 20px; }
+        
+        footer { margin-top: 30px; padding: 20px; color: #444; font-size: 0.7rem; }
     </style>
 </head>
 <body>
@@ -25,34 +31,34 @@
     <h1>Neural Focus AI</h1>
     <span class="tagline">TÜRKİYE BETA LABORATUVARI</span>
     
-    <p class="intro">Operasyonel Zeka Nexo: Türk sektörleri için tasarlanmış, manuel sınırları aşan yüksek performanslı otomasyon altyapısı.</p>
-
     <div class="services">
         <div class="card">
-            <h3>Görsel Elde Tutma Mühendisliği</h3>
-            <p>Karmaşık kurumsal verileri yüksek etkili ve dinamik görsel arayüzlere dönüştürerek karar alma süreçlerini hızlandırıyoruz.</p>
+            <h3>Nexo Operasyonu</h3>
+            <p>Görsel Mühendislik ve 7/24 Akıllı Ajanlar.</p>
         </div>
-
-        <div class="card">
-            <h3>Kimlik Egemenliği</h3>
-            <p>Yapay zeka destekli profesyonel sesler ve avatarlar ile markanızın küresel ölçekte tutarlı temsilini sağlıyoruz.</p>
-        </div>
-
-        <div class="card">
-            <h3>Akıllı Yazılı Ajan</h3>
-            <p>Tüm kurumsal verilerinizle entegre, 7/24 her dilde çözüm sunan yüksek hızlı yazılı destek sistemi [cite: 2026-01-12].</p>
-        </div>
-
         <div class="card special-card">
-            <h3>Canlı Yaşam Ajanı <span class="badge">LIVE 24/7</span></h3>
-            <p>Gerçek zamanlı etkileşim kuran, tüm soruları anında çözen akıllı sesli ve canlı asistan altyapısı [cite: 2026-01-12].</p>
-            <button class="btn">ŞİMDİ ETKİLEŞİME GEÇ</button>
+            <h3>Canlı Yaşam Ajanı (Live)</h3>
+            <p>Anında çözüm sunan canlı asistan altyapısı.</p>
+        </div>
+    </div>
+
+    <div class="contact-form">
+        <h2>Bize Ulaşın</h2>
+        <form action="https://formspree.io/f/menteglobalempresarial@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Adınız" required>
+            <input type="email" name="email" placeholder="E-posta" required>
+            <textarea name="message" rows="3" placeholder="Mesajınız" required></textarea>
+            <button type="submit" class="btn-submit">BİLGİ ALIN</button>
+        </form>
+
+        <div class="social-links">
+            <a href="https://wa.me/2246496971" target="_blank">WhatsApp</a>
+            <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank">LinkedIn</a>
         </div>
     </div>
 
     <footer>
-        © 2026 Neural Focus AI | Lucas Guzmán <br>
-        Stratejik Teknoloji Altyapısı
+        © 2026 Neural Focus AI | Lucas Guzmán
     </footer>
 </body>
 </html>
