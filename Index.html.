@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Focus | Turkey Beta</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
+        .logo-placeholder { font-size: 4rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px #00FFFF); }
+        h1 { color: #00FFFF; font-size: 1.8rem; margin: 5px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tagline { color: #00FFFF; font-weight: bold; font-size: 0.9rem; margin-bottom: 20px; display: block; }
+        p.intro { color: #ccc; max-width: 600px; line-height: 1.5; font-size: 1rem; margin-bottom: 30px; }
+        .services { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; }
+        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; transition: 0.3s; }
+        .card h3 { color: #00FFFF; margin: 0 0 10px 0; font-size: 1.2rem; }
+        .card p { font-size: 0.9rem; color: #bbb; margin: 0; }
+        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        .badge { background: #00FFFF; color: #000; padding: 3px 10px; border-radius: 5px; font-weight: bold; font-size: 0.7rem; vertical-align: middle; margin-left: 5px; }
+        .btn { background: #00FFFF; color: #000; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 1rem; }
+        footer { margin-top: auto; padding: 20px; color: #444; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="logo-placeholder">💠</div> 
+    <h1>Neural Focus AI</h1>
+    <span class="tagline">TÜRKİYE BETA LABORATUVARI</span>
+    
+    <p class="intro">Operasyonel Zeka Nexo: Türk sektörleri için tasarlanmış, manuel sınırları aşan yüksek performanslı otomasyon altyapısı.</p>
+
+    <div class="services">
+        <div class="card">
+            <h3>Görsel Elde Tutma Mühendisliği</h3>
+            <p>Karmaşık kurumsal verileri yüksek etkili ve dinamik görsel arayüzlere dönüştürerek karar alma süreçlerini hızlandırıyoruz.</p>
+        </div>
+
+        <div class="card">
+            <h3>Kimlik Egemenliği</h3>
+            <p>Yapay zeka destekli profesyonel sesler ve avatarlar ile markanızın küresel ölçekte tutarlı temsilini sağlıyoruz.</p>
+        </div>
+
+        <div class="card">
+            <h3>Akıllı Yazılı Ajan</h3>
+            <p>Tüm kurumsal verilerinizle entegre, 7/24 her dilde çözüm sunan yüksek hızlı yazılı destek sistemi [cite: 2026-01-12].</p>
+        </div>
+
+        <div class="card special-card">
+            <h3>Canlı Yaşam Ajanı <span class="badge">LIVE 24/7</span></h3>
+            <p>Gerçek zamanlı etkileşim kuran, tüm soruları anında çözen akıllı sesli ve canlı asistan altyapısı [cite: 2026-01-12].</p>
+            <button class="btn">ŞİMDİ ETKİLEŞİME GEÇ</button>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Neural Focus AI | Lucas Guzmán <br>
+        Stratejik Teknoloji Altyapısı
+    </footer>
+</body>
+</html>
