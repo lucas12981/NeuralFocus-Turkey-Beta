@@ -5,105 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neural Focus AI | Nexo Operativo</title>
     <style>
-        /* CSS: Identidad Visual Corregida */
         body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; }
         
-        /* Ajuste del Logo para que SIEMPRE se vea */
-        .logo-container { width: 120px; height: 120px; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; }
-        .logo-img { max-width: 100%; max-height: 100%; filter: drop-shadow(0 0 15px #00FFFF); }
+        /* LOGO REPARADO: Conexión directa */
+        .logo-container { width: 130px; margin-bottom: 10px; }
+        .logo-img { width: 100%; filter: drop-shadow(0 0 15px #00FFFF); }
 
-        h1 { color: #00FFFF; font-size: 1.6rem; text-transform: uppercase; margin: 10px 0; letter-spacing: 1px; text-align: center; }
-        .tagline { background: rgba(0, 255, 255, 0.1); color: #00FFFF; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 25px; }
+        h1 { color: #00FFFF; font-size: 1.6rem; text-transform: uppercase; margin: 10px 0; text-align: center; }
+        .tagline { background: rgba(0, 255, 255, 0.1); color: #00FFFF; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 25px; text-align: center; }
         
         .grid-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; }
-        .sector-btn { border: 1px solid #00FFFF; padding: 15px; border-radius: 12px; background: #0a0a0a; color: #fff; cursor: pointer; font-size: 0.85rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .sector-btn:active { transform: scale(0.95); background: #00FFFF; color: #000; }
+        .sector-btn { border: 1px solid #00FFFF; padding: 15px; border-radius: 12px; background: #0a0a0a; color: #fff; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
         .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; }
         .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); cursor: pointer; }
         
         .contact-form { width: 100%; max-width: 500px; margin-top: 25px; background: #111; padding: 25px; border-radius: 25px; border: 1px solid #222; box-sizing: border-box; }
-        input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; background: #000; color: #fff; border: 1px solid #444; font-size: 1rem; box-sizing: border-box; }
-        .btn-main { background: #00FFFF; color: #000; border: none; padding: 16px; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 1.1rem; margin-top: 10px; }
+        .btn-main { background: #00FFFF; color: #000; border: none; padding: 16px; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 1.1rem; }
         
-        .social-row { display: flex; gap: 10px; margin-top: 20px; width: 100%; max-width: 500px; }
-        .btn-social { flex: 1; border: 1px solid #00FFFF; color: #00FFFF; text-decoration: none; padding: 12px; border-radius: 25px; font-size: 0.9rem; text-align: center; }
-        
-        footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; width: 100%; }
+        footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; width: 100%; padding-bottom: 40px; }
     </style>
+
+    <script type="text/javascript">
+      window.$crisp=[];window.CRISP_WEBSITE_ID="4b5925c6-06f1-45d6-be29-4e74c44a9f36";
+      (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+    </script>
 </head>
 <body>
     <div class="logo-container">
-        <img src="logo.png" class="logo-img" alt="Neural Focus Logo" onerror="this.src='https://raw.githubusercontent.com/lucas12981/NeuralFocus/main/logo.png'">
+        <img src="https://raw.githubusercontent.com/lucas12981/NeuralFocus/main/logo.png" class="logo-img" alt="Neural Focus Logo">
     </div>
 
     <h1>Neural Focus AI</h1>
     <span class="tagline">HERKES İÇİN GELECEK TEKNOLOJİSİ</span>
 
     <div class="grid-sectors">
-        <button class="sector-btn" onclick="openSectorChat('Sağlık Hizmetleri')">🏥 Sağlık Hizmetleri</button>
-        <button class="sector-btn" onclick="openSectorChat('Gastronomi & Kafe')">☕ Gastronomi & Kafe</button>
-        <button class="sector-btn" onclick="openSectorChat('Sanayi Çözümleri')">⚙️ Sanayi Çözümleri</button>
-        <button class="sector-btn" onclick="openSectorChat('Genç Girişimciler')">🎓 Genç Girişimciler</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🏥 Sağlık Hizmetleri</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">☕ Gastronomi & Kafe</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">⚙️ Sanayi Çözümleri</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🎓 Genç Girişimciler</button>
     </div>
 
     <div id="btnWhatsApp" class="card special-card">
         <h3 style="color:#00FFFF; margin:0; font-size: 1.1rem;">Canlı Yaşam Ajanı (Interact 24/7)</h3>
-        <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Canlı destek para el sector salud y gastronomía.</p>
+        <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Anında Canlı destek masası.</p>
     </div>
 
     <div class="contact-form">
-        <h4 style="color:#00FFFF; text-align:center; margin: 0 0 15px 0;">İşbirliği Başlatın</h4>
         <form action="https://formspree.io/f/menteglobalempresarial@gmail.com" method="POST">
-            <input type="text" name="name" placeholder="Adınız / Kurumunuz" required>
-            <select name="sector">
-                <option value="Sağlık">Sağlık (Salud)</option>
-                <option value="Gastronomi">Gastronomi</option>
-                <option value="Sanayi">Sanayi (Industria)</option>
-            </select>
-            <textarea name="message" rows="3" placeholder="Mesajınız..." required></textarea>
-            <button type="submit" class="btn-main">BİZE ULAŞIN</button>
+            <input type="text" name="name" style="width:100%; padding:12px; margin-bottom:10px; background:#000; color:#fff; border:1px solid #333;" placeholder="Adınız" required>
+            <button type="submit" class="btn-main">İşbirliği Başlatın</button>
         </form>
-    </div>
-
-    <div class="social-row">
-        <a href="https://wa.me/2246496971" class="btn-social">WhatsApp</a>
-        <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" class="btn-social">LinkedIn</a>
     </div>
 
     <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
 
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/696cde740f26dd197d6613b3/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-
-        // Forzar Identidad Visual y Traducción
-        Tawk_API.onLoad = function(){
-            Tawk_API.colorize('#00FFFF'); // Cambia el color a Cian
-            Tawk_API.setAttributes({
-                'Greeting': 'Merhaba! 💠 Size nasıl yardımcı olabiliriz?'
-            }, function(error){});
-        };
-
-        function openSectorChat(sectorName) {
-            if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) {
-                Tawk_API.maximize();
-                Tawk_API.addEvent('SectorInteres', { 'nombre': sectorName });
-            }
-        }
-
-        // WhatsApp Agente de Vida
+    <script>
         document.getElementById('btnWhatsApp').onclick = function() {
-            window.location.href = "https://wa.me/2246496971?text=Merhaba%20Lucas,%20stratejik%20işbirliği%20hakkında%20görüşmek%20istiyorum.";
+            window.location.href = "https://wa.me/2246496971?text=Merhaba%20Lucas,%20stratejik%20işbirliği%20hakkında.";
         };
     </script>
 </body>
-    </html>
-    
+</html>
