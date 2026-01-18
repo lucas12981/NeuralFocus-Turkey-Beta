@@ -3,67 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Focus | Global Collaboration</title>
+    <title>Neural Focus | Herkes İçin Teknoloji</title>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
-        .logo-placeholder { font-size: 3.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px #00FFFF); }
-        h1 { color: #00FFFF; font-size: 1.6rem; margin: 5px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .tagline { color: #00FFFF; font-weight: bold; font-size: 0.8rem; margin-bottom: 20px; display: block; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
+        .logo-placeholder { font-size: 4rem; margin-bottom: 10px; filter: drop-shadow(0 0 15px #00FFFF); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        h1 { color: #00FFFF; font-size: 1.8rem; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tagline { color: #00FFFF; font-weight: bold; font-size: 0.9rem; margin-bottom: 25px; display: block; background: rgba(0, 255, 255, 0.1); padding: 5px 15px; border-radius: 20px; }
         
-        .grid-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; max-width: 500px; margin-bottom: 20px; }
-        .sector-badge { border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 0.75rem; background: #0a0a0a; color: #00FFFF; font-weight: bold; }
+        /* Sectores clave para colaboración */
+        .grid-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 500px; margin-bottom: 25px; }
+        .sector-badge { border: 1px solid #00FFFF; padding: 12px; border-radius: 12px; font-size: 0.8rem; background: #0a0a0a; color: #fff; font-weight: 500; transition: 0.3s; }
         
-        .card { border: 1px solid #333; padding: 15px; border-radius: 12px; background: #0a0a0a; width: 100%; max-width: 500px; margin-bottom: 15px; }
-        .card h3 { color: #00FFFF; margin: 0 0 8px 0; font-size: 1rem; }
-        .special-card { border: 2px solid #00FFFF; background: #001a1a; cursor: pointer; transition: 0.3s; }
-        .special-card:hover { transform: scale(1.02); }
+        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .card h3 { color: #00FFFF; margin: 0 0 10px 0; font-size: 1.1rem; }
+        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); cursor: pointer; }
 
-        .contact-form { width: 100%; max-width: 500px; background: #111; padding: 20px; border-radius: 15px; border: 1px solid #00FFFF; text-align: left; box-sizing: border-box; }
-        .contact-form select, .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; background: #000; color: #fff; border: 1px solid #333; box-sizing: border-box; }
-        .btn-submit { background: #00FFFF; color: #000; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1rem; margin-top: 10px; }
+        .contact-form { width: 100%; max-width: 500px; background: #111; padding: 25px; border-radius: 20px; border: 1px solid #333; text-align: left; box-sizing: border-box; }
+        .contact-form select, .contact-form input, .contact-form textarea { width: 100%; padding: 14px; margin: 10px 0; border-radius: 10px; background: #000; color: #fff; border: 1px solid #444; font-size: 1rem; }
+        .btn-submit { background: #00FFFF; color: #000; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1.1rem; transition: 0.3s; }
         
-        .social-links { margin-top: 20px; display: flex; gap: 10px; justify-content: center; }
-        .social-links a { color: #00FFFF; text-decoration: none; font-size: 0.85rem; border: 1px solid #00FFFF; padding: 10px 15px; border-radius: 20px; }
+        .social-links { margin-top: 25px; display: flex; gap: 12px; justify-content: center; }
+        .social-links a { color: #00FFFF; text-decoration: none; font-size: 0.9rem; border: 1px solid #00FFFF; padding: 10px 20px; border-radius: 25px; }
         
-        footer { margin-top: 30px; padding: 20px; color: #444; font-size: 0.7rem; }
+        footer { margin-top: 40px; padding: 20px; color: #666; font-size: 0.75rem; border-top: 1px solid #222; width: 100%; }
     </style>
 </head>
 <body>
     <div class="logo-placeholder">💠</div> 
     <h1>Neural Focus AI</h1>
-    <span class="tagline">TÜRKİYE STRATEJİK İŞBİRLİĞİ</span>
+    <span class="tagline">HERKES İÇİN GELECEK TEKNOLOJİSİ</span>
 
     <div class="grid-sectors">
-        <div class="sector-badge">🏥 Genel Hastaneler</div>
-        <div class="sector-badge">☕ Geleneksel Çay & Kahve</div>
-        <div class="sector-badge">⚙️ Sanayi & Makine</div>
-        <div class="sector-badge">🏗️ İnşaat & Teknoloji</div>
-        <div class="sector-badge">🚜 Tarım & Saha</div>
-        <div class="sector-badge">🌐 Global Operasyon</div>
+        <div class="sector-badge">🏥 Sağlık Hizmetleri</div>
+        <div class="sector-badge">☕ Gastronomi & Kafe</div>
+        <div class="sector-badge">⚙️ Sanayi Çözümleri</div>
+        <div class="sector-badge">🎓 Genç Girişimciler</div>
     </div>
     
     <div class="card">
-        <h3>Operasyonel Zeka Nexo</h3>
-        <p style="font-size: 0.85rem; color: #bbb;">Görsel Mühendislik, Kimlik Egemenliği y 7/24 Akıllı Ajanlar [cite: 2025-12-29, 2026-01-12].</p>
+        <h3>Nexo Operasyonel Zeka</h3>
+        <p style="font-size: 0.9rem; color: #bbb;">Görsel Mühendislik ve 7/24 Akıllı Ajanlar.</p>
     </div>
 
     <div id="liveAgent" class="card special-card">
         <h3>Canlı Yaşam Ajanı (Interact 24/7)</h3>
-        <p style="font-size: 0.85rem; color: #bbb;">Sektörel çözümlerimiz için anında sesli veya yazılı bağlantı kurun [cite: 2026-01-12].</p>
+        <p style="font-size: 0.9rem; color: #bbb;">Canlı destek için anında bize ulaşın.</p>
     </div>
 
     <div class="contact-form">
+        <h4>İşbirliği Başlatın</h4>
         <form action="https://formspree.io/f/menteglobalempresarial@gmail.com" method="POST">
             <input type="text" name="name" placeholder="Adınız / Kurumunuz" required>
             <select name="sector">
-                <option value="salud_general">Genel Sağlık (Hospitales)</option>
-                <option value="gastronomia">Gastronomi (Çay & Kahve)</option>
-                <option value="sanayi">Sanayi ve Makine</option>
-                <option value="insaat">İnşaat ve Tarım</option>
-                <option value="teknoloji">Teknoloji ve Diğer</option>
+                <option value="salud">Sağlık Sektörü</option>
+                <option value="gastronomia">Gastronomi</option>
+                <option value="sanayi">Sanayi ve Teknoloji</option>
             </select>
-            <textarea name="message" rows="3" placeholder="İşbirliği vizyonunuzu paylaşın..." required></textarea>
-            <button type="submit" class="btn-submit">İŞBİRLİĞİ BAŞLAT</button>
+            <textarea name="message" rows="3" placeholder="Mesajınızı buraya yazın..." required></textarea>
+            <button type="submit" class="btn-submit">BİZE ULAŞIN</button>
         </form>
 
         <div class="social-links">
@@ -74,24 +72,31 @@
 
     <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
 
-    <script>
-        // Lógica para el botón de Agente de Vida
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/696cde740f26dd197d6613b3/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+
+        // Forzar personalización inclusiva al cargar
+        Tawk_API.onLoad = function(){
+            // Color cian llamativo para todas las edades
+            Tawk_API.colorize('#00FFFF'); 
+            
+            // Mensaje de bienvenida inclusivo en turco
+            Tawk_API.setAttributes({
+                'greeting': 'Merhaba! 👋 Neural Focus a hoş geldiniz. Sağlık, gastronomi veya sanayi için her yaştan kullanıcıya destek veriyoruz. Birlikte neler başarabiliriz?'
+            }, function(error){});
+        };
+
         document.getElementById('liveAgent').onclick = function() {
             window.location.href = "https://wa.me/2246496971?text=Merhaba%20Lucas,%20stratejik%20işbirliği%20hakkında%20görüşmek%20istiyorum.";
         };
     </script>
-
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/696cde740f26dd197d6613b3/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    </body>
-    </html>
-    
+</body>
+</html>
