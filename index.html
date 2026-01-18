@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Focus AI | Nexo Operativo</title>
+    <title>Neural Focus AI | İş Ekosistemi</title>
     <style>
         body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; }
-        
-        /* LOGO REPARADO: Conexión directa */
         .logo-container { width: 130px; margin-bottom: 10px; }
         .logo-img { width: 100%; filter: drop-shadow(0 0 15px #00FFFF); }
-
         h1 { color: #00FFFF; font-size: 1.6rem; text-transform: uppercase; margin: 10px 0; text-align: center; }
         .tagline { background: rgba(0, 255, 255, 0.1); color: #00FFFF; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 25px; text-align: center; }
-        
+        h2 { color: #00FFFF; font-size: 1.1rem; margin-top: 25px; text-transform: uppercase; border-bottom: 1px solid #333; width: 100%; max-width: 500px; padding-bottom: 5px; text-align: center;}
+        .desc { color: #bbb; font-size: 0.8rem; text-align: center; margin: 10px 0 20px 0; max-width: 450px; }
         .grid-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; }
-        .sector-btn { border: 1px solid #00FFFF; padding: 15px; border-radius: 12px; background: #0a0a0a; color: #fff; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
-
-        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; }
-        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); cursor: pointer; }
-        
-        .contact-form { width: 100%; max-width: 500px; margin-top: 25px; background: #111; padding: 25px; border-radius: 25px; border: 1px solid #222; box-sizing: border-box; }
-        .btn-main { background: #00FFFF; color: #000; border: none; padding: 16px; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 1.1rem; }
-        
-        footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; width: 100%; padding-bottom: 40px; }
+        .sector-btn { border: 1px solid #00FFFF; padding: 15px; border-radius: 12px; background: #0a0a0a; color: #fff; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; transition: 0.3s; }
+        .sector-btn:hover { background: #00FFFF; color: #000; }
+        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; text-decoration: none; color: white; display: block; }
+        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); }
+        .linkedin-btn { background: #0077B5; color: white; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 20px; text-align: center; display: block; }
+        footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; padding-bottom: 40px; }
     </style>
 
     <script type="text/javascript">
@@ -39,23 +34,31 @@
     <h1>Neural Focus AI</h1>
     <span class="tagline">HERKES İÇİN GELECEK TEKNOLOJİSİ</span>
 
+    <h2>Özel Hizmetler</h2>
+    <p class="desc">Voz Inteligente 24/7 ile anında çözüm.</p>
     <div class="grid-sectors">
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🏥 Sağlık Hizmetleri</button>
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">☕ Gastronomi & Kafe</button>
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">⚙️ Sanayi Çözümleri</button>
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🎓 Genç Girişimciler</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🏥 Sağlık</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">☕ Gastronomi</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">⚙️ Endüstri</button>
+        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🏗️ İnşaat</button>
     </div>
+
+    <h2>İş Ekosistemi (Ağ Kurma)</h2>
+    <p class="desc">Sektörünüzdeki diğer profesyonellerle burada tanışın.</p>
+    <div class="grid-sectors">
+        <a href="https://wa.me/2246496971?text=Merhaba,%20Sağlık%20sektörü%20ağına%20katılmak%20istiyorum." class="sector-btn">🤝 Sağlık Ağı</a>
+        <a href="https://wa.me/2246496971?text=Merhaba,%20Gastronomi%20birliğine%20katılmak%20istiyorum." class="sector-btn">🍲 Gastronomi</a>
+        <a href="https://wa.me/2246496971?text=Merhaba,%20Sanayi%20forumuna%20katılmak%20istiyorum." class="sector-btn">🏭 Sanayi</a>
+        <a href="https://wa.me/2246496971?text=Merhaba,%20İnşaat%20grubuna%20katılmak%20istiyorum." class="sector-btn">🏗️ İnşaat</a>
+    </div>
+
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank" class="linkedin-btn">
+        LinkedIn Profesyonel Ağım
+    </a>
 
     <div id="btnWhatsApp" class="card special-card">
         <h3 style="color:#00FFFF; margin:0; font-size: 1.1rem;">Canlı Yaşam Ajanı (Interact 24/7)</h3>
-        <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Anında Canlı destek masası.</p>
-    </div>
-
-    <div class="contact-form">
-        <form action="https://formspree.io/f/menteglobalempresarial@gmail.com" method="POST">
-            <input type="text" name="name" style="width:100%; padding:12px; margin-bottom:10px; background:#000; color:#fff; border:1px solid #333;" placeholder="Adınız" required>
-            <button type="submit" class="btn-main">İşbirliği Başlatın</button>
-        </form>
+        <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Lucas Guzmán ile anında işbirliği kurun.</p>
     </div>
 
     <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
