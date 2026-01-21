@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Focus AI | İş Ekosistemi</title>
+    <title>Neural Focus AI | Türkiye Altyapısı</title>
     <style>
         body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; }
-        .logo-container { width: 130px; margin-bottom: 10px; }
-        .logo-img { width: 100%; filter: drop-shadow(0 0 15px #00FFFF); }
+        .logo-container { width: 130px; margin-bottom: 10px; border: 2px solid #00FFFF; border-radius: 50%; padding: 10px; background: rgba(0, 255, 255, 0.05); }
+        .logo-placeholder { width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; color: #00FFFF; font-weight: bold; font-size: 0.8rem; text-align: center; }
         h1 { color: #00FFFF; font-size: 1.6rem; text-transform: uppercase; margin: 10px 0; text-align: center; }
         .tagline { background: rgba(0, 255, 255, 0.1); color: #00FFFF; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 25px; text-align: center; }
         h2 { color: #00FFFF; font-size: 1.1rem; margin-top: 25px; text-transform: uppercase; border-bottom: 1px solid #333; width: 100%; max-width: 500px; padding-bottom: 5px; text-align: center;}
@@ -15,8 +15,10 @@
         .grid-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; }
         .sector-btn { border: 1px solid #00FFFF; padding: 15px; border-radius: 12px; background: #0a0a0a; color: #fff; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; transition: 0.3s; }
         .sector-btn:hover { background: #00FFFF; color: #000; }
+        .emergency-btn { border: 2px solid #ff4b2b; background: rgba(255, 75, 43, 0.1); color: #ff4b2b; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 10px; text-align: center; display: block; }
         .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; text-decoration: none; color: white; display: block; }
         .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); }
+        .calendar-box { border: 1px dashed #00FFFF; padding: 15px; border-radius: 12px; background: rgba(0, 255, 255, 0.05); color: #00FFFF; font-size: 0.85rem; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; }
         .linkedin-btn { background: #0077B5; color: white; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 20px; text-align: center; display: block; }
         footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; padding-bottom: 40px; }
     </style>
@@ -28,14 +30,22 @@
 </head>
 <body>
     <div class="logo-container">
-        <img src="https://raw.githubusercontent.com/lucas12981/NeuralFocus/main/logo.png" class="logo-img" alt="Neural Focus Logo">
+        <div class="logo-placeholder">NEURAL<br>FOCUS AI</div>
     </div>
 
     <h1>Neural Focus AI</h1>
-    <span class="tagline">HERKES İÇİN GELECEK TEKNOLOJİSİ</span>
+    <span class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</span>
+
+    <div class="calendar-box" id="cultural-calendar">
+        Güncelleniyor...
+    </div>
+
+    <h2>🚨 Acil Durum Hattı (Emergencia)</h2>
+    <p class="desc">Tıbbi yardım ve acil durumlar için doğrudan erişim.</p>
+    <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
 
     <h2>Özel Hizmetler</h2>
-    <p class="desc">Voz Inteligente 24/7 ile anında çözüm.</p>
+    <p class="desc">Voz Inteligente 24/7 ile anında teknik çözüm [cite: 2026-01-12].</p>
     <div class="grid-sectors">
         <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🏥 Sağlık</button>
         <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">☕ Gastronomi</button>
@@ -44,7 +54,7 @@
     </div>
 
     <h2>İş Ekosistemi (Ağ Kurma)</h2>
-    <p class="desc">Sektörünüzdeki diğer profesyonellerle burada tanışın.</p>
+    <p class="desc">Sektörel profesyonel topluluklarımıza katılın [cite: 2025-12-29].</p>
     <div class="grid-sectors">
         <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🤝 Sağlık Ağı</a>
         <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="sector-btn">🍲 Gastronomi</a>
@@ -58,15 +68,33 @@
 
     <div id="btnWhatsApp" class="card special-card">
         <h3 style="color:#00FFFF; margin:0; font-size: 1.1rem;">Canlı Yaşam Ajanı (Interact 24/7)</h3>
-        <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Lucas Guzmán ile özel stratejik işbirliği.</p>
+        <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Lucas Guzmán ile özel stratejik işbirliği [cite: 2026-01-12].</p>
     </div>
 
     <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
 
     <script>
+        // Lógica del Calendario de Identidad y Acompañamiento [cite: 2026-01-20]
+        function loadCalendar() {
+            const today = new Date();
+            const display = document.getElementById('cultural-calendar');
+            const day = today.getDate();
+            const month = today.getMonth() + 1;
+
+            if (day === 21 && month === 1) {
+                display.innerHTML = "🇦🇷🤝🇹🇷 <strong>Bugün:</strong> Neural Focus Türkiye altyapısı yayında. Sizinle her adımda beraberiz!";
+            } else if (day === 23 && month === 4) {
+                display.innerHTML = "🇹🇷 <strong>Özel Gün:</strong> Ulusal Egemenlik ve Çocuk Bayramı Kutlu Olsun!";
+            } else {
+                display.innerHTML = "✨ <strong>Neural Focus Görevi:</strong> Türk halkına teknolojiyle eşlik ediyoruz.";
+            }
+        }
+
         document.getElementById('btnWhatsApp').onclick = function() {
             window.location.href = "https://wa.me/2246496971?text=Merhaba%20Lucas,%20stratejik%20işbirliği%20hakkında.";
         };
+
+        loadCalendar();
     </script>
 </body>
 </html>
