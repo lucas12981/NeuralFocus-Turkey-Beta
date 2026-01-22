@@ -17,15 +17,34 @@
         .sector-btn:hover { background: #00FFFF; color: #000; }
         .emergency-btn { border: 2px solid #ff4b2b; background: rgba(255, 75, 43, 0.1); color: #ff4b2b; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 10px; text-align: center; display: block; }
         .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; text-decoration: none; color: white; display: block; }
-        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); }
+        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); cursor: pointer; }
         .calendar-box { border: 1px dashed #00FFFF; padding: 15px; border-radius: 12px; background: rgba(0, 255, 255, 0.05); color: #00FFFF; font-size: 0.85rem; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; }
         .linkedin-btn { background: #0077B5; color: white; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 20px; text-align: center; display: block; }
         footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; padding-bottom: 40px; }
     </style>
 
-    <script type="text/javascript">
-      window.$crisp=[];window.CRISP_WEBSITE_ID="4b5925c6-06f1-45d6-be29-4e74c44a9f36";
-      (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+    <script>
+      window.addEventListener('mouseover', initLandbot, { once: true });
+      window.addEventListener('touchstart', initLandbot, { once: true });
+      var myLandbot;
+      function initLandbot() {
+        if (!myLandbot) {
+          var s = document.createElement('script');
+          s.type = "module"
+          s.async = true;
+          s.addEventListener('load', function() {
+            myLandbot = new Landbot.Livechat({
+              configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3307046-X9SKW9KUOLBO15SS/index.json',
+            });
+          });
+          s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+          var x = document.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      }
+      function openAI() {
+          if (myLandbot) { myLandbot.open(); } else { initLandbot(); setTimeout(() => { myLandbot.open(); }, 500); }
+      }
     </script>
 </head>
 <body>
@@ -41,19 +60,19 @@
     </div>
 
     <h2>🚨 Acil Durum Hattı (Emergencia)</h2>
-    <p class="desc">Tıbbi yardım ve acil durumlar için doğrudan erişim.</p>
+    <p class="desc">Tıbbi yardım y acil durumlar için doğrudan erişim.</p>
     <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
 
     <h2>Özel Hizmetler</h2>
     <p class="desc">Voz Inteligente 24/7 ile anında teknik çözüm.</p>
     <div class="grid-sectors">
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🏥 Sağlık</button>
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">☕ Gastronomi</button>
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">⚙️ Endüstri</button>
-        <button class="sector-btn" onclick="$crisp.push(['do', 'chat:open'])">🏗️ İnşaat</button>
+        <button class="sector-btn" onclick="openAI()">🏥 Sağlık</button>
+        <button class="sector-btn" onclick="openAI()">☕ Gastronomi</button>
+        <button class="sector-btn" onclick="openAI()">⚙️ Endüstri</button>
+        <button class="sector-btn" onclick="openAI()">🏗️ İnşaat</button>
     </div>
 
-    <h2>İş Ekosistemi (Ağ Kurma)</h2>
+    <h2>İş Ekosistemi (WhatsApp)</h2>
     <p class="desc">Sektörel profesyonel topluluklarımıza katılın.</p>
     <div class="grid-sectors">
         <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🤝 Sağlık Ağı</a>
@@ -66,7 +85,7 @@
         LinkedIn Profesyonel Ağım
     </a>
 
-    <div id="btnWhatsApp" class="card special-card">
+    <div id="btnAI" class="card special-card" onclick="openAI()">
         <h3 style="color:#00FFFF; margin:0; font-size: 1.1rem;">Canlı Yaşam Ajanı (Interact 24/7)</h3>
         <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Lucas Guzmán ile özel stratejik işbirliği.</p>
     </div>
@@ -74,14 +93,13 @@
     <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
 
     <script>
-        // Lógica del Calendario de Identidad y Acompañamiento
         function loadCalendar() {
             const today = new Date();
             const display = document.getElementById('cultural-calendar');
             const day = today.getDate();
             const month = today.getMonth() + 1;
 
-            if (day === 21 && month === 1) {
+            if (day === 22 && month === 1) {
                 display.innerHTML = "🇦🇷🤝🇹🇷 <strong>Bugün:</strong> Neural Focus Türkiye altyapısı yayında. Sizinle her adımda beraberiz!";
             } else if (day === 23 && month === 4) {
                 display.innerHTML = "🇹🇷 <strong>Özel Gün:</strong> Ulusal Egemenlik ve Çocuk Bayramı Kutlu Olsun!";
@@ -89,12 +107,8 @@
                 display.innerHTML = "✨ <strong>Neural Focus Görevi:</strong> Türk halkına teknolojiyle eşlik ediyoruz.";
             }
         }
-
-        document.getElementById('btnWhatsApp').onclick = function() {
-            window.location.href = "https://wa.me/2246496971?text=Merhaba%20Lucas,%20stratejik%20işbirliği%20hakkında.";
-        };
-
         loadCalendar();
     </script>
 </body>
-</html>
+    </html>
+    
