@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Neural Focus AI | Türkiye Altyapısı</title>
     <style>
         body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; }
@@ -11,15 +11,11 @@
         h1 { color: #00FFFF; font-size: 1.6rem; text-transform: uppercase; margin: 10px 0; text-align: center; }
         .tagline { background: rgba(0, 255, 255, 0.1); color: #00FFFF; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 25px; text-align: center; }
         h2 { color: #00FFFF; font-size: 1.1rem; margin-top: 25px; text-transform: uppercase; border-bottom: 1px solid #333; width: 100%; max-width: 500px; padding-bottom: 5px; text-align: center;}
-        .desc { color: #bbb; font-size: 0.8rem; text-align: center; margin: 10px 0 20px 0; max-width: 450px; }
         .grid-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; }
         .sector-btn { border: 1px solid #00FFFF; padding: 15px; border-radius: 12px; background: #0a0a0a; color: #fff; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; transition: 0.3s; }
-        .sector-btn:hover { background: #00FFFF; color: #000; }
         .emergency-btn { border: 2px solid #ff4b2b; background: rgba(255, 75, 43, 0.1); color: #ff4b2b; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 10px; text-align: center; display: block; }
-        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; text-decoration: none; color: white; display: block; }
-        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); cursor: pointer; }
-        .calendar-box { border: 1px dashed #00FFFF; padding: 15px; border-radius: 12px; background: rgba(0, 255, 255, 0.05); color: #00FFFF; font-size: 0.85rem; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; }
-        .linkedin-btn { background: #0077B5; color: white; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 20px; text-align: center; display: block; }
+        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; color: white; display: block; text-decoration: none; }
+        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); }
         footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; padding-bottom: 40px; }
     </style>
 </head>
@@ -31,76 +27,27 @@
     <h1>Neural Focus AI</h1>
     <span class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</span>
 
-    <div class="calendar-box" id="cultural-calendar">Güncelleniyor...</div>
-
-    <h2>🚨 Acil Durum Hattı (Emergencia)</h2>
-    <p class="desc">Tıbbi yardım y acil durumlar için doğrudan erişim.</p>
+    <h2>🚨 Acil Durum Hattı</h2>
     <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
 
     <h2>Özel Hizmetler</h2>
-    <p class="desc">Voz Inteligente 24/7 ile anında teknik çözüm.</p>
     <div class="grid-sectors">
-        <button class="sector-btn" onclick="openAI()">🏥 Sağlık</button>
-        <button class="sector-btn" onclick="openAI()">☕ Gastronomi</button>
-        <button class="sector-btn" onclick="openAI()">⚙️ Endüstri</button>
-        <button class="sector-btn" onclick="openAI()">🏗️ İnşaat</button>
+        <button class="sector-btn" onclick="myLandbot.open()">🏥 Sağlık</button>
+        <button class="sector-btn" onclick="myLandbot.open()">☕ Gastronomi</button>
     </div>
 
-    <h2>İş Ekosistemi (WhatsApp)</h2>
-    <p class="desc">Sektörel profesyonel topluluklarımıza katılın.</p>
-    <div class="grid-sectors">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🤝 Sağlık Ağı</a>
-        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="sector-btn">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="sector-btn">🏭 Sanayi</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="sector-btn">🏗️ İnşaat</a>
+    <div class="card special-card" onclick="myLandbot.open()">
+        <h3 style="color:#00FFFF; margin:0;">Canlı Yaşam Ajanı 24/7</h3>
+        <p style="font-size:0.85rem; color:#bbb;">Lucas Guzmán con colaboración estratégica.</p>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank" class="linkedin-btn">LinkedIn Profesyonel Ağım</a>
+    <footer>© 2026 Neural Focus AI | Lucas Guzmán</footer>
 
-    <div id="btnAI" class="card special-card" onclick="openAI()">
-        <h3 style="color:#00FFFF; margin:0; font-size: 1.1rem;">Canlı Yaşam Ajanı (Interact 24/7)</h3>
-        <p style="font-size:0.85rem; color:#bbb; margin: 8px 0 0 0;">Lucas Guzmán ile özel stratejik işbirliği.</p>
-    </div>
-
-    <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
-
+    <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
-      var myLandbot;
-      function initLandbot() {
-        if (!myLandbot) {
-          var s = document.createElement('script');
-          s.type = "text/javascript";
-          s.async = true;
-          s.addEventListener('load', function() {
-            myLandbot = new Landbot.Livechat({
-              configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3307046-X9SKW9KUOLBO15SS/index.json',
-            });
-          });
-          s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
-          var x = document.getElementsByTagName('script')[0];
-          x.parentNode.insertBefore(s, x);
-        }
-      }
-      
-      // Forzamos la inicialización inmediata
-      initLandbot();
-
-      function openAI() {
-          if (myLandbot) { 
-              myLandbot.open(); 
-          } else { 
-              initLandbot(); 
-              setTimeout(() => { if(myLandbot) myLandbot.open(); }, 1000); 
-          }
-      }
-    </script>
-
-    <script>
-        function loadCalendar() {
-            const display = document.getElementById('cultural-calendar');
-            display.innerHTML = "✨ <strong>Neural Focus:</strong> Türk halkına teknología ile eşlik ediyoruz.";
-        }
-        loadCalendar();
+      var myLandbot = new Landbot.Livechat({
+        configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3290254-63C2C0W1J4D7S20O/index.json',
+      });
     </script>
 </body>
 </html>
