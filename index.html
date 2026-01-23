@@ -3,99 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Global Infrastructure</title>
+    <title>Neural Focus AI | Premium Interface</title>
     <style>
-        :root { --main-cyan: #00FFFF; --bg-black: #000000; --card-bg: #0a0a0a; --emergency-red: #ff4b2b; }
-        body { background-color: var(--bg-black); color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; line-height: 1.6; }
+        :root {
+            --bg-gradient: linear-gradient(135deg, #000000 0%, #001a1a 50%, #003333 100%);
+            --main-cyan: #00FFFF;
+            --neon-purple: #bc13fe;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --emergency-red: #ff4b2b;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: #fff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* Marcador de Posición de Logo Moderno */
+        .logo-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%);
+            border: 2px solid var(--main-cyan);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .logo-placeholder span {
+            color: var(--main-cyan);
+            font-weight: 900;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 0; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0,255,255,0.5); }
         
-        /* Header & Logo */
-        .header-section { margin-top: 20px; text-align: center; width: 100%; }
-        .logo-ring { width: 140px; height: 140px; border: 3px solid var(--main-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); }
-        .logo-text { color: var(--main-cyan); font-weight: 900; font-size: 1rem; letter-spacing: 2px; text-align: center; }
-        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        .tagline { background: rgba(0, 255, 255, 0.15); color: var(--main-cyan); padding: 8px 20px; border-radius: 30px; font-size: 0.85rem; font-weight: bold; margin: 15px 0 30px; display: inline-block; }
+        .tagline {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--main-cyan);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 15px 0 40px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
 
-        /* Emergency Module */
-        .emergency-box { border: 2px solid var(--emergency-red); background: rgba(255, 75, 43, 0.05); padding: 20px; border-radius: 15px; width: 100%; max-width: 500px; box-sizing: border-box; margin-bottom: 25px; }
-        .emergency-btn { background: var(--emergency-red); color: #fff; padding: 15px; border-radius: 10px; display: block; text-decoration: none; font-weight: bold; font-size: 1rem; text-align: center; }
+        /* Botones con Degradado y Efecto Flotante */
+        .btn-gradient {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(145deg, #111, #000);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+            display: block;
+            box-sizing: border-box;
+            text-align: center;
+            cursor: pointer;
+        }
 
-        /* Agency Functions */
-        h2 { color: var(--main-cyan); font-size: 1.1rem; text-transform: uppercase; margin-top: 20px; width: 100%; max-width: 500px; text-align: left; border-left: 4px solid var(--main-cyan); padding-left: 15px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px; margin-bottom: 20px; }
-        .service-card { background: var(--card-bg); border: 1px solid #333; padding: 25px; border-radius: 15px; cursor: pointer; display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white; }
-        .service-title { font-size: 0.95rem; font-weight: bold; color: var(--main-cyan); margin-top: 10px; }
+        .btn-gradient:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+        }
 
-        /* Strategic Agent Card */
-        .agent-card { background: linear-gradient(145deg, #001a1a, #000); border: 2px solid var(--main-cyan); padding: 25px; border-radius: 20px; width: 100%; max-width: 500px; margin-top: 20px; box-sizing: border-box; cursor: pointer; text-align: center; }
-        .agent-name { font-size: 1.2rem; font-weight: bold; color: var(--main-cyan); margin: 0; }
+        .emergency { border: 2px solid var(--emergency-red); background: rgba(255,75,43,0.05); }
+        .emergency span { color: var(--emergency-red); font-weight: bold; }
 
-        /* BOT FLOTANTE GRANDE Y LATIENTE */
-        .bot-trigger {
+        .special-card {
+            border: 2px solid var(--main-cyan);
+            background: linear-gradient(145deg, #001a1a, #000);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .grid-btn {
+            background: var(--glass-bg);
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
+
+        /* BURBUJA DE IA MEJORADA (Efecto Imagen) */
+        .ai-bubble {
             position: fixed;
             bottom: 30px;
             right: 25px;
-            width: 70px;
-            height: 70px;
-            background-color: var(--main-cyan);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--main-cyan), var(--neon-purple));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-            z-index: 999999;
+            z-index: 1000;
             cursor: pointer;
-            animation: heartbeat 1.5s infinite;
+            box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
+            animation: pulse-aura 2s infinite;
         }
 
-        @keyframes heartbeat {
+        .ai-bubble svg { width: 45px; height: 45px; fill: #000; }
+
+        @keyframes pulse-aura {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
-            70% { transform: scale(1.15); box-shadow: 0 0 0 15px rgba(0, 255, 255, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+            70% { transform: scale(1.1); box-shadow: 0 0 30px 20px rgba(188, 19, 254, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(188, 19, 254, 0); }
         }
 
-        .bot-trigger img { width: 40px; height: 40px; }
-
-        footer { margin-top: 60px; color: #444; font-size: 0.75rem; text-align: center; padding-bottom: 40px; width: 100%; }
+        footer { margin-top: 50px; color: #666; font-size: 0.75rem; text-align: center; padding-bottom: 40px; }
     </style>
 </head>
 <body>
-    <div class="header-section">
-        <div class="logo-ring"><div class="logo-text">NEURAL<br>FOCUS AI</div></div>
-        <h1>NEURAL FOCUS AI</h1>
-        <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
+
+    <div class="logo-placeholder">
+        <span>NEURAL<br>FOCUS AI</span>
     </div>
 
-    <div class="emergency-box">
-        <h2 style="margin-top:0; border:none; padding:0;">🚨 Acil Durum Hattı</h2>
-        <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
+    <h1>NEURAL FOCUS AI</h1>
+    <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
+
+    <div class="btn-gradient emergency" onclick="window.location.href='tel:112'">
+        <span>🚨 ACİL DURUM HATTI (112)</span>
     </div>
 
-    <h2>🛠️ Ajans Fonksiyonları</h2>
+    <h2 style="color:var(--main-cyan); font-size: 1rem; width:100%; max-width:500px; text-align:left;">HİZMETLER (AI AGENTS)</h2>
     <div class="grid">
-        <div class="service-card" onclick="myLandbot.open()">
-            <span>🏥</span><span class="service-title">Sağlık</span>
-        </div>
-        <div class="service-card" onclick="myLandbot.open()">
-            <span>☕</span><span class="service-title">Gastronomi</span>
-        </div>
-        <div class="service-card" onclick="myLandbot.open()">
-            <span>⚙️</span><span class="service-title">Endüstri</span>
-        </div>
-        <div class="service-card" onclick="myLandbot.open()">
-            <span>🏗️</span><span class="service-title">İnşaat</span>
-        </div>
+        <div class="grid-btn" onclick="myLandbot.open()">🏥<br><br>Sağlık</div>
+        <div class="grid-btn" onclick="myLandbot.open()">☕<br><br>Gastronomi</div>
     </div>
 
-    <div class="agent-card" onclick="myLandbot.open()">
-        <p class="agent-name">Canlı Yaşam Ajanı 24/7</p>
-        <p style="color:#bbb; font-size:0.85rem; margin-top:10px;">Lucas Guzmán | Strategic Collaboration </p>
+    <div class="btn-gradient special-card" onclick="myLandbot.open()">
+        <span style="color:var(--main-cyan); font-size:1.1rem;">Canlı Yaşam Ajanı 24/7</span>
+        <p style="color:#888; font-size:0.8rem; margin:10px 0 0;">Lucas Guzmán | Strategic Collaboration</p>
     </div>
 
-    <div class="bot-trigger" onclick="myLandbot.open()">
-        <img src="https://cdn.landbot.io/shared/bubbles/classic.svg" alt="Bot">
+    <h2 style="color:var(--main-cyan); font-size: 1rem; width:100%; max-width:500px; text-align:left;">İŞ EKOSİSTEMİ</h2>
+    <div class="grid">
+        <div class="grid-btn" onclick="myLandbot.open()">⚙️<br><br>Endüstri</div>
+        <div class="grid-btn" onclick="myLandbot.open()">🏗️<br><br>İnşaat</div>
     </div>
 
-    <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
+    <footer>
+        © 2026 Neural Focus AI | Lucas Guzmán<br>
+        Agencia de IA: Salud, Gastronomía, Industria y Construcción
+    </footer>
+
+    <div class="ai-bubble" onclick="myLandbot.open()">
+        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
+    </div>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
