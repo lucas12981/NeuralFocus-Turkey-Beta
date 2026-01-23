@@ -41,15 +41,15 @@
         }
       }
 
-      // Carga automática del bot al abrir la página
-      window.onload = initLandbot;
+      // Ejecución inmediata del bot
+      initLandbot();
 
       function openAI() {
           if (myLandbot) { 
               myLandbot.open(); 
           } else { 
               initLandbot(); 
-              setTimeout(() => { myLandbot.open(); }, 500); 
+              setTimeout(() => { if(myLandbot) myLandbot.open(); }, 800); 
           }
       }
     </script>
