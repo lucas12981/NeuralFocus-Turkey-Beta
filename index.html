@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Global İş Birliği</title>
+    <title>Neural Focus AI | V4.1 Global</title>
     <style>
         :root {
             --bg: #000000;
@@ -24,190 +24,105 @@
             box-sizing: border-box;
         }
 
-        /* LOGO ANIMADO */
-        .logo-orb {
-            width: 120px;
-            height: 120px;
+        /* LOGO & TITULO */
+        .logo-box {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 2px solid var(--main-cyan);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 20px 0;
+            margin: 10px 0;
             background: rgba(0,0,0,0.8);
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
-            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
+        h1 { font-size: 1.6rem; letter-spacing: 2px; background: linear-gradient(to right, #00FFFF, #bc13fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; margin: 10px 0; }
 
-        .logo-orb::after {
-            content: '';
-            position: absolute;
-            width: 135px;
-            height: 135px;
-            border: 1px dashed var(--neon-purple);
-            border-radius: 50%;
-            animation: spin 10s linear infinite;
-        }
-
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .logo-text { font-weight: 900; font-size: 0.7rem; color: var(--main-cyan); text-align: center; letter-spacing: 2px; }
-
-        h1 { font-size: 1.8rem; margin: 10px 0; letter-spacing: 3px; background: linear-gradient(to right, #00FFFF, #bc13fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
-
-        /* CUENTA REGRESIVA ESTILO NEÓN */
-        .timer-container {
+        /* REPRODUCTOR DE YOUTUBE (X-FWm-NHEBc) */
+        .video-wrapper {
             width: 100%;
-            max-width: 480px;
-            background: rgba(188, 19, 254, 0.1);
-            border: 1px solid var(--neon-purple);
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 25px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(188, 19, 254, 0.3);
+            max-width: 400px;
+            aspect-ratio: 9 / 16;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid var(--main-cyan);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+            margin-bottom: 20px;
+            background: #000;
         }
+        iframe { width: 100%; height: 100%; border: none; }
 
-        #countdown { font-family: monospace; font-size: 1.8rem; font-weight: 900; text-shadow: 0 0 10px var(--neon-purple); }
-
-        /* VIDEO FIX (75247.mp4) */
-        .video-box {
+        /* BOTÓN AR FUNCIONAL */
+        .btn-ar {
             width: 100%;
-            max-width: 480px;
-            border-radius: 20px;
-            padding: 3px;
-            background: linear-gradient(45deg, var(--main-cyan), var(--neon-purple));
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-            margin-bottom: 30px;
-        }
-
-        video { width: 100%; border-radius: 17px; display: block; background: #000; }
-
-        /* SECCIONES DE SERVICIOS */
-        .card {
-            width: 100%;
-            max-width: 480px;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .card h3 { color: var(--main-cyan); font-size: 1.1rem; margin-top: 0; }
-        .card p { font-size: 0.85rem; color: #ccc; line-height: 1.4; }
-
-        .btn-action {
-            width: 100%;
-            padding: 15px;
-            border-radius: 12px;
+            max-width: 400px;
+            padding: 18px;
+            background: linear-gradient(90deg, var(--main-cyan), var(--neon-purple));
             border: none;
-            font-weight: 900;
-            cursor: pointer;
-            text-transform: uppercase;
-            background: var(--main-cyan);
+            border-radius: 15px;
             color: #000;
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
-        }
-
-        /* TESTIMONIOS INTELIGENTES */
-        .testimonial {
-            border-left: 4px solid var(--neon-purple);
-            background: rgba(188, 19, 254, 0.05);
-            padding: 15px;
-            border-radius: 0 15px 15px 0;
-            margin-top: 15px;
+            font-weight: 900;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--main-cyan);
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         /* WHATSAPP GRID */
-        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 480px; margin-bottom: 25px; }
-        .wa-item { background: #128C7E; padding: 15px; border-radius: 12px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.75rem; }
+        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 400px; margin-bottom: 25px; }
+        .wa-item { background: #128C7E; padding: 12px; border-radius: 10px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.75rem; }
 
-        /* BOTÓN FLOTANTE AI */
-        .ai-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 25px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--main-cyan), var(--neon-purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            box-shadow: 0 0 25px var(--main-cyan);
-            animation: bounce 2s infinite;
+        .card {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--main-cyan);
         }
 
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        footer { font-size: 0.6rem; color: #555; text-align: center; padding: 20px 0 100px; border-top: 1px solid #222; width: 100%; }
+        footer { font-size: 0.6rem; color: #666; text-align: center; padding: 20px 0 80px; width: 100%; line-height: 1.5; }
     </style>
 </head>
 <body>
 
-    <div class="logo-orb"><div class="logo-text">NEURAL<br>FOCUS AI</div></div>
+    <div class="logo-box"><div style="text-align:center; font-size:0.6rem; color:var(--main-cyan); font-weight:900;">NEURAL<br>FOCUS AI</div></div>
     <h1>NEURAL FOCUS AI</h1>
 
-    <div class="timer-container">
-        <div style="font-size: 0.7rem; color: var(--neon-purple); margin-bottom: 8px; letter-spacing: 1px;">YENİ NESİL LANSMAN</div>
-        <div id="countdown">00d 00h 00m 00s</div>
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc?autoplay=1&mute=0&loop=1&playlist=X-FWm-NHEBc" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
-    <div class="video-box">
-        <video controls playsinline preload="auto">
-            <source src="75247.mp4" type="video/mp4">
-        </video>
-    </div>
+    <button class="btn-ar" onclick="iniciarAR()">🌌 AR PROJEKSİYON BAŞLAT</button>
 
     <div class="card">
-        <h3>🌌 AR Projeksiyon</h3>
-        <p>Sağlık ve Gastronomi sektörleri için vizyonunuzu 3B olarak sunun.</p>
-        <button class="btn-action">Demoyu Başlat</button>
-    </div>
-
-    <div class="card" style="border-color: var(--neon-purple);">
-        <h3 style="color: var(--neon-purple);">💬 Müşteri Görüşleri</h3>
-        <div class="testimonial">
-            <p>"24/7 Akıllı Ses asistanı iş akışımızı tamamen değiştirdi."</p>
-            <span style="font-size: 0.7rem; color: var(--main-cyan); font-weight: bold;">— Dr. Selim, Sağlık Sektörü </span>
-        </div>
+        <h3 style="margin:0; color:var(--main-cyan); font-size:1rem;">🏥 Sağlık & Gastronomi</h3>
+        <p style="font-size: 0.8rem; color: #ccc; margin: 8px 0 0;">Akıllı Ses & Canlı Yaşam Ajanı 24/7 .</p>
     </div>
 
     <div class="wa-grid">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-item">🏥 Sağlık</a>
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-item">🏥 Sağlık Ağı</a>
         <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-item">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-item">🏭 Sanayi</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-item">🏗️ İnşaat</a>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" style="width:100%; max-width:480px; background:#0077B5; padding:15px; border-radius:12px; color:white; text-decoration:none; text-align:center; font-weight:900; display:block; margin-bottom:30px;">LINKEDIN PROFESYONEL AĞ</a>
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" style="width:100%; max-width:400px; background:#0077B5; padding:15px; border-radius:12px; color:white; text-decoration:none; text-align:center; font-weight:900; display:block; margin-bottom:20px;">LINKEDIN PROFESYONEL AĞ</a>
 
     <footer>
         © 2026 Neural Focus AI | Lucas Guzmán <br>
-        24/7 Akıllı Ses & Canlı Yaşam Ajanı <br>
-        TÜRKİYE - AB TEKNOLOJİ KÖPRÜSÜ
+        TÜRKİYE - AB TEKNOLOJİ KÖPRÜSÜ <br>
+        24/7 Akıllı Ses & Agente de Vida
     </footer>
 
-    <div class="ai-btn" onclick="myLandbot.open()">
-        <svg viewBox="0 0 24 24" width="35" height="35" fill="white"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
-    </div>
-
     <script>
-        const target = new Date();
-        target.setDate(target.getDate() + 6);
-        function update() {
-            const now = new Date();
-            const diff = target - now;
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('countdown').innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+        function iniciarAR() {
+            if (confirm("Kamerayı AR projeksiyonu için açmak istiyor musunuz?")) {
+                // Redirige a una plataforma de visualización AR (AR.js Demo)
+                window.location.href = "https://ar-js-org.github.io/AR.js/three.js/examples/worker_artoolkit/marker_training/debug.html";
+            }
         }
-        setInterval(update, 1000);
-        update();
     </script>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
@@ -217,5 +132,4 @@
       });
     </script>
 </body>
-    </html>
-    
+</html>
