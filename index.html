@@ -3,96 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Lucas Guzmán</title>
+    <title>Neural Focus AI | V6.1</title>
     <style>
-        :root { --cyan: #00FFFF; --purple: #bc13fe; }
+        :root { --cyan: #00FFFF; --purple: #bc13fe; --dark-card: rgba(0, 31, 31, 0.6); }
         body { 
-            background: #000; color: #fff; font-family: sans-serif; 
-            margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center;
+            background: radial-gradient(circle at top, #001f1f 0%, #000 100%); color: #fff; 
+            font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* TITULO Y LOGO */
-        h1 { font-size: 1.3rem; margin: 10px 0; color: var(--cyan); letter-spacing: 1px; }
+        .logo-ring {
+            width: 80px; height: 80px; border: 2px solid var(--cyan);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 10px 0; box-shadow: 0 0 15px var(--cyan);
+        }
 
-        /* VIDEO PEQUEÑO Y CENTRADO */
-        .video-box {
-            width: 85%;
-            max-width: 300px;
-            aspect-ratio: 16 / 9;
-            border: 2px solid var(--cyan);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+        h1 { font-size: 1.2rem; color: var(--cyan); letter-spacing: 2px; margin: 5px 0; text-transform: uppercase; }
+
+        .video-container {
+            width: 90%; max-width: 320px; aspect-ratio: 16 / 9;
+            border: 2px solid var(--cyan); border-radius: 15px;
+            overflow: hidden; margin: 10px 0; box-shadow: 0 0 20px rgba(0,255,255,0.3);
         }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* NUEVO BOTÓN: TRADUCTOR PROFESIONAL (ÚTIL PARA TURQUÍA) */
-        .btn-util {
-            width: 90%; max-width: 320px;
-            padding: 15px;
-            background: linear-gradient(90deg, var(--purple), #5d00ff);
-            border: none; border-radius: 10px;
-            color: #fff; font-weight: 900; font-size: 0.9rem;
-            margin-bottom: 15px; cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(188, 19, 254, 0.4);
+        .btn-translate {
+            width: 90%; max-width: 320px; padding: 14px;
+            background: linear-gradient(90deg, var(--purple), #6a00ff);
+            border: none; border-radius: 10px; color: #fff;
+            font-weight: 900; font-size: 0.85rem; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(188, 19, 254, 0.4); margin-bottom: 12px;
         }
 
-        /* CUADRÍCULA DE WHATSAPP (COMPACTA) */
-        .wa-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 8px; width: 90%; max-width: 320px; margin-bottom: 15px;
-        }
-        .wa-btn {
-            background: #128C7E; color: white; text-decoration: none;
-            padding: 12px; border-radius: 8px; text-align: center;
-            font-size: 0.75rem; font-weight: bold;
-        }
-
-        /* LINKEDIN */
-        .ln-btn {
-            width: 90%; max-width: 320px;
-            background: #0077B5; color: white; text-decoration: none;
-            padding: 14px; border-radius: 8px; text-align: center;
-            font-weight: bold; font-size: 0.85rem; margin-bottom: 20px;
+        /* BOTÓN DE EMERGENCIA DESTACADO */
+        .btn-emergency {
+            width: 90%; max-width: 320px; padding: 12px;
+            background: rgba(255, 0, 0, 0.2); border: 2px solid #ff0000;
+            border-radius: 10px; color: #ff0000; font-weight: 900;
+            text-decoration: none; text-align: center; margin-bottom: 15px; 
+            font-size: 0.9rem; text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
 
-        .card-info {
-            width: 90%; max-width: 320px;
-            background: rgba(255,255,255,0.07);
-            padding: 12px; border-radius: 10px; border-left: 4px solid var(--cyan);
-            font-size: 0.75rem; margin-bottom: 15px;
+        .card {
+            width: 85%; max-width: 320px; background: var(--dark-card);
+            border-radius: 12px; padding: 12px; margin-bottom: 12px;
+            border-left: 4px solid var(--cyan); font-size: 0.75rem;
         }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 90%; max-width: 320px; margin-bottom: 15px; }
+        .grid-btn { 
+            background: #128C7E; color: #fff; text-decoration: none;
+            padding: 12px; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: bold;
+        }
+
+        .btn-linkedin {
+            width: 90%; max-width: 320px; background: #0077B5;
+            color: #fff; text-decoration: none; padding: 14px;
+            border-radius: 10px; text-align: center; font-weight: 900; font-size: 0.85rem;
+        }
+
+        /* AJUSTE PARA EL BOTÓN DEL BOT (MÁS GRANDE Y VISIBLE) */
+        #landbot-1737672159811, .landbot-launcher {
+            transform: scale(1.3) !important; /* Agranda el botón un 30% */
+            margin-bottom: 20px !important;
+            margin-right: 10px !important;
+            filter: drop-shadow(0 0 10px var(--cyan)) !important;
+        }
+
+        footer { font-size: 0.55rem; color: #666; text-align: center; padding: 20px 0 100px; line-height: 1.4; }
     </style>
 </head>
 <body>
 
+    <div class="logo-ring"><div style="font-size:0.5rem; text-align:center; font-weight:900;">NEURAL<br>FOCUS AI</div></div>
     <h1>NEURAL FOCUS AI</h1>
 
-    <div class="video-box">
-        <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc" allowfullscreen></iframe>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc?rel=0&modestbranding=1" allowfullscreen></iframe>
     </div>
 
-    <button class="btn-util" onclick="window.location.href='https://translate.google.com/?sl=tr&tl=es&op=translate'">
+    <button class="btn-translate" onclick="window.location.href='https://translate.google.com/?sl=tr&tl=es&op=translate'">
         🌍 AKILLI ÇEVİRMEN (TR-ES)
     </button>
 
-    <div class="card-info">
-        <strong>🏥 Sağlık & Gastronomi:</strong> 24/7 Akıllı Ses ve Agente de Vida çözümleri.
+    <a href="tel:112" class="btn-emergency">🚨 ACİL YARDIM ÇAĞIR (112)</a>
+
+    <div class="card">
+        <span style="color:var(--cyan); font-weight:bold;">🏥 Sağlık & Gastronomi:</span><br>
+        24/7 Akıllı Ses ve Canlı Yaşam Ajanı çözümleri.
     </div>
 
-    <div class="wa-grid">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-btn">🏥 Sağlık</a>
-        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-btn">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-btn">🏭 Sanayi</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-btn">🏗️ İnşaat</a>
+    <div class="grid">
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="grid-btn">🏥 Sağlık</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="grid-btn">🍲 Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="grid-btn">🏭 Sanayi</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="grid-btn">🏗️ İnşaat</a>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" class="ln-btn">LINKEDIN PROFESYONEL AĞ</a>
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" class="btn-linkedin">LINKEDIN PROFESYONEL AĞ</a>
 
-    <footer style="font-size:0.6rem; color:#555; text-align:center; padding-bottom:80px;">
+    <footer>
         © 2026 Lucas Guzmán | Neural Focus AI <br>
+        Türkiye - AB İş Birliği Altyapısı <br>
         24/7 Akıllı Ses & Yaşam Ajanı
     </footer>
 
