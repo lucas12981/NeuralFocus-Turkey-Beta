@@ -34,7 +34,7 @@
     <div class="calendar-box" id="cultural-calendar">Güncelleniyor...</div>
 
     <h2>🚨 Acil Durum Hattı (Emergencia)</h2>
-    <p class="desc">Tıbbi yardım ve acil durumlar için doğrudan erişim.</p>
+    <p class="desc">Tıbbi yardım y acil durumlar için doğrudan erişim.</p>
     <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
 
     <h2>Özel Hizmetler</h2>
@@ -64,21 +64,41 @@
 
     <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
 
-    <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
-      var myLandbot = new Landbot.Livechat({
-        configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3307046-X9SKW9KUOLBO15SS/index.json',
-      });
+      var myLandbot;
+      function initLandbot() {
+        if (!myLandbot) {
+          var s = document.createElement('script');
+          s.type = "text/javascript";
+          s.async = true;
+          s.addEventListener('load', function() {
+            myLandbot = new Landbot.Livechat({
+              configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3307046-X9SKW9KUOLBO15SS/index.json',
+            });
+          });
+          s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
+          var x = document.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      }
+      
+      // Forzamos la inicialización inmediata
+      initLandbot();
 
       function openAI() {
-        myLandbot.open();
+          if (myLandbot) { 
+              myLandbot.open(); 
+          } else { 
+              initLandbot(); 
+              setTimeout(() => { if(myLandbot) myLandbot.open(); }, 1000); 
+          }
       }
     </script>
 
     <script>
         function loadCalendar() {
             const display = document.getElementById('cultural-calendar');
-            display.innerHTML = "✨ <strong>Neural Focus:</strong> Türk halkına teknolojiyle eşlik ediyoruz.";
+            display.innerHTML = "✨ <strong>Neural Focus:</strong> Türk halkına teknología ile eşlik ediyoruz.";
         }
         loadCalendar();
     </script>
