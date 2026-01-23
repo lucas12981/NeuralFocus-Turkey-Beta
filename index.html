@@ -22,37 +22,6 @@
         .linkedin-btn { background: #0077B5; color: white; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 20px; text-align: center; display: block; }
         footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; padding-bottom: 40px; }
     </style>
-
-    <script>
-      var myLandbot;
-      function initLandbot() {
-        if (!myLandbot) {
-          var s = document.createElement('script');
-          s.type = "module";
-          s.async = true;
-          s.addEventListener('load', function() {
-            myLandbot = new Landbot.Livechat({
-              configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3307046-X9SKW9KUOLBO15SS/index.json',
-            });
-          });
-          s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
-          var x = document.getElementsByTagName('script')[0];
-          x.parentNode.insertBefore(s, x);
-        }
-      }
-
-      // Ejecución inmediata del bot
-      initLandbot();
-
-      function openAI() {
-          if (myLandbot) { 
-              myLandbot.open(); 
-          } else { 
-              initLandbot(); 
-              setTimeout(() => { if(myLandbot) myLandbot.open(); }, 800); 
-          }
-      }
-    </script>
 </head>
 <body>
     <div class="logo-container">
@@ -62,9 +31,7 @@
     <h1>Neural Focus AI</h1>
     <span class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</span>
 
-    <div class="calendar-box" id="cultural-calendar">
-        Güncelleniyor...
-    </div>
+    <div class="calendar-box" id="cultural-calendar">Güncelleniyor...</div>
 
     <h2>🚨 Acil Durum Hattı (Emergencia)</h2>
     <p class="desc">Tıbbi yardım ve acil durumlar için doğrudan erişim.</p>
@@ -88,9 +55,7 @@
         <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="sector-btn">🏗️ İnşaat</a>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank" class="linkedin-btn">
-        LinkedIn Profesyonel Ağım
-    </a>
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank" class="linkedin-btn">LinkedIn Profesyonel Ağım</a>
 
     <div id="btnAI" class="card special-card" onclick="openAI()">
         <h3 style="color:#00FFFF; margin:0; font-size: 1.1rem;">Canlı Yaşam Ajanı (Interact 24/7)</h3>
@@ -99,20 +64,21 @@
 
     <footer>© 2026 Neural Focus AI | Lucas Guzmán </footer>
 
+    <script SameSite="None; Secure" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
+    <script>
+      var myLandbot = new Landbot.Livechat({
+        configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3307046-X9SKW9KUOLBO15SS/index.json',
+      });
+
+      function openAI() {
+        myLandbot.open();
+      }
+    </script>
+
     <script>
         function loadCalendar() {
-            const today = new Date();
             const display = document.getElementById('cultural-calendar');
-            const day = today.getDate();
-            const month = today.getMonth() + 1;
-
-            if (day === 22 && month === 1) {
-                display.innerHTML = "🇦🇷🤝🇹🇷 <strong>Bugün:</strong> Neural Focus Türkiye altyapısı yayında. Sizinle her adımda beraberiz!";
-            } else if (day === 23 && month === 4) {
-                display.innerHTML = "🇹🇷 <strong>Özel Gün:</strong> Ulusal Egemenlik ve Çocuk Bayramı Kutlu Olsun!";
-            } else {
-                display.innerHTML = "✨ <strong>Neural Focus Görevi:</strong> Türk halkına teknolojiyle eşlik ediyoruz.";
-            }
+            display.innerHTML = "✨ <strong>Neural Focus Görevi:</strong> Türk halkına teknología ile eşlik ediyoruz.";
         }
         loadCalendar();
     </script>
