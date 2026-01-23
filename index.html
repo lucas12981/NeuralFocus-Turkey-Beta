@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Premium Interface</title>
+    <title>Neural Focus AI | Global Infrastructure</title>
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #000000 0%, #001a1a 50%, #003333 100%);
             --main-cyan: #00FFFF;
             --neon-purple: #bc13fe;
-            --glass-bg: rgba(255, 255, 255, 0.05);
             --emergency-red: #ff4b2b;
+            --glass-bg: rgba(255, 255, 255, 0.05);
         }
 
         body {
             background: var(--bg-gradient);
             background-attachment: fixed;
             color: #fff;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -29,40 +29,49 @@
 
         /* Marcador de Posición de Logo Moderno */
         .logo-placeholder {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%);
             border: 2px solid var(--main-cyan);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-            text-align: center;
+            background: rgba(0, 255, 255, 0.02);
         }
 
         .logo-placeholder span {
             color: var(--main-cyan);
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
+            text-align: center;
         }
 
-        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 0; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0,255,255,0.5); }
+        h1 { color: var(--main-cyan); font-size: 1.6rem; margin: 0; text-transform: uppercase; text-shadow: 0 0 10px rgba(0,255,255,0.5); }
         
         .tagline {
             background: rgba(0, 255, 255, 0.1);
             color: var(--main-cyan);
             padding: 8px 25px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
-            margin: 15px 0 40px;
+            margin: 10px 0 30px;
             border: 1px solid rgba(0, 255, 255, 0.2);
         }
+
+        /* Secciones de Texto Informativo */
+        .info-section {
+            width: 100%;
+            max-width: 500px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .info-title { color: var(--main-cyan); font-size: 1rem; text-transform: uppercase; border-left: 3px solid var(--main-cyan); padding-left: 12px; margin-bottom: 10px; }
+        .info-text { color: #bbb; font-size: 0.85rem; line-height: 1.4; }
 
         /* Botones con Degradado y Efecto Flotante */
         .btn-gradient {
@@ -71,73 +80,78 @@
             background: linear-gradient(145deg, #111, #000);
             border: 1px solid #333;
             border-radius: 15px;
-            padding: 20px;
+            padding: 18px;
             margin-bottom: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            transition: 0.3s;
             text-decoration: none;
             color: white;
             display: block;
             box-sizing: border-box;
             text-align: center;
-            cursor: pointer;
+            font-weight: bold;
         }
 
-        .btn-gradient:active {
-            transform: scale(0.98);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.8);
-        }
-
-        .emergency { border: 2px solid var(--emergency-red); background: rgba(255,75,43,0.05); }
-        .emergency span { color: var(--emergency-red); font-weight: bold; }
-
-        .special-card {
-            border: 2px solid var(--main-cyan);
-            background: linear-gradient(145deg, #001a1a, #000);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        }
+        .emergency { border: 2px solid var(--emergency-red); background: rgba(255,75,43,0.05); color: var(--emergency-red); }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 12px;
             width: 100%;
             max-width: 500px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .grid-btn {
-            background: var(--glass-bg);
-            border: 1px solid #444;
-            padding: 20px;
-            border-radius: 15px;
+        .wa-btn {
+            background: linear-gradient(145deg, #075E54, #128C7E);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             color: white;
-            font-size: 0.9rem;
+            text-decoration: none;
+            font-size: 0.85rem;
             box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            font-weight: 600;
         }
 
-        /* BURBUJA DE IA MEJORADA (Efecto Imagen) */
+        .linkedin-btn {
+            background: linear-gradient(145deg, #0077B5, #004182);
+            border: none;
+            color: white;
+            padding: 18px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            display: block;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        /* BURBUJA DE IA LATIENTE */
         .ai-bubble {
             position: fixed;
             bottom: 30px;
             right: 25px;
-            width: 80px;
-            height: 80px;
+            width: 75px;
+            height: 75px;
             background: linear-gradient(135deg, var(--main-cyan), var(--neon-purple));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
             cursor: pointer;
             box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
             animation: pulse-aura 2s infinite;
         }
 
-        .ai-bubble svg { width: 45px; height: 45px; fill: #000; }
+        .ai-bubble svg { width: 40px; height: 40px; fill: #000; }
 
         @keyframes pulse-aura {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
@@ -145,7 +159,7 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(188, 19, 254, 0); }
         }
 
-        footer { margin-top: 50px; color: #666; font-size: 0.75rem; text-align: center; padding-bottom: 40px; }
+        footer { margin-top: 40px; color: #555; font-size: 0.7rem; text-align: center; padding-bottom: 60px; border-top: 1px solid #222; width: 100%; max-width: 500px; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -157,30 +171,35 @@
     <h1>NEURAL FOCUS AI</h1>
     <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
 
-    <div class="btn-gradient emergency" onclick="window.location.href='tel:112'">
-        <span>🚨 ACİL DURUM HATTI (112)</span>
+    <div class="info-section">
+        <div class="info-title">📅 Planificación y Calendario</div>
+        <p class="info-text">Gestión estratégica de reuniones y cronograma de implementación para el sector salud y gastronomía.</p>
     </div>
 
-    <h2 style="color:var(--main-cyan); font-size: 1rem; width:100%; max-width:500px; text-align:left;">HİZMETLER (AI AGENTS)</h2>
+    <div class="info-section">
+        <div class="info-title">🔔 Recordatorios Activos</div>
+        <p class="info-text">Notificaciones de seguimiento para acuerdos de colaboración y actualizaciones de la Voz Inteligente 24/7.</p>
+    </div>
+
+    <a href="tel:112" class="btn-gradient emergency">
+        🚨 ACİL YARDIM ÇAĞIR (112)
+    </a>
+
+    <h2 style="color:var(--main-cyan); font-size: 1rem; width:100%; max-width:500px; text-align:left; margin-top:20px;">İŞ EKOSİSTEMİ (WHATSAPP)</h2>
     <div class="grid">
-        <div class="grid-btn" onclick="myLandbot.open()">🏥<br><br>Sağlık</div>
-        <div class="grid-btn" onclick="myLandbot.open()">☕<br><br>Gastronomi</div>
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-btn">🏥 Sağlık Ağı</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-btn">🍲 Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-btn">🏭 Sanayi Ağı</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-btn">🏗️ İnşaat Ağı</a>
     </div>
 
-    <div class="btn-gradient special-card" onclick="myLandbot.open()">
-        <span style="color:var(--main-cyan); font-size:1.1rem;">Canlı Yaşam Ajanı 24/7</span>
-        <p style="color:#888; font-size:0.8rem; margin:10px 0 0;">Lucas Guzmán | Strategic Collaboration</p>
-    </div>
-
-    <h2 style="color:var(--main-cyan); font-size: 1rem; width:100%; max-width:500px; text-align:left;">İŞ EKOSİSTEMİ</h2>
-    <div class="grid">
-        <div class="grid-btn" onclick="myLandbot.open()">⚙️<br><br>Endüstri</div>
-        <div class="grid-btn" onclick="myLandbot.open()">🏗️<br><br>İnşaat</div>
-    </div>
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank" class="linkedin-btn">
+        LINKEDIN PROFESYONEL AĞIM
+    </a>
 
     <footer>
-        © 2026 Neural Focus AI | Lucas Guzmán<br>
-        Agencia de IA: Salud, Gastronomía, Industria y Construcción
+        © 2026 Neural Focus AI | Lucas Guzmán@<br>
+        Infraestructura Tecnológica Global (UE & Turquía)
     </footer>
 
     <div class="ai-bubble" onclick="myLandbot.open()">
@@ -194,4 +213,5 @@
       });
     </script>
 </body>
-</html>
+    </html>
+    
