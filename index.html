@@ -3,62 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Türkiye Altyapısı</title>
+    <title>Neural Focus AI | Global Infrastructure</title>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; overflow-x: hidden; }
-        .logo-container { width: 130px; margin-bottom: 10px; border: 2px solid #00FFFF; border-radius: 50%; padding: 10px; background: rgba(0, 255, 255, 0.05); }
-        .logo-placeholder { width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; color: #00FFFF; font-weight: bold; font-size: 0.8rem; text-align: center; }
-        h1 { color: #00FFFF; font-size: 1.6rem; text-transform: uppercase; margin: 10px 0; text-align: center; }
-        .tagline { background: rgba(0, 255, 255, 0.1); color: #00FFFF; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 25px; text-align: center; }
-        h2 { color: #00FFFF; font-size: 1.1rem; margin-top: 25px; text-transform: uppercase; border-bottom: 1px solid #333; width: 100%; max-width: 500px; padding-bottom: 5px; text-align: center;}
-        .grid-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; }
-        .sector-btn { border: 1px solid #00FFFF; padding: 15px; border-radius: 12px; background: #0a0a0a; color: #fff; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; transition: 0.3s; }
-        .emergency-btn { border: 2px solid #ff4b2b; background: rgba(255, 75, 43, 0.1); color: #ff4b2b; padding: 15px; border-radius: 12px; width: 100%; max-width: 500px; text-decoration: none; font-weight: bold; margin-top: 10px; text-align: center; display: block; }
-        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; width: 100%; max-width: 500px; margin-top: 15px; box-sizing: border-box; text-align: center; color: white; display: block; text-decoration: none; }
-        .special-card { border: 2px solid #00FFFF; background: linear-gradient(145deg, #001a1a, #000); cursor: pointer; }
-        footer { margin-top: 40px; color: #444; font-size: 0.7rem; text-align: center; padding-bottom: 40px; }
+        :root { --main-cyan: #00FFFF; --bg-black: #000000; --card-bg: #0a0a0a; --emergency-red: #ff4b2b; }
+        body { background-color: var(--bg-black); color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; line-height: 1.6; }
+        
+        /* Header & Logo */
+        .header-section { margin-top: 20px; text-align: center; width: 100%; }
+        .logo-ring { width: 140px; height: 140px; border: 3px solid var(--main-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        .logo-text { color: var(--main-cyan); font-weight: 900; font-size: 1rem; letter-spacing: 2px; }
+        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .tagline { background: rgba(0, 255, 255, 0.15); color: var(--main-cyan); padding: 8px 20px; border-radius: 30px; font-size: 0.85rem; font-weight: bold; margin: 15px 0 30px; display: inline-block; }
 
-        /* ESTILO DE EMERGENCIA PARA LA BURBUJA */
-        #landbot-1737522031448, .LandbotLivechat { 
-            display: block !important; 
-            visibility: visible !important; 
-            z-index: 999999 !important; 
-        }
+        /* Infrastructure Section */
+        h2 { color: var(--main-cyan); font-size: 1.1rem; text-transform: uppercase; margin-top: 40px; width: 100%; max-width: 500px; text-align: left; border-left: 4px solid var(--main-cyan); padding-left: 15px; }
+        .section-desc { color: #888; font-size: 0.85rem; text-align: left; width: 100%; max-width: 500px; margin-bottom: 20px; }
+
+        /* Emergency Module */
+        .emergency-box { border: 2px solid var(--emergency-red); background: rgba(255, 75, 43, 0.05); padding: 20px; border-radius: 15px; width: 100%; max-width: 500px; box-sizing: border-box; margin-bottom: 10px; }
+        .emergency-btn { background: var(--emergency-red); color: #fff; padding: 15px; border-radius: 10px; display: block; text-decoration: none; font-weight: bold; font-size: 1rem; transition: 0.3s; }
+
+        /* Services Grid (Functions of the Agency) */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px; }
+        .service-card { background: var(--card-bg); border: 1px solid #333; padding: 20px; border-radius: 15px; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white; }
+        .service-card:hover { border-color: var(--main-cyan); transform: translateY(-3px); }
+        .icon { font-size: 1.5rem; margin-bottom: 10px; }
+        .service-title { font-size: 0.9rem; font-weight: bold; color: var(--main-cyan); }
+
+        /* Agency Functions Section */
+        .agency-info { background: var(--card-bg); border: 1px solid #222; padding: 15px; border-radius: 15px; width: 100%; max-width: 500px; margin-top: 15px; text-align: left; font-size: 0.85rem; }
+        .agency-info ul { padding-left: 20px; color: #ccc; }
+
+        /* WhatsApp Ecosystem */
+        .wa-link { background: #25D366; color: #fff; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; }
+
+        /* Strategic Agent Card */
+        .agent-card { background: linear-gradient(145deg, #001a1a, #000); border: 2px solid var(--main-cyan); padding: 25px; border-radius: 20px; width: 100%; max-width: 500px; margin-top: 30px; box-sizing: border-box; cursor: pointer; position: relative; overflow: hidden; }
+        .agent-card::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%); pointer-events: none; }
+        .agent-name { font-size: 1.2rem; font-weight: bold; color: var(--main-cyan); margin: 0; }
+        .agent-sub { font-size: 0.85rem; color: #bbb; margin: 10px 0 0; }
+
+        footer { margin-top: 60px; color: #444; font-size: 0.75rem; border-top: 1px solid #222; width: 100%; max-width: 500px; padding-top: 20px; margin-bottom: 40px; }
     </style>
 </head>
 <body>
-    <div class="logo-container">
-        <div class="logo-placeholder">NEURAL<br>FOCUS AI</div>
+    <div class="header-section">
+        <div class="logo-ring">
+            <div class="logo-text">NEURAL<br>FOCUS AI</div>
+        </div>
+        <h1>NEURAL FOCUS AI</h1>
+        <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
     </div>
 
-    <h1>Neural Focus AI</h1>
-    <span class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</span>
-
-    <h2>🚨 Acil Durum Hattı</h2>
-    <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
-
-    <h2>Özel Hizmetler</h2>
-    <div class="grid-sectors">
-        <button class="sector-btn" onclick="openLandbot()">🏥 Sağlık</button>
-        <button class="sector-btn" onclick="openLandbot()">☕ Gastronomi</button>
+    <div class="emergency-box">
+        <h2 style="margin-top:0; border:none; padding:0;">🚨 Acil Durum Hattı</h2>
+        <p class="section-desc">Tıbbi yardım ve acil durumlar için Türkiye genelinde doğrudan erişim.</p>
+        <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
     </div>
 
-    <div class="card special-card" onclick="openLandbot()">
-        <h3 style="color:#00FFFF; margin:0;">Canlı Yaşam Ajanı 24/7</h3>
-        <p style="font-size:0.85rem; color:#bbb;">Lucas Guzmán | Strategic Collaboration</p>
+    <h2>🛠️ Ajans Fonksiyonları</h2>
+    <p class="section-desc">Global iş birliği için sunduğumuz temel hizmetler:</p>
+    <div class="grid">
+        <div class="service-card" onclick="myLandbot.open()">
+            <span class="icon">🏥</span>
+            <span class="service-title">Sağlık</span>
+        </div>
+        <div class="service-card" onclick="myLandbot.open()">
+            <span class="icon">☕</span>
+            <span class="service-title">Gastronomi</span>
+        </div>
+        <div class="service-card" onclick="myLandbot.open()">
+            <span class="icon">⚙️</span>
+            <span class="service-title">Endüstri</span>
+        </div>
+        <div class="service-card" onclick="myLandbot.open()">
+            <span class="icon">🏗️</span>
+            <span class="service-title">İnşaat</span>
+        </div>
     </div>
 
-    <footer>© 2026 Neural Focus AI | Lucas Guzmán</footer>
+    <div class="agency-info">
+        <strong>Hizmetlerimiz:</strong>
+        <ul>
+            <li>Yapay Zeka Entegrasyonu (Sağlık & Gastronomi) [cite: 2026-01-18]</li>
+            <li>Voz Inteligente 24/7 Çözümleri [cite: 2026-01-12]</li>
+            <li>Endüstriyel Otomasyon Danışmanlığı [cite: 2025-12-29]</li>
+            <li>Stratejik İş Birliği ve Geliştirme [cite: 2026-01-02]</li>
+        </ul>
+    </div>
+
+    <h2>🤝 İş Ekosistemi (WhatsApp)</h2>
+    <p class="section-desc">Sektörel profesyonel topluluklarımıza doğrudan katılım sağlayın.</p>
+    <div class="grid">
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-link">Sağlık Ağı</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-link">Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-link">Sanayi Ağı</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-link">İnşaat Ağı</a>
+    </div>
+
+    <div class="agent-card" onclick="myLandbot.open()">
+        <p class="agent-name">Canlı Yaşam Ajanı 24/7</p>
+        <p class="agent-sub">Lucas Guzmán | Strategic Collaboration & AI Development [cite: 2025-12-21, 2026-01-02]</p>
+    </div>
+
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" style="color:var(--main-cyan); margin-top:20px; text-decoration:none; font-size:0.9rem; font-weight:bold;">→ LinkedIn Profesyonel Ağım</a>
+
+    <footer>
+        © 2026 Neural Focus AI | Lucas Guzmán<br>
+        Tüm hakları saklıdır. Avrupa ve Türkiye altyapısı. [cite: 2026-01-20]
+    </footer>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
       var myLandbot = new Landbot.Livechat({
         configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3290254-63C2C0W1J4D7S20O/index.json',
       });
-
-      function openLandbot() {
-        myLandbot.open();
-      }
     </script>
 </body>
 </html>
