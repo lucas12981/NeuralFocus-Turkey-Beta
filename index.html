@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* Marcador de Posición Profesional (Logo) */
+        /* Logo Profesional con Anillo Animado */
         .logo-container {
             width: 150px;
             height: 150px;
@@ -53,26 +53,27 @@
         }
 
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
         .logo-text { color: var(--main-cyan); font-weight: 900; font-size: 0.8rem; letter-spacing: 3px; text-align: center; }
 
-        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 20px 0 5px; text-shadow: 0 0 15px rgba(0,255,255,0.6); }
+        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 20px 0 5px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0,255,255,0.6); }
         .tagline { background: rgba(0, 255, 255, 0.1); color: var(--main-cyan); padding: 8px 25px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; margin-bottom: 30px; border: 1px solid rgba(0, 255, 255, 0.2); }
 
-        /* Integración de Video */
+        /* REPRODUCTOR DE VIDEO CORREGIDO */
         .video-box {
             width: 100%;
             max-width: 500px;
-            aspect-ratio: 16/9;
             background: #000;
             border-radius: 15px;
             overflow: hidden;
             border: 1px solid var(--main-cyan);
             margin-bottom: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            line-height: 0;
         }
 
-        /* Tarjetas de Gestión en Turco */
+        video { width: 100%; height: auto; display: block; }
+
+        /* Tarjetas de Gestión */
         .card {
             width: 100%;
             max-width: 500px;
@@ -87,7 +88,6 @@
         .card h3 { color: var(--main-cyan); margin: 0 0 10px 0; font-size: 1rem; text-transform: uppercase; }
         .card p { color: #ccc; font-size: 0.85rem; margin: 0; line-height: 1.5; }
 
-        /* Botón de Emergencia */
         .emergency-btn {
             width: 100%;
             max-width: 500px;
@@ -103,26 +103,12 @@
             display: block;
         }
 
-        /* WhatsApp Grid */
+        /* WhatsApp & LinkedIn */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; margin-bottom: 25px; }
-        .wa-link { background: linear-gradient(145deg, #075E54, #128C7E); padding: 18px; border-radius: 12px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.85rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .wa-link { background: linear-gradient(145deg, #075E54, #128C7E); padding: 18px; border-radius: 12px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.85rem; }
+        .linkedin { width: 100%; max-width: 500px; background: linear-gradient(145deg, #0077B5, #004182); padding: 18px; border-radius: 15px; color: white; text-decoration: none; font-weight: bold; text-align: center; display: block; margin-bottom: 40px; }
 
-        /* LinkedIn */
-        .linkedin {
-            width: 100%;
-            max-width: 500px;
-            background: linear-gradient(145deg, #0077B5, #004182);
-            padding: 18px;
-            border-radius: 15px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            display: block;
-            margin-bottom: 40px;
-        }
-
-        /* BOTÓN FLOTANTE LATIENTE (SIN FOTO) */
+        /* BOTÓN FLOTANTE LATIENTE */
         .bot-bubble {
             position: fixed;
             bottom: 30px;
@@ -161,22 +147,25 @@
     <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
 
     <div class="video-box">
-        <iframe src="https://uploadnow.io/files/FSKHKYw" allowfullscreen></iframe>
+        <video controls poster="https://via.placeholder.com/500x280/000000/00FFFF?text=Neural+Focus+AI+Video">
+            <source src="https://uploadnow.io/files/FSKHKYw" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+        </video>
     </div>
 
     <div class="card">
         <h3>📅 Planlama ve Takvim</h3>
-        <p>Sağlık ve gastronomi sektörleri için stratejik toplantı yönetimi ve uygulama programı.</p>
+        <p>Sağlık ve gastronomi sektörleri için stratejik toplantı yönetimi ve uygulama programı [cite: 2026-01-18, 2025-12-29].</p>
     </div>
 
     <div class="card">
         <h3>🔔 Aktif Hatırlatıcılar</h3>
-        <p>İşbirliği anlaşmaları ve 24/7 Akıllı Ses güncellemeleri için takip bildirimleri .</p>
+        <p>İşbirliği anlaşmaları ve 24/7 Akıllı Ses güncellemeleri için takip bildirimleri [cite: 2026-01-12].</p>
     </div>
 
     <a href="tel:112" class="emergency-btn">🚨 ACİL YARDIM ÇAĞIR (112)</a>
 
-    <div style="color:var(--main-cyan); width:100%; max-width:500px; margin-bottom:15px; font-weight:bold;">İŞ EKOSİSTEMİ (WHATSAPP)</div>
+    <div style="color:var(--main-cyan); width:100%; max-width:500px; margin-bottom:15px; font-weight:bold; text-transform:uppercase; font-size:0.9rem;">İŞ EKOSİSTEMİ (WHATSAPP)</div>
     <div class="grid">
         <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-link">🏥 Sağlık Ağı</a>
         <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-link">🍲 Gastronomi</a>
@@ -187,8 +176,8 @@
     <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" class="linkedin">LINKEDIN PROFESYONEL AĞIM</a>
 
     <footer>
-        © 2026 Neural Focus AI | Lucas Guzmán<br>
-        Küresel Teknoloji Altyapısı (AB & Türkiye)
+        © 2026 Neural Focus AI | Lucas Guzmán [cite: 2025-12-21]<br>
+        Küresel Teknoloji Altyapısı (AB & Türkiye) [cite: 2026-01-20]
     </footer>
 
     <div class="bot-bubble" onclick="myLandbot.open()">
