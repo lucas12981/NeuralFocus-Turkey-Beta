@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Global Altyapı</title>
+    <title>Neural Focus AI | Altyapı</title>
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #000000 0%, #001f1f 45%, #004d4d 100%);
             --main-cyan: #00FFFF;
             --neon-purple: #bc13fe;
             --emergency-red: #ff4b2b;
-            --glass-card: rgba(255, 255, 255, 0.04);
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
         body {
@@ -27,8 +27,8 @@
             overflow-x: hidden;
         }
 
-        /* Logo Profesional Minimalista */
-        .header-logo {
+        /* Marcador de Posición Profesional (Logo) */
+        .logo-container {
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -38,59 +38,57 @@
             justify-content: center;
             margin-top: 20px;
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            background: rgba(0, 255, 255, 0.01);
             position: relative;
         }
 
-        .header-logo::after {
+        .logo-container::before {
             content: '';
             position: absolute;
-            width: 110%;
-            height: 110%;
+            width: 115%;
+            height: 115%;
             border: 1px dashed var(--main-cyan);
             border-radius: 50%;
-            opacity: 0.3;
-            animation: spin 15s linear infinite;
+            opacity: 0.2;
+            animation: rotate 20s linear infinite;
         }
 
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .logo-text { color: var(--main-cyan); font-weight: 900; font-size: 0.8rem; letter-spacing: 3px; text-align: center; }
 
         h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 20px 0 5px; text-shadow: 0 0 15px rgba(0,255,255,0.6); }
-        .tagline { background: rgba(0, 255, 255, 0.1); color: var(--main-cyan); padding: 8px 25px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; margin-bottom: 35px; border: 1px solid rgba(0, 255, 255, 0.2); }
+        .tagline { background: rgba(0, 255, 255, 0.1); color: var(--main-cyan); padding: 8px 25px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; margin-bottom: 30px; border: 1px solid rgba(0, 255, 255, 0.2); }
 
-        /* Contenedor de Video */
-        .video-container {
+        /* Integración de Video */
+        .video-box {
             width: 100%;
             max-width: 500px;
-            margin-bottom: 25px;
+            aspect-ratio: 16/9;
+            background: #000;
             border-radius: 15px;
             overflow: hidden;
             border: 1px solid var(--main-cyan);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-            background: #000;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
-
-        /* Tarjetas de Información */
-        .info-box {
+        /* Tarjetas de Gestión en Turco */
+        .card {
             width: 100%;
             max-width: 500px;
-            background: var(--glass-card);
+            background: var(--glass);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-sizing: border-box;
         }
 
-        .info-box h3 { color: var(--main-cyan); margin: 0 0 10px 0; font-size: 1rem; text-transform: uppercase; }
-        .info-box p { color: #ccc; font-size: 0.85rem; margin: 0; line-height: 1.5; }
+        .card h3 { color: var(--main-cyan); margin: 0 0 10px 0; font-size: 1rem; text-transform: uppercase; }
+        .card p { color: #ccc; font-size: 0.85rem; margin: 0; line-height: 1.5; }
 
         /* Botón de Emergencia */
-        .emergency-action {
+        .emergency-btn {
             width: 100%;
             max-width: 500px;
             background: rgba(255, 75, 43, 0.1);
@@ -101,17 +99,16 @@
             text-decoration: none;
             font-weight: 800;
             text-align: center;
-            margin: 15px 0 30px;
+            margin-bottom: 30px;
             display: block;
         }
 
         /* WhatsApp Grid */
-        .ecosystem-title { color: var(--main-cyan); font-size: 1rem; width: 100%; max-width: 500px; text-align: left; margin-bottom: 15px; text-transform: uppercase; }
-        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; margin-bottom: 25px; }
-        .wa-card { background: linear-gradient(145deg, #075E54, #128C7E); padding: 18px; border-radius: 12px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.85rem; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; margin-bottom: 25px; }
+        .wa-link { background: linear-gradient(145deg, #075E54, #128C7E); padding: 18px; border-radius: 12px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.85rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
         /* LinkedIn */
-        .linkedin-button {
+        .linkedin {
             width: 100%;
             max-width: 500px;
             background: linear-gradient(145deg, #0077B5, #004182);
@@ -125,8 +122,8 @@
             margin-bottom: 40px;
         }
 
-        /* Botón Flotante IA (Sin Foto) */
-        .ai-float {
+        /* BOTÓN FLOTANTE LATIENTE (SIN FOTO) */
+        .bot-bubble {
             position: fixed;
             bottom: 30px;
             right: 25px;
@@ -140,12 +137,12 @@
             z-index: 9999;
             cursor: pointer;
             box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
-            animation: pulse-ring 2s infinite;
+            animation: heartbeat 2s infinite;
         }
 
-        .ai-float svg { width: 40px; height: 40px; fill: white; }
+        .bot-bubble svg { width: 40px; height: 40px; fill: white; }
 
-        @keyframes pulse-ring {
+        @keyframes heartbeat {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
             70% { transform: scale(1.1); box-shadow: 0 0 30px 20px rgba(188, 19, 254, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(188, 19, 254, 0); }
@@ -156,49 +153,45 @@
 </head>
 <body>
 
-    <div class="header-logo">
+    <div class="logo-container">
         <div class="logo-text">NEURAL<br>FOCUS AI</div>
     </div>
 
     <h1>NEURAL FOCUS AI</h1>
     <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
 
-    <div class="video-container">
+    <div class="video-box">
         <iframe src="https://uploadnow.io/files/FSKHKYw" allowfullscreen></iframe>
     </div>
 
-    <div class="info-box">
+    <div class="card">
         <h3>📅 Planlama ve Takvim</h3>
         <p>Sağlık ve gastronomi sektörleri için stratejik toplantı yönetimi ve uygulama programı.</p>
     </div>
 
-    <div class="info-box">
+    <div class="card">
         <h3>🔔 Aktif Hatırlatıcılar</h3>
-        <p>İşbirliği anlaşmaları ve 24/7 Akıllı Ses güncellemeleri için takip bildirimleri.</p>
+        <p>İşbirliği anlaşmaları ve 24/7 Akıllı Ses güncellemeleri için takip bildirimleri .</p>
     </div>
 
-    <a href="tel:112" class="emergency-action">
-        🚨 ACİL YARDIM ÇAĞIR (112)
-    </a>
+    <a href="tel:112" class="emergency-btn">🚨 ACİL YARDIM ÇAĞIR (112)</a>
 
-    <div class="ecosystem-title">İŞ EKOSİSTEMİ (WHATSAPP)</div>
-    <div class="wa-grid">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-card">🏥 Sağlık Ağı</a>
-        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-card">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-card">🏭 Sanayi Ağı</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-card">🏗️ İnşaat Ağı</a>
+    <div style="color:var(--main-cyan); width:100%; max-width:500px; margin-bottom:15px; font-weight:bold;">İŞ EKOSİSTEMİ (WHATSAPP)</div>
+    <div class="grid">
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-link">🏥 Sağlık Ağı</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-link">🍲 Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-link">🏭 Sanayi Ağı</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-link">🏗️ İnşaat Ağı</a>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" class="linkedin-button">
-        LINKEDIN PROFESYONEL AĞIM
-    </a>
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" class="linkedin">LINKEDIN PROFESYONEL AĞIM</a>
 
     <footer>
         © 2026 Neural Focus AI | Lucas Guzmán<br>
         Küresel Teknoloji Altyapısı (AB & Türkiye)
     </footer>
 
-    <div class="ai-float" onclick="myLandbot.open()">
+    <div class="bot-bubble" onclick="myLandbot.open()">
         <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
     </div>
 
