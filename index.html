@@ -24,13 +24,11 @@
     </style>
 
     <script>
-      window.addEventListener('mouseover', initLandbot, { once: true });
-      window.addEventListener('touchstart', initLandbot, { once: true });
       var myLandbot;
       function initLandbot() {
         if (!myLandbot) {
           var s = document.createElement('script');
-          s.type = "module"
+          s.type = "module";
           s.async = true;
           s.addEventListener('load', function() {
             myLandbot = new Landbot.Livechat({
@@ -42,8 +40,17 @@
           x.parentNode.insertBefore(s, x);
         }
       }
+
+      // Carga automática del bot al abrir la página
+      window.onload = initLandbot;
+
       function openAI() {
-          if (myLandbot) { myLandbot.open(); } else { initLandbot(); setTimeout(() => { myLandbot.open(); }, 500); }
+          if (myLandbot) { 
+              myLandbot.open(); 
+          } else { 
+              initLandbot(); 
+              setTimeout(() => { myLandbot.open(); }, 500); 
+          }
       }
     </script>
 </head>
@@ -60,7 +67,7 @@
     </div>
 
     <h2>🚨 Acil Durum Hattı (Emergencia)</h2>
-    <p class="desc">Tıbbi yardım y acil durumlar için doğrudan erişim.</p>
+    <p class="desc">Tıbbi yardım ve acil durumlar için doğrudan erişim.</p>
     <a href="tel:112" class="emergency-btn">📞 ACİL YARDIM ÇAĞIR (112)</a>
 
     <h2>Özel Hizmetler</h2>
@@ -110,5 +117,4 @@
         loadCalendar();
     </script>
 </body>
-    </html>
-    
+</html>
