@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Gelecek Seviye</title>
+    <title>Neural Focus AI | Global İş Birliği</title>
     <style>
         :root {
             --bg: #000000;
             --main-cyan: #00FFFF;
             --neon-purple: #bc13fe;
-            --electric-blue: #0072ff;
-            --glass: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.08);
         }
 
         body {
@@ -23,173 +22,167 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
-            overflow-x: hidden;
         }
 
-        /* HEADER ANIMADO */
+        /* LOGO ANIMADO */
         .logo-orb {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            border: 2px solid var(--main-cyan);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 10px;
-            box-shadow: 0 0 35px var(--main-cyan);
+            margin: 20px 0;
+            background: rgba(0,0,0,0.8);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
             position: relative;
-            border: 2px solid var(--main-cyan);
-            background: rgba(0,0,0,0.9);
         }
 
         .logo-orb::after {
             content: '';
             position: absolute;
-            width: 125px;
-            height: 125px;
+            width: 135px;
+            height: 135px;
             border: 1px dashed var(--neon-purple);
             border-radius: 50%;
-            animation: spin 8s linear infinite;
+            animation: spin 10s linear infinite;
         }
 
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .logo-inner { font-weight: 900; font-size: 0.65rem; color: var(--main-cyan); text-align: center; letter-spacing: 1px; }
+        .logo-text { font-weight: 900; font-size: 0.7rem; color: var(--main-cyan); text-align: center; letter-spacing: 2px; }
 
-        h1 { font-size: 1.7rem; margin: 20px 0 5px; letter-spacing: 3px; background: linear-gradient(to right, #00FFFF, #bc13fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; text-align: center; }
+        h1 { font-size: 1.8rem; margin: 10px 0; letter-spacing: 3px; background: linear-gradient(to right, #00FFFF, #bc13fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
 
-        /* CUENTA REGRESIVA IMPACTANTE */
-        .countdown-container {
+        /* CUENTA REGRESIVA ESTILO NEÓN */
+        .timer-container {
             width: 100%;
             max-width: 480px;
-            background: rgba(188, 19, 254, 0.15);
+            background: rgba(188, 19, 254, 0.1);
             border: 1px solid var(--neon-purple);
             border-radius: 15px;
             padding: 15px;
             margin-bottom: 25px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.3);
         }
 
-        .countdown-title { font-size: 0.75rem; font-weight: bold; color: var(--neon-purple); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        #timer { font-family: monospace; font-size: 1.8rem; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon-purple); }
+        #countdown { font-family: monospace; font-size: 1.8rem; font-weight: 900; text-shadow: 0 0 10px var(--neon-purple); }
 
-        /* VIDEO SECTION (75247.mp4) */
-        .video-wrapper {
+        /* VIDEO FIX (75247.mp4) */
+        .video-box {
             width: 100%;
             max-width: 480px;
             border-radius: 20px;
-            padding: 2px;
+            padding: 3px;
             background: linear-gradient(45deg, var(--main-cyan), var(--neon-purple));
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            margin-bottom: 30px;
         }
 
-        video { width: 100%; border-radius: 18px; display: block; }
+        video { width: 100%; border-radius: 17px; display: block; background: #000; }
 
-        /* TARJETAS DE IMPACTO */
-        .feature-box {
+        /* SECCIONES DE SERVICIOS */
+        .card {
             width: 100%;
             max-width: 480px;
             background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 15px;
-            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .feature-box h3 { color: var(--main-cyan); margin: 0 0 10px; font-size: 1.1rem; }
-        .feature-box p { font-size: 0.85rem; color: #ccc; line-height: 1.4; }
+        .card h3 { color: var(--main-cyan); font-size: 1.1rem; margin-top: 0; }
+        .card p { font-size: 0.85rem; color: #ccc; line-height: 1.4; }
 
         .btn-action {
             width: 100%;
-            padding: 14px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 12px;
             border: none;
             font-weight: 900;
             cursor: pointer;
-            margin-top: 12px;
             text-transform: uppercase;
-            transition: 0.3s;
+            background: var(--main-cyan);
+            color: #000;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
         }
 
-        .cyan-btn { background: var(--main-cyan); color: #000; box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3); }
-        .purple-btn { background: var(--neon-purple); color: #fff; box-shadow: 0 4px 15px rgba(188, 19, 254, 0.3); }
-
-        /* TESTIMONIOS */
-        .testim-section { width: 100%; max-width: 480px; margin: 20px 0; }
-        .testim-card { background: rgba(0,0,0,0.4); border-left: 3px solid var(--main-cyan); padding: 12px; margin-bottom: 10px; border-radius: 0 10px 10px 0; }
-        .testim-card p { font-style: italic; font-size: 0.75rem; margin: 0; }
-        .testim-card b { display: block; margin-top: 5px; color: var(--main-cyan); font-size: 0.7rem; }
+        /* TESTIMONIOS INTELIGENTES */
+        .testimonial {
+            border-left: 4px solid var(--neon-purple);
+            background: rgba(188, 19, 254, 0.05);
+            padding: 15px;
+            border-radius: 0 15px 15px 0;
+            margin-top: 15px;
+        }
 
         /* WHATSAPP GRID */
-        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 480px; margin-bottom: 20px; }
-        .wa-btn { background: #128C7E; padding: 15px; border-radius: 10px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.7rem; }
+        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 480px; margin-bottom: 25px; }
+        .wa-item { background: #128C7E; padding: 15px; border-radius: 12px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.75rem; }
 
-        /* FLOAT BUTTON */
-        .ai-pulse-btn {
+        /* BOTÓN FLOTANTE AI */
+        .ai-btn {
             position: fixed;
-            bottom: 25px;
-            right: 20px;
-            width: 65px;
-            height: 65px;
+            bottom: 30px;
+            right: 25px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--main-cyan), var(--neon-purple));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            box-shadow: 0 0 20px var(--main-cyan);
-            animation: pulse-ring 2s infinite;
+            box-shadow: 0 0 25px var(--main-cyan);
+            animation: bounce 2s infinite;
         }
 
-        @keyframes pulse-ring { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        footer { font-size: 0.6rem; color: #666; text-align: center; padding: 20px 0 80px; width: 100%; border-top: 1px solid #222; }
+        footer { font-size: 0.6rem; color: #555; text-align: center; padding: 20px 0 100px; border-top: 1px solid #222; width: 100%; }
     </style>
 </head>
 <body>
 
-    <div class="logo-orb"><div class="logo-inner">NEURAL<br>FOCUS AI</div></div>
+    <div class="logo-orb"><div class="logo-text">NEURAL<br>FOCUS AI</div></div>
     <h1>NEURAL FOCUS AI</h1>
 
-    <div class="countdown-container">
-        <div class="countdown-title">V4.0 GLOBAL LANSMANINA KALAN SÜRE</div>
-        <div id="timer">00:00:00:00</div>
+    <div class="timer-container">
+        <div style="font-size: 0.7rem; color: var(--neon-purple); margin-bottom: 8px; letter-spacing: 1px;">YENİ NESİL LANSMAN</div>
+        <div id="countdown">00d 00h 00m 00s</div>
     </div>
 
-    <div class="video-wrapper">
-        <video controls playsinline poster="https://via.placeholder.com/500x280/000000/00FFFF?text=Neural+Focus+AI">
+    <div class="video-box">
+        <video controls playsinline preload="auto">
             <source src="75247.mp4" type="video/mp4">
         </video>
     </div>
 
-    <div class="feature-box">
+    <div class="card">
         <h3>🌌 AR Projeksiyon</h3>
-        <p>Geleceği odanıza getirin. Gastronomi ve mimari projeleriniz için 3B AR demosu.</p>
-        <button class="btn-action cyan-btn" onclick="alert('Kamera Erişimi Hazırlanıyor...')">Demoyu Başlat</button>
+        <p>Sağlık ve Gastronomi sektörleri için vizyonunuzu 3B olarak sunun.</p>
+        <button class="btn-action">Demoyu Başlat</button>
     </div>
 
-    <div class="testim-section">
-        <h4 style="color:var(--neon-purple); font-size: 0.8rem; margin-bottom:10px;">AKILLI REFERANSLAR</h4>
-        <div class="testim-card">
-            <p>"Yapay zeka ile sağlık randevularımız artık %100 hatasız."</p>
-            <b>— Dr. Emre, İstanbul Sağlık Grubu</b>
-        </div>
-        <div class="testim-card">
-            <p>"Gastronomi ağımızdaki hızı Lucas Guzmán'ın teknolojisine borçluyuz."</p>
-            <b>— Mutfak Kültürü Derneği</b>
+    <div class="card" style="border-color: var(--neon-purple);">
+        <h3 style="color: var(--neon-purple);">💬 Müşteri Görüşleri</h3>
+        <div class="testimonial">
+            <p>"24/7 Akıllı Ses asistanı iş akışımızı tamamen değiştirdi."</p>
+            <span style="font-size: 0.7rem; color: var(--main-cyan); font-weight: bold;">— Dr. Selim, Sağlık Sektörü </span>
         </div>
     </div>
 
     <div class="wa-grid">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-btn">🏥 Sağlık</a>
-        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-btn">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-btn">🏭 Sanayi</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-btn">🏗️ İnşaat</a>
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-item">🏥 Sağlık</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-item">🍲 Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-item">🏭 Sanayi</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-item">🏗️ İnşaat</a>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" style="width:100%; max-width:480px; background:#0077B5; padding:15px; border-radius:10px; color:white; text-decoration:none; text-align:center; font-weight:900; display:block; margin-bottom:30px;">LINKEDIN PROFESYONEL AĞ</a>
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" style="width:100%; max-width:480px; background:#0077B5; padding:15px; border-radius:12px; color:white; text-decoration:none; text-align:center; font-weight:900; display:block; margin-bottom:30px;">LINKEDIN PROFESYONEL AĞ</a>
 
     <footer>
         © 2026 Neural Focus AI | Lucas Guzmán <br>
@@ -197,25 +190,24 @@
         TÜRKİYE - AB TEKNOLOJİ KÖPRÜSÜ
     </footer>
 
-    <div class="ai-pulse-btn" onclick="myLandbot.open()">
-        <svg viewBox="0 0 24 24" width="30" height="30" fill="white"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
+    <div class="ai-btn" onclick="myLandbot.open()">
+        <svg viewBox="0 0 24 24" width="35" height="35" fill="white"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
     </div>
 
     <script>
-        // Cuenta Regresiva: Configurada para 7 días desde hoy
-        const targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 7);
-
-        function updateTimer() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
+        const target = new Date();
+        target.setDate(target.getDate() + 6);
+        function update() {
+            const now = new Date();
+            const diff = target - now;
             const d = Math.floor(diff / (1000 * 60 * 60 * 24));
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('timer').innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+            document.getElementById('countdown').innerHTML = `${d}d ${h}h ${m}m ${s}s`;
         }
-        setInterval(updateTimer, 1000);
+        setInterval(update, 1000);
+        update();
     </script>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
@@ -225,4 +217,5 @@
       });
     </script>
 </body>
-</html>
+    </html>
+    
