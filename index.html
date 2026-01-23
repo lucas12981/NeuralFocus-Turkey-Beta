@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | V9.1 Final</title>
+    <title>Neural Focus AI | V10.0 Arjantin-Türkiye</title>
     <style>
         :root { --cyan: #00FFFF; --purple: #bc13fe; --gold: #FFD700; --dark-card: rgba(0, 31, 31, 0.85); }
         body { 
@@ -12,6 +12,7 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
+        /* CABECERA ARGENTINA - TURQUÍA */
         .header-bridge { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 20px; }
         .flag { width: 32px; height: auto; border-radius: 4px; }
         .bridge-text { font-size: 0.75rem; font-weight: 900; letter-spacing: 1px; }
@@ -25,6 +26,7 @@
         }
         iframe { width: 100%; height: 100%; border: none; }
 
+        /* BOTONES PRINCIPALES */
         .btn-main {
             width: 90%; max-width: 340px; padding: 15px; border: none; border-radius: 12px;
             color: #fff; font-weight: 900; font-size: 0.9rem; margin-bottom: 12px;
@@ -35,37 +37,41 @@
         .bg-red { background: rgba(255, 0, 0, 0.2); border: 2px solid #ff0000; color: #ff0000; }
         .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); }
 
+        /* TESTIMONIOS */
         .t-card {
-            background: var(--dark-card); padding: 15px; border-radius: 12px; width: 90%; max-width: 330px;
-            margin-bottom: 10px; border-left: 5px solid var(--purple); font-size: 0.8rem;
+            background: var(--dark-card); padding: 12px; border-radius: 10px; width: 90%; max-width: 330px;
+            margin-bottom: 8px; border-left: 5px solid var(--purple); font-size: 0.75rem;
         }
-        .t-author { color: var(--cyan); font-weight: bold; display: block; margin-top: 8px; font-size: 0.7rem; text-align: right; }
+        .t-author { color: var(--cyan); font-weight: bold; display: block; margin-top: 5px; font-size: 0.65rem; text-align: right; }
 
-        /* ANIMACIÓN TITILAR PARA EL CEREBRO */
-        @keyframes titilar {
-            0% { transform: scale(1.8); filter: drop-shadow(0 0 10px var(--cyan)); }
-            50% { transform: scale(2.0); filter: drop-shadow(0 0 25px var(--cyan)); }
-            100% { transform: scale(1.8); filter: drop-shadow(0 0 10px var(--cyan)); }
+        /* GRID WHATSAPP (RESTAURADO) */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; max-width: 340px; margin: 15px 0; }
+        .grid-btn { background: #128C7E; color: #fff; text-decoration: none; padding: 14px; border-radius: 10px; text-align: center; font-size: 0.8rem; font-weight: bold; }
+
+        /* ANIMACIÓN TITILAR */
+        @keyframes pulse-cyan {
+            0% { transform: scale(1.8); box-shadow: 0 0 10px var(--cyan); }
+            50% { transform: scale(2.1); box-shadow: 0 0 30px var(--cyan); }
+            100% { transform: scale(1.8); box-shadow: 0 0 10px var(--cyan); }
         }
 
-        /* ESTILO DEL LANZADOR LANDBOT (CEREBRO TITILANTE) */
+        /* BOTÓN FLOTANTE DEL BOT (GIGANTE CON CEREBRO) */
         .landbot-launcher {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C7.03 2 3 6.03 3 11c0 3.31 2.69 6 6 6h1v3h4v-3h1c3.31 0 6-2.69 6-6 0-4.97-4.03-9-9-9zm-1 4h2v2h-2V6zm-4 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>') !important;
             background-color: var(--cyan) !important;
             background-size: 60% !important;
             background-repeat: no-repeat !important;
             background-position: center !important;
-            width: 70px !important;
-            height: 70px !important;
+            width: 75px !important;
+            height: 75px !important;
             border-radius: 50% !important;
-            animation: titilar 2s infinite ease-in-out !important;
+            animation: pulse-cyan 2s infinite ease-in-out !important;
+            border: 3px solid #fff !important;
             bottom: 40px !important;
             right: 30px !important;
-            border: 3px solid #fff !important;
-            cursor: pointer !important;
         }
 
-        footer { font-size: 0.65rem; color: #777; text-align: center; padding: 30px 0 120px; }
+        footer { font-size: 0.65rem; color: #777; text-align: center; padding: 30px 0 130px; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -90,10 +96,16 @@
         "Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."
         <span class="t-author">— Ahmet Yılmaz, Sağlık Grubu</span>
     </div>
-
     <div class="t-card">
-        "İnşaat projelerimizde 24/7 canlı yaşam ajanı ile tüm soruları çözüyoruz."
+        "İnşaat projelerimizde 24/7 canlı yaşam ajanı ile tüm operasyonel soruları anında çözüyoruz."
         <span class="t-author">— Caner Öztürk, İnşaat Müdürü</span>
+    </div>
+
+    <div class="grid">
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="grid-btn">🏥 Sağlık</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="grid-btn">🍲 Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="grid-btn">🏭 Sanayi</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="grid-btn">🏗️ İnşaat</a>
     </div>
 
     <footer>
