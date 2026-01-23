@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Altyapı</title>
+    <title>Neural Focus AI | Gelecek Seviye</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #000000 0%, #001f1f 45%, #004d4d 100%);
+            --bg: #000000;
             --main-cyan: #00FFFF;
             --neon-purple: #bc13fe;
-            --emergency-red: #ff4b2b;
-            --glass: rgba(255, 255, 255, 0.05);
+            --electric-blue: #0072ff;
+            --glass: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            background: var(--bg-gradient);
-            background-attachment: fixed;
+            background: radial-gradient(circle at top, #001f1f 0%, #000000 100%);
             color: #fff;
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
@@ -27,162 +26,197 @@
             overflow-x: hidden;
         }
 
-        /* Logo Profesional con Anillo Animado */
-        .logo-container {
-            width: 150px;
-            height: 150px;
+        /* HEADER ANIMADO */
+        .logo-orb {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            border: 2px solid var(--main-cyan);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 20px;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            margin-top: 10px;
+            box-shadow: 0 0 35px var(--main-cyan);
             position: relative;
+            border: 2px solid var(--main-cyan);
+            background: rgba(0,0,0,0.9);
         }
 
-        .logo-container::before {
+        .logo-orb::after {
             content: '';
             position: absolute;
-            width: 115%;
-            height: 115%;
-            border: 1px dashed var(--main-cyan);
+            width: 125px;
+            height: 125px;
+            border: 1px dashed var(--neon-purple);
             border-radius: 50%;
-            opacity: 0.2;
-            animation: rotate 20s linear infinite;
+            animation: spin 8s linear infinite;
         }
 
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .logo-text { color: var(--main-cyan); font-weight: 900; font-size: 0.8rem; letter-spacing: 3px; text-align: center; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .logo-inner { font-weight: 900; font-size: 0.65rem; color: var(--main-cyan); text-align: center; letter-spacing: 1px; }
 
-        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 20px 0 5px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0,255,255,0.6); }
-        .tagline { background: rgba(0, 255, 255, 0.1); color: var(--main-cyan); padding: 8px 25px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; margin-bottom: 30px; border: 1px solid rgba(0, 255, 255, 0.2); }
+        h1 { font-size: 1.7rem; margin: 20px 0 5px; letter-spacing: 3px; background: linear-gradient(to right, #00FFFF, #bc13fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; text-align: center; }
 
-        /* REPRODUCTOR DE VIDEO CORREGIDO */
-        .video-box {
+        /* CUENTA REGRESIVA IMPACTANTE */
+        .countdown-container {
             width: 100%;
-            max-width: 500px;
-            background: #000;
+            max-width: 480px;
+            background: rgba(188, 19, 254, 0.15);
+            border: 1px solid var(--neon-purple);
             border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid var(--main-cyan);
+            padding: 15px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            line-height: 0;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
         }
 
-        video { width: 100%; height: auto; display: block; }
+        .countdown-title { font-size: 0.75rem; font-weight: bold; color: var(--neon-purple); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        #timer { font-family: monospace; font-size: 1.8rem; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon-purple); }
 
-        /* Tarjetas de Gestión */
-        .card {
+        /* VIDEO SECTION (75247.mp4) */
+        .video-wrapper {
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--main-cyan), var(--neon-purple));
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            margin-bottom: 25px;
+        }
+
+        video { width: 100%; border-radius: 18px; display: block; }
+
+        /* TARJETAS DE IMPACTO */
+        .feature-box {
+            width: 100%;
+            max-width: 480px;
             background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             padding: 20px;
             margin-bottom: 15px;
             box-sizing: border-box;
         }
 
-        .card h3 { color: var(--main-cyan); margin: 0 0 10px 0; font-size: 1rem; text-transform: uppercase; }
-        .card p { color: #ccc; font-size: 0.85rem; margin: 0; line-height: 1.5; }
+        .feature-box h3 { color: var(--main-cyan); margin: 0 0 10px; font-size: 1.1rem; }
+        .feature-box p { font-size: 0.85rem; color: #ccc; line-height: 1.4; }
 
-        .emergency-btn {
+        .btn-action {
             width: 100%;
-            max-width: 500px;
-            background: rgba(255, 75, 43, 0.1);
-            border: 2px solid var(--emergency-red);
-            color: var(--emergency-red);
-            padding: 18px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 30px;
-            display: block;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 900;
+            cursor: pointer;
+            margin-top: 12px;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        /* WhatsApp & LinkedIn */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; margin-bottom: 25px; }
-        .wa-link { background: linear-gradient(145deg, #075E54, #128C7E); padding: 18px; border-radius: 12px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.85rem; }
-        .linkedin { width: 100%; max-width: 500px; background: linear-gradient(145deg, #0077B5, #004182); padding: 18px; border-radius: 15px; color: white; text-decoration: none; font-weight: bold; text-align: center; display: block; margin-bottom: 40px; }
+        .cyan-btn { background: var(--main-cyan); color: #000; box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3); }
+        .purple-btn { background: var(--neon-purple); color: #fff; box-shadow: 0 4px 15px rgba(188, 19, 254, 0.3); }
 
-        /* BOTÓN FLOTANTE LATIENTE */
-        .bot-bubble {
+        /* TESTIMONIOS */
+        .testim-section { width: 100%; max-width: 480px; margin: 20px 0; }
+        .testim-card { background: rgba(0,0,0,0.4); border-left: 3px solid var(--main-cyan); padding: 12px; margin-bottom: 10px; border-radius: 0 10px 10px 0; }
+        .testim-card p { font-style: italic; font-size: 0.75rem; margin: 0; }
+        .testim-card b { display: block; margin-top: 5px; color: var(--main-cyan); font-size: 0.7rem; }
+
+        /* WHATSAPP GRID */
+        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 480px; margin-bottom: 20px; }
+        .wa-btn { background: #128C7E; padding: 15px; border-radius: 10px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 0.7rem; }
+
+        /* FLOAT BUTTON */
+        .ai-pulse-btn {
             position: fixed;
-            bottom: 30px;
-            right: 25px;
-            width: 75px;
-            height: 75px;
+            bottom: 25px;
+            right: 20px;
+            width: 65px;
+            height: 65px;
             background: linear-gradient(135deg, var(--main-cyan), var(--neon-purple));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            cursor: pointer;
-            box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
-            animation: heartbeat 2s infinite;
+            z-index: 1000;
+            box-shadow: 0 0 20px var(--main-cyan);
+            animation: pulse-ring 2s infinite;
         }
 
-        .bot-bubble svg { width: 40px; height: 40px; fill: white; }
+        @keyframes pulse-ring { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
-            70% { transform: scale(1.1); box-shadow: 0 0 30px 20px rgba(188, 19, 254, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(188, 19, 254, 0); }
-        }
-
-        footer { margin-top: 40px; color: #555; font-size: 0.75rem; text-align: center; padding-bottom: 60px; border-top: 1px solid #222; width: 100%; max-width: 500px; padding-top: 20px; }
+        footer { font-size: 0.6rem; color: #666; text-align: center; padding: 20px 0 80px; width: 100%; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
 
-    <div class="logo-container">
-        <div class="logo-text">NEURAL<br>FOCUS AI</div>
+    <div class="logo-orb"><div class="logo-inner">NEURAL<br>FOCUS AI</div></div>
+    <h1>NEURAL FOCUS AI</h1>
+
+    <div class="countdown-container">
+        <div class="countdown-title">V4.0 GLOBAL LANSMANINA KALAN SÜRE</div>
+        <div id="timer">00:00:00:00</div>
     </div>
 
-    <h1>NEURAL FOCUS AI</h1>
-    <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
-
-    <div class="video-box">
-        <video controls poster="https://via.placeholder.com/500x280/000000/00FFFF?text=Neural+Focus+AI+Video">
-            <source src="https://uploadnow.io/files/FSKHKYw" type="video/mp4">
-            Tarayıcınız video etiketini desteklemiyor.
+    <div class="video-wrapper">
+        <video controls playsinline poster="https://via.placeholder.com/500x280/000000/00FFFF?text=Neural+Focus+AI">
+            <source src="75247.mp4" type="video/mp4">
         </video>
     </div>
 
-    <div class="card">
-        <h3>📅 Planlama ve Takvim</h3>
-        <p>Sağlık ve gastronomi sektörleri için stratejik toplantı yönetimi ve uygulama programı.</p>
+    <div class="feature-box">
+        <h3>🌌 AR Projeksiyon</h3>
+        <p>Geleceği odanıza getirin. Gastronomi ve mimari projeleriniz için 3B AR demosu.</p>
+        <button class="btn-action cyan-btn" onclick="alert('Kamera Erişimi Hazırlanıyor...')">Demoyu Başlat</button>
     </div>
 
-    <div class="card">
-        <h3>🔔 Aktif Hatırlatıcılar</h3>
-        <p>İşbirliği anlaşmaları ve 24/7 Akıllı Ses güncellemeleri için takip bildirimleri.</p>
+    <div class="testim-section">
+        <h4 style="color:var(--neon-purple); font-size: 0.8rem; margin-bottom:10px;">AKILLI REFERANSLAR</h4>
+        <div class="testim-card">
+            <p>"Yapay zeka ile sağlık randevularımız artık %100 hatasız."</p>
+            <b>— Dr. Emre, İstanbul Sağlık Grubu</b>
+        </div>
+        <div class="testim-card">
+            <p>"Gastronomi ağımızdaki hızı Lucas Guzmán'ın teknolojisine borçluyuz."</p>
+            <b>— Mutfak Kültürü Derneği</b>
+        </div>
     </div>
 
-    <a href="tel:112" class="emergency-btn">🚨 ACİL YARDIM ÇAĞIR (112)</a>
-
-    <div style="color:var(--main-cyan); width:100%; max-width:500px; margin-bottom:15px; font-weight:bold; text-transform:uppercase; font-size:0.9rem;">İŞ EKOSİSTEMİ (WHATSAPP)</div>
-    <div class="grid">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-link">🏥 Sağlık Ağı</a>
-        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-link">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-link">🏭 Sanayi Ağı</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-link">🏗️ İnşaat Ağı</a>
+    <div class="wa-grid">
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-btn">🏥 Sağlık</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-btn">🍲 Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-btn">🏭 Sanayi</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-btn">🏗️ İnşaat</a>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" class="linkedin">LINKEDIN PROFESYONEL AĞIM</a>
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" style="width:100%; max-width:480px; background:#0077B5; padding:15px; border-radius:10px; color:white; text-decoration:none; text-align:center; font-weight:900; display:block; margin-bottom:30px;">LINKEDIN PROFESYONEL AĞ</a>
 
     <footer>
-        © 2026 Neural Focus AI | Lucas Guzmán<br>
-        Küresel Teknoloji Altyapısı (AB & Türkiye)
+        © 2026 Neural Focus AI | Lucas Guzmán <br>
+        24/7 Akıllı Ses & Canlı Yaşam Ajanı <br>
+        TÜRKİYE - AB TEKNOLOJİ KÖPRÜSÜ
     </footer>
 
-    <div class="bot-bubble" onclick="myLandbot.open()">
-        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
+    <div class="ai-pulse-btn" onclick="myLandbot.open()">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
     </div>
+
+    <script>
+        // Cuenta Regresiva: Configurada para 7 días desde hoy
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 7);
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('timer').innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+        }
+        setInterval(updateTimer, 1000);
+    </script>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
