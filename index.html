@@ -3,95 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | V6.1</title>
+    <title>Neural Focus AI | Global Bridge</title>
     <style>
-        :root { --cyan: #00FFFF; --purple: #bc13fe; --dark-card: rgba(0, 31, 31, 0.6); }
+        :root { --cyan: #00FFFF; --purple: #bc13fe; --dark-card: rgba(0, 31, 31, 0.75); }
         body { 
             background: radial-gradient(circle at top, #001f1f 0%, #000 100%); color: #fff; 
             font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px;
             display: flex; flex-direction: column; align-items: center;
         }
 
-        .logo-ring {
-            width: 80px; height: 80px; border: 2px solid var(--cyan);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            margin: 10px 0; box-shadow: 0 0 15px var(--cyan);
-        }
+        /* CABECERA ESTRATÉGICA */
+        .header-bridge { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; }
+        .flag { width: 22px; height: auto; border-radius: 2px; box-shadow: 0 0 5px rgba(255,255,255,0.2); }
 
-        h1 { font-size: 1.2rem; color: var(--cyan); letter-spacing: 2px; margin: 5px 0; text-transform: uppercase; }
+        h1 { font-size: 1.1rem; color: var(--cyan); letter-spacing: 2px; margin: 5px 0; text-transform: uppercase; text-shadow: 0 0 10px var(--cyan); }
 
+        /* VIDEO */
         .video-container {
-            width: 90%; max-width: 320px; aspect-ratio: 16 / 9;
-            border: 2px solid var(--cyan); border-radius: 15px;
-            overflow: hidden; margin: 10px 0; box-shadow: 0 0 20px rgba(0,255,255,0.3);
+            width: 90%; max-width: 310px; aspect-ratio: 16 / 9;
+            border: 2px solid var(--cyan); border-radius: 12px;
+            overflow: hidden; margin-bottom: 12px;
         }
         iframe { width: 100%; height: 100%; border: none; }
 
-        .btn-translate {
-            width: 90%; max-width: 320px; padding: 14px;
-            background: linear-gradient(90deg, var(--purple), #6a00ff);
-            border: none; border-radius: 10px; color: #fff;
-            font-weight: 900; font-size: 0.85rem; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(188, 19, 254, 0.4); margin-bottom: 12px;
+        /* BOTONES DE ACCIÓN */
+        .btn-action {
+            width: 90%; max-width: 320px; padding: 12px; border: none; border-radius: 10px;
+            color: #fff; font-weight: 900; font-size: 0.8rem; cursor: pointer; margin-bottom: 10px;
+            text-transform: uppercase; display: block; text-align: center; text-decoration: none;
         }
+        .bg-purple { background: linear-gradient(90deg, var(--purple), #6a00ff); box-shadow: 0 4px 12px rgba(188, 19, 254, 0.4); }
+        .bg-red { background: rgba(255, 0, 0, 0.15); border: 1px solid #ff0000; color: #ff0000; }
 
-        /* BOTÓN DE EMERGENCIA DESTACADO */
-        .btn-emergency {
-            width: 90%; max-width: 320px; padding: 12px;
-            background: rgba(255, 0, 0, 0.2); border: 2px solid #ff0000;
-            border-radius: 10px; color: #ff0000; font-weight: 900;
-            text-decoration: none; text-align: center; margin-bottom: 15px; 
-            font-size: 0.9rem; text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        /* TESTIMONIOS COMPACTOS */
+        .testimonials-box { width: 90%; max-width: 320px; margin-top: 10px; }
+        .t-card {
+            background: var(--dark-card); padding: 10px; border-radius: 8px;
+            margin-bottom: 6px; border-left: 3px solid var(--purple); font-size: 0.7rem; line-height: 1.3;
         }
+        .t-author { color: var(--cyan); font-weight: bold; display: block; margin-top: 4px; font-size: 0.6rem; text-align: right; }
 
-        .card {
-            width: 85%; max-width: 320px; background: var(--dark-card);
-            border-radius: 12px; padding: 12px; margin-bottom: 12px;
-            border-left: 4px solid var(--cyan); font-size: 0.75rem;
-        }
+        /* GRID WHATSAPP */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 90%; max-width: 320px; margin: 15px 0; }
+        .grid-btn { background: #128C7E; color: #fff; text-decoration: none; padding: 10px; border-radius: 6px; text-align: center; font-size: 0.7rem; font-weight: bold; }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 90%; max-width: 320px; margin-bottom: 15px; }
-        .grid-btn { 
-            background: #128C7E; color: #fff; text-decoration: none;
-            padding: 12px; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: bold;
-        }
+        .btn-linkedin { width: 90%; max-width: 320px; background: #0077B5; color: #fff; text-decoration: none; padding: 14px; border-radius: 10px; text-align: center; font-weight: 900; font-size: 0.85rem; }
 
-        .btn-linkedin {
-            width: 90%; max-width: 320px; background: #0077B5;
-            color: #fff; text-decoration: none; padding: 14px;
-            border-radius: 10px; text-align: center; font-weight: 900; font-size: 0.85rem;
-        }
+        /* BOTÓN DEL BOT */
+        .landbot-launcher { transform: scale(1.35) !important; filter: drop-shadow(0 0 10px var(--cyan)) !important; }
 
-        /* AJUSTE PARA EL BOTÓN DEL BOT (MÁS GRANDE Y VISIBLE) */
-        #landbot-1737672159811, .landbot-launcher {
-            transform: scale(1.3) !important; /* Agranda el botón un 30% */
-            margin-bottom: 20px !important;
-            margin-right: 10px !important;
-            filter: drop-shadow(0 0 10px var(--cyan)) !important;
-        }
-
-        footer { font-size: 0.55rem; color: #666; text-align: center; padding: 20px 0 100px; line-height: 1.4; }
+        footer { font-size: 0.55rem; color: #555; text-align: center; padding: 20px 0 90px; }
     </style>
 </head>
 <body>
 
-    <div class="logo-ring"><div style="font-size:0.5rem; text-align:center; font-weight:900;">NEURAL<br>FOCUS AI</div></div>
+    <div class="header-bridge">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" class="flag">
+        <span style="font-size: 0.65rem; letter-spacing: 1px;">GLOBAL TEKNOLOJİ ORTAKLIĞI</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" class="flag">
+    </div>
+
     <h1>NEURAL FOCUS AI</h1>
 
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc?rel=0&modestbranding=1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc" allowfullscreen></iframe>
     </div>
 
-    <button class="btn-translate" onclick="window.location.href='https://translate.google.com/?sl=tr&tl=es&op=translate'">
-        🌍 AKILLI ÇEVİRMEN (TR-ES)
-    </button>
+    <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-action bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+    <a href="tel:112" class="btn-action bg-red">🚨 ACİL YARDIM (112)</a>
 
-    <a href="tel:112" class="btn-emergency">🚨 ACİL YARDIM ÇAĞIR (112)</a>
-
-    <div class="card">
-        <span style="color:var(--cyan); font-weight:bold;">🏥 Sağlık & Gastronomi:</span><br>
-        24/7 Akıllı Ses ve Canlı Yaşam Ajanı çözümleri.
+    <div class="testimonials-box">
+        <div class="t-card">
+            "Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."
+            <span class="t-author">— Ahmet Yılmaz, Sağlık Grubu</span>
+        </div>
+        <div class="t-card">
+            "Gastronomi ağımızda Lucas Guzmán'ın teknolojisi bize hız kazandırdó."
+            <span class="t-author">— Elif Demir, Restoran Sahibi</span>
+        </div>
+        <div class="t-card">
+            "İnşaat projelerimizde 24/7 canlı yaşam ajanı ile tüm operasyonel soruları anında çözüyoruz."
+            <span class="t-author">— Caner Öztürk, İnşaat Müdürü</span>
+        </div>
     </div>
 
     <div class="grid">
@@ -105,8 +98,7 @@
 
     <footer>
         © 2026 Lucas Guzmán | Neural Focus AI <br>
-        Türkiye - AB İş Birliği Altyapısı <br>
-        24/7 Akıllı Ses & Yaşam Ajanı
+        24/7 Akıllı Ses & Yaşam Ajanı Çözümleri 
     </footer>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
