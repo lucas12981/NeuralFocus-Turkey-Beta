@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | Global Infrastructure</title>
+    <title>Neural Focus AI | Global Altyapı</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #000000 0%, #001a1a 50%, #003333 100%);
+            /* Colores degradados vivos y tecnológicos */
+            --bg-gradient: linear-gradient(135deg, #000000 0%, #001f1f 40%, #004d4d 100%);
             --main-cyan: #00FFFF;
             --neon-purple: #bc13fe;
             --emergency-red: #ff4b2b;
-            --glass-bg: rgba(255, 255, 255, 0.05);
+            --wa-green: #25D366;
         }
 
         body {
@@ -27,114 +28,124 @@
             overflow-x: hidden;
         }
 
-        /* Marcador de Posición de Logo Moderno */
-        .logo-placeholder {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 2px solid var(--main-cyan);
+        /* Marcador de Posición de Logo Profesional y Minimalista */
+        .logo-box {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-            background: rgba(0, 255, 255, 0.02);
         }
 
-        .logo-placeholder span {
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--main-cyan);
+            box-shadow: 0 0 15px var(--main-cyan);
+            animation: rotate 10s linear infinite;
+        }
+
+        .ring-1 { width: 100%; height: 100%; border-style: double; opacity: 0.6; }
+        .ring-2 { width: 80%; height: 80%; border-style: dashed; opacity: 0.4; }
+        
+        .logo-text-inner {
             color: var(--main-cyan);
             font-weight: 900;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
             text-align: center;
+            text-transform: uppercase;
+            z-index: 2;
         }
 
-        h1 { color: var(--main-cyan); font-size: 1.6rem; margin: 0; text-transform: uppercase; text-shadow: 0 0 10px rgba(0,255,255,0.5); }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        h1 { color: var(--main-cyan); font-size: 1.8rem; margin: 0; text-transform: uppercase; text-shadow: 0 0 15px rgba(0,255,255,0.6); }
         
         .tagline {
             background: rgba(0, 255, 255, 0.1);
             color: var(--main-cyan);
-            padding: 8px 25px;
+            padding: 10px 25px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: bold;
-            margin: 10px 0 30px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
+            margin: 15px 0 35px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
         }
 
-        /* Secciones de Texto Informativo */
-        .info-section {
+        /* Secciones Informativas en Turco */
+        .info-card {
             width: 100%;
             max-width: 500px;
-            text-align: left;
-            margin-bottom: 25px;
-        }
-
-        .info-title { color: var(--main-cyan); font-size: 1rem; text-transform: uppercase; border-left: 3px solid var(--main-cyan); padding-left: 12px; margin-bottom: 10px; }
-        .info-text { color: #bbb; font-size: 0.85rem; line-height: 1.4; }
-
-        /* Botones con Degradado y Efecto Flotante */
-        .btn-gradient {
-            width: 100%;
-            max-width: 500px;
-            background: linear-gradient(145deg, #111, #000);
-            border: 1px solid #333;
+            background: rgba(255,255,255,0.03);
             border-radius: 15px;
-            padding: 18px;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            text-decoration: none;
-            color: white;
-            display: block;
-            box-sizing: border-box;
-            text-align: center;
-            font-weight: bold;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--main-cyan);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .emergency { border: 2px solid var(--emergency-red); background: rgba(255,75,43,0.05); color: var(--emergency-red); }
+        .info-card h3 { color: var(--main-cyan); margin: 0 0 10px 0; font-size: 1rem; text-transform: uppercase; }
+        .info-card p { color: #ccc; font-size: 0.85rem; margin: 0; line-height: 1.5; }
 
+        /* Botón de Emergencia */
+        .emergency-btn {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 75, 43, 0.1);
+            border: 2px solid var(--emergency-red);
+            color: var(--emergency-red);
+            padding: 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+            display: block;
+            box-shadow: 0 0 15px rgba(255, 75, 43, 0.2);
+        }
+
+        /* WhatsApp Grid */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
             width: 100%;
             max-width: 500px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        .wa-btn {
+        .wa-item {
             background: linear-gradient(145deg, #075E54, #128C7E);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            font-size: 0.85rem;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-            font-weight: 600;
-        }
-
-        .linkedin-btn {
-            background: linear-gradient(145deg, #0077B5, #004182);
-            border: none;
-            color: white;
             padding: 18px;
             border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
+            color: white;
             text-decoration: none;
-            font-weight: bold;
             text-align: center;
-            display: block;
-            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
 
-        /* BURBUJA DE IA LATIENTE */
-        .ai-bubble {
+        /* LinkedIn */
+        .linkedin-link {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(145deg, #0077B5, #004182);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        /* BURBUJA DE IA LATIENTE (SIN FOTO) */
+        .ai-pulse-bubble {
             position: fixed;
             bottom: 30px;
             right: 25px;
@@ -145,64 +156,76 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
+            z-index: 9999;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
-            animation: pulse-aura 2s infinite;
+            box-shadow: 0 0 30px rgba(188, 19, 254, 0.6);
+            animation: pulse-ring 2s infinite;
         }
 
-        .ai-bubble svg { width: 40px; height: 40px; fill: #000; }
+        .ai-pulse-bubble svg { width: 40px; height: 40px; fill: white; }
 
-        @keyframes pulse-aura {
+        @keyframes pulse-ring {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
             70% { transform: scale(1.1); box-shadow: 0 0 30px 20px rgba(188, 19, 254, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(188, 19, 254, 0); }
         }
 
-        footer { margin-top: 40px; color: #555; font-size: 0.7rem; text-align: center; padding-bottom: 60px; border-top: 1px solid #222; width: 100%; max-width: 500px; padding-top: 20px; }
+        footer { 
+            margin-top: 50px; 
+            color: #555; 
+            font-size: 0.75rem; 
+            text-align: center; 
+            padding-bottom: 50px;
+            border-top: 1px solid #222;
+            width: 100%;
+            max-width: 500px;
+            padding-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="logo-placeholder">
-        <span>NEURAL<br>FOCUS AI</span>
+    <div class="logo-box">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="logo-text-inner">NEURAL<br>FOCUS AI</div>
     </div>
 
     <h1>NEURAL FOCUS AI</h1>
     <div class="tagline">TÜRK HALKI İÇİN GELECEK TEKNOLOJİSİ</div>
 
-    <div class="info-section">
-        <div class="info-title">📅 Planificación y Calendario</div>
-        <p class="info-text">Gestión estratégica de reuniones y cronograma de implementación para el sector salud y gastronomía.</p>
+    <div class="info-card">
+        <h3>📅 Planlama ve Takvim</h3>
+        <p>Sağlık ve gastronomi sektörleri için stratejik toplantı yönetimi ve uygulama programi.</p>
     </div>
 
-    <div class="info-section">
-        <div class="info-title">🔔 Recordatorios Activos</div>
-        <p class="info-text">Notificaciones de seguimiento para acuerdos de colaboración y actualizaciones de la Voz Inteligente 24/7.</p>
+    <div class="info-card">
+        <h3>🔔 Aktif Hatırlatıcılar</h3>
+        <p>İşbirliği anlaşmaları ve 24/7 Akıllı Ses güncellemeleri için takip bildirimleri.</p>
     </div>
 
-    <a href="tel:112" class="btn-gradient emergency">
+    <a href="tel:112" class="emergency-btn">
         🚨 ACİL YARDIM ÇAĞIR (112)
     </a>
 
-    <h2 style="color:var(--main-cyan); font-size: 1rem; width:100%; max-width:500px; text-align:left; margin-top:20px;">İŞ EKOSİSTEMİ (WHATSAPP)</h2>
+    <h2 style="color:var(--main-cyan); font-size: 1.1rem; width:100%; max-width:500px; text-align:left; margin-bottom:15px;">İŞ EKOSİSTEMİ (WHATSAPP)</h2>
     <div class="grid">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-btn">🏥 Sağlık Ağı</a>
-        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-btn">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-btn">🏭 Sanayi Ağı</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-btn">🏗️ İnşaat Ağı</a>
+        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-item">🏥 Sağlık Ağı</a>
+        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-item">🍲 Gastronomi</a>
+        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-item">🏭 Sanayi Ağı</a>
+        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-item">🏗️ İnşaat Ağı</a>
     </div>
 
-    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank" class="linkedin-btn">
+    <a href="https://www.linkedin.com/in/lucas-guzman-78a9073a2" target="_blank" class="linkedin-link">
         LINKEDIN PROFESYONEL AĞIM
     </a>
 
     <footer>
-        © 2026 Neural Focus AI | Lucas Guzmán@<br>
-        Infraestructura Tecnológica Global (UE & Turquía)
+        © 2026 Neural Focus AI | Lucas Guzmán <br>
+        Küresel Teknoloji Altyapısı (AB & Türkiye)
     </footer>
 
-    <div class="ai-bubble" onclick="myLandbot.open()">
+    <div class="ai-pulse-bubble" onclick="myLandbot.open()">
         <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15,11.5A1.5,1.5 0 0,1 13.5,13A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 13.5,10A1.5,1.5 0 0,1 15,11.5M10.5,13A1.5,1.5 0 0,1 9,11.5A1.5,1.5 0 0,1 10.5,10A1.5,1.5 0 0,1 12,11.5A1.5,1.5 0 0,1 10.5,13M12,18C9.73,18 7.76,16.6 6.89,14.5H17.11C16.24,16.6 14.27,18 12,18Z"/></svg>
     </div>
 
@@ -213,5 +236,4 @@
       });
     </script>
 </body>
-    </html>
-    
+</html>
