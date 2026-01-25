@@ -3,20 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | V10.0 Arjantin-Türkiye</title>
+    <title>Neural Focus AI | V10.0</title>
     <style>
         :root { --cyan: #00FFFF; --purple: #bc13fe; --gold: #FFD700; --dark-card: rgba(0, 31, 31, 0.85); --red-edu: #ff4b2b; --blue-edu: #0052D4; }
+        
         body { 
             background: radial-gradient(circle at top, #001f1f 0%, #000 100%); color: #fff; 
             font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px;
             display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden;
         }
 
+        /* PANTALLA DE CARGA (SPLASH SCREEN) */
+        #splash-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+            transition: opacity 1s ease-out, visibility 1s;
+        }
+        
+        .logo-container {
+            position: relative; width: 220px; height: 220px;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* Círculo titilante y nebulosa */
+        .logo-circle {
+            position: absolute; width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--cyan);
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5), inset 0 0 30px rgba(188, 19, 254, 0.5);
+            animation: pulse-logo 2s infinite ease-in-out;
+        }
+
+        .logo-text {
+            color: #fff; font-weight: 900; font-size: 1.4rem;
+            text-align: center; letter-spacing: 2px; text-transform: uppercase;
+            text-shadow: 0 0 10px var(--cyan); z-index: 10;
+        }
+
+        @keyframes pulse-logo {
+            0% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 20px var(--cyan); }
+            50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 60px var(--cyan), 0 0 30px var(--purple); }
+            100% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 20px var(--cyan); }
+        }
+
+        /* CONTENIDO PRINCIPAL (Oculto al inicio) */
+        #main-content { opacity: 0; transition: opacity 1.5s ease-in; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        /* ESTILOS DE LA APP */
         .header-bridge { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 20px; }
         .flag { width: 32px; height: auto; border-radius: 4px; }
         .bridge-text { font-size: 0.75rem; font-weight: 900; letter-spacing: 1px; }
 
-        h1 { font-size: 1.3rem; color: var(--cyan); letter-spacing: 3px; margin: 5px 0; text-transform: uppercase; text-shadow: 0 0 15px var(--cyan); }
+        h1 { font-size: 1.3rem; color: var(--cyan); letter-spacing: 3px; margin: 15px 0; text-transform: uppercase; text-shadow: 0 0 15px var(--cyan); }
 
         .video-container {
             width: 92%; max-width: 330px; aspect-ratio: 16 / 9;
@@ -38,8 +78,7 @@
 
         .edu-section {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 255, 255, 0.1);
-            border-radius: 15px; width: 90%; max-width: 340px; padding: 15px; margin: 15px 0;
-            text-align: center;
+            border-radius: 15px; width: 90%; max-width: 340px; padding: 15px; margin: 15px 0; text-align: center;
         }
         .edu-title { font-size: 0.85rem; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: 1px; }
         .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -64,65 +103,88 @@
 </head>
 <body>
 
-    <div class="header-bridge">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" class="flag">
-        <span class="bridge-text">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" class="flag">
-    </div>
-
-    <h1>NEURAL FOCUS AI</h1>
-
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc" allowfullscreen></iframe>
-    </div>
-
-    <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-main bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-    <a href="tel:112" class="btn-main bg-red-alert">🚨 ACİL YARDIM ÇAĞIR (112)</a>
-    <a href="https://www.turkiye.gov.tr/" class="btn-main bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
-
-    <div class="edu-section">
-        <div class="edu-title">ÜCRETSİZ DİL VE TEKNOLOJİ KURSLARI</div>
-        <div class="edu-grid">
-            <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri+turkce" target="_blank" class="btn-edu bg-spain">
-                <span>🇪🇸 İSPANYOLCA KURSU</span>
-            </a>
-            <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri+turkce" target="_blank" class="btn-edu bg-uk">
-                <span>🇬🇧 İNGİLİZCE KURSU</span>
-            </a>
+    <div id="splash-screen">
+        <div class="logo-container">
+            <div class="logo-circle"></div>
+            <div class="logo-text">NEURAL<br>FOCUS AI</div>
         </div>
-        <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi+turkce+2026" target="_blank" class="btn-main bg-ai-free">🤖 ÜCRETSİZ YAPAY ZEKA KURSU</a>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: var(--cyan); letter-spacing: 2px;">YÜKLENİYOR...</p>
     </div>
 
-    <div class="t-card">
-        "Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."
-        <span class="t-author">— Ahmet Yılmaz, Sağlık Grubu</span>
-    </div>
-    <div class="t-card">
-        "İnşaat projelerimizde 24/7 canlı yaşam ajanı ile tüm operasyonel soruları anında çözüyoruz."
-        <span class="t-author">— Caner Öztürk, İnşaat Müdürü</span>
-    </div>
-    <div class="t-card">
-        "Gastronomi sektöründe sipariş ve rezervasyon yönetimini yapay zeka ile dijitalleştirdik."
-        <span class="t-author">— Elif Demir, Restoran İşletmecisi</span>
-    </div>
+    <div id="main-content">
+        <div class="header-bridge">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" class="flag">
+            <span class="bridge-text">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" class="flag">
+        </div>
 
-    <div class="grid">
-        <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="grid-btn">🏥 Sağlık</a>
-        <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="grid-btn">🍲 Gastronomi</a>
-        <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="grid-btn">🏭 Sanayi</a>
-        <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="grid-btn">🏗️ İnşaat</a>
-    </div>
+        <h1>NEURAL FOCUS AI</h1>
 
-    <footer>
-        © 2026 Lucas Guzmán | Neural Focus AI <br>
-        24/7 Akıllı Ses & Yaşam Ajanı Çözümleri
-    </footer>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc" allowfullscreen></iframe>
+        </div>
+
+        <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-main bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+        <a href="tel:112" class="btn-main bg-red-alert">🚨 ACİL YARDIM ÇAĞIR (112)</a>
+        <a href="https://www.turkiye.gov.tr/" class="btn-main bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+
+        <div class="edu-section">
+            <div class="edu-title">ÜCRETSİZ DİL VE TEKNOLOJİ KURSLARI</div>
+            <div class="edu-grid">
+                <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri+turkce" target="_blank" class="btn-edu bg-spain">
+                    <span>🇪🇸 İSPANYOLCA KURSU</span>
+                </a>
+                <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri+turkce" target="_blank" class="btn-edu bg-uk">
+                    <span>🇬🇧 İNGİLİZCE KURSU</span>
+                </a>
+            </div>
+            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi+turkce+2026" target="_blank" class="btn-main bg-ai-free">🤖 ÜCRETSİZ YAPAY ZEKA KURSU</a>
+        </div>
+
+        <div class="t-card">
+            "Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."
+            <span class="t-author">— Ahmet Yılmaz, Sağlık Grubu</span>
+        </div>
+        <div class="t-card">
+            "İnşaat projelerimizde 24/7 canlı yaşam ajanı ile tüm operasyonel soruları anında çözüyoruz."
+            <span class="t-author">— Caner Öztürk, İnşaat Müdürü</span>
+        </div>
+        <div class="t-card">
+            "Gastronomi sektöründe rezervasyon yönetimini yapay zeka ile dijitalleştirdik."
+            <span class="t-author">— Elif Demir, Restoran İşletmecisi</span>
+        </div>
+
+        <div class="grid">
+            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="grid-btn">🏥 Sağlık</a>
+            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="grid-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="grid-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="grid-btn">🏗️ İnşaat</a>
+        </div>
+
+        <footer>
+            © 2026 Lucas Guzmán | Neural Focus AI <br>
+            24/7 Akıllı Ses & Yaşam Ajanı Çözümleri
+        </footer>
+    </div>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
+      // Lógica de la Pantalla de Carga
+      window.onload = function() {
+          setTimeout(function() {
+              const splash = document.getElementById('splash-screen');
+              const main = document.getElementById('main-content');
+              
+              splash.style.opacity = '0';
+              splash.style.visibility = 'hidden';
+              main.style.opacity = '1';
+          }, 3000); // 3 segundos de carga
+      };
+
       var myLandbot = new Landbot.Livechat({
         configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3290254-63C2C0W1J4D7S20O/index.json',
       });
     </script>
 </body>
-</html>
+                        </html>
+                
