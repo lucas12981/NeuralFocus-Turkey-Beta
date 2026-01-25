@@ -3,165 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neural Focus AI | V10.0</title>
+    <title>Neural Focus AI | Global Tech</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+
     <style>
-        :root { --cyan: #00FFFF; --purple: #bc13fe; --gold: #FFD700; --dark-card: rgba(0, 31, 31, 0.85); --red-edu: #ff4b2b; --blue-edu: #0052D4; }
+        :root { 
+            --cyan: #00FFFF; 
+            --purple: #bc13fe; 
+            --gold: #FFD700; 
+            --dark-card: rgba(255, 255, 255, 0.05);
+            --blue-edu: #0052D4;
+            --red-edu: #ff4b2b;
+        }
         
         body { 
-            background: radial-gradient(circle at top, #001f1f 0%, #000 100%); color: #fff; 
-            font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px;
+            background: radial-gradient(circle at top, #001f1f 0%, #000 100%); 
+            color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px;
             display: flex; flex-direction: column; align-items: center;
             overflow-x: hidden;
         }
 
-        /* PANTALLA DE CARGA (SPLASH SCREEN) */
+        /* 1. PANTALLA DE CARGA (SPLASH SCREEN) */
         #splash-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 1s ease-out, visibility 1s;
+            transition: opacity 0.8s ease-out;
         }
         
-        .logo-container {
-            position: relative; width: 220px; height: 220px;
+        .logo-anim {
+            width: 180px; height: 180px; border-radius: 50%;
+            border: 3px solid var(--cyan);
             display: flex; justify-content: center; align-items: center;
+            text-align: center; font-weight: 900; letter-spacing: 2px;
+            box-shadow: 0 0 30px var(--cyan);
+            animation: pulse 2s infinite ease-in-out;
+            background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%);
         }
 
-        /* Círculo titilante y nebulosa */
-        .logo-circle {
-            position: absolute; width: 100%; height: 100%;
-            border-radius: 50%;
-            border: 4px solid var(--cyan);
-            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5), inset 0 0 30px rgba(188, 19, 254, 0.5);
-            animation: pulse-logo 2s infinite ease-in-out;
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 20px var(--cyan); }
+            50% { transform: scale(1.05); box-shadow: 0 0 50px var(--cyan), 0 0 30px var(--purple); }
+            100% { transform: scale(0.95); box-shadow: 0 0 20px var(--cyan); }
         }
 
-        .logo-text {
-            color: #fff; font-weight: 900; font-size: 1.4rem;
-            text-align: center; letter-spacing: 2px; text-transform: uppercase;
-            text-shadow: 0 0 10px var(--cyan); z-index: 10;
+        /* 2. CONTENIDO PRINCIPAL (EFECTO CASCADA) */
+        #main-content { opacity: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .reveal { 
+            opacity: 0; transform: translateY(30px); 
+            transition: all 0.8s ease-out; 
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* 3. DISEÑO DE ALTO NIVEL (GLASSMORPHISM) */
+        .glass-card {
+            background: var(--dark-card); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;
+            width: 90%; max-width: 340px; padding: 20px; margin: 10px 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .glass-card:active { transform: scale(0.98); }
+
+        /* BOTONES PROFESIONALES */
+        .btn-premium {
+            width: 100%; padding: 16px; border-radius: 12px; border: none;
+            color: #fff; font-weight: 900; text-transform: uppercase;
+            margin: 8px 0; cursor: pointer; display: block; text-decoration: none;
+            text-align: center; font-size: 0.85rem;
+            transition: filter 0.3s;
+        }
+        .btn-premium:active { filter: brightness(1.3); }
+
+        .bg-gradient-purple { background: linear-gradient(90deg, var(--purple), #6a00ff); }
+        .bg-outline-red { border: 2px solid #ff4b2b; color: #ff4b2b; background: rgba(255,75,43,0.1); }
+        .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; }
+
+        .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+        .btn-edu { 
+            padding: 15px; border-radius: 10px; text-decoration: none; color: #fff; 
+            font-size: 0.7rem; font-weight: bold; text-align: center;
         }
 
-        @keyframes pulse-logo {
-            0% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 20px var(--cyan); }
-            50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 60px var(--cyan), 0 0 30px var(--purple); }
-            100% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 20px var(--cyan); }
+        /* WHATSAPP GRID */
+        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px 0; }
+        .wa-btn { background: #128C7E; color: #fff; padding: 12px; border-radius: 10px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+
+        /* SKELETON LOADERS */
+        .skeleton { background: #1a1a1a; position: relative; overflow: hidden; }
+        .skeleton::after {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            animation: loading 1.5s infinite;
         }
+        @keyframes loading { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-        /* CONTENIDO PRINCIPAL (Oculto al inicio) */
-        #main-content { opacity: 0; transition: opacity 1.5s ease-in; width: 100%; display: flex; flex-direction: column; align-items: center; }
-
-        /* ESTILOS DE LA APP */
-        .header-bridge { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 20px; }
-        .flag { width: 32px; height: auto; border-radius: 4px; }
-        .bridge-text { font-size: 0.75rem; font-weight: 900; letter-spacing: 1px; }
-
-        h1 { font-size: 1.3rem; color: var(--cyan); letter-spacing: 3px; margin: 15px 0; text-transform: uppercase; text-shadow: 0 0 15px var(--cyan); }
-
-        .video-container {
-            width: 92%; max-width: 330px; aspect-ratio: 16 / 9;
-            border: 2px solid var(--cyan); border-radius: 15px;
-            overflow: hidden; margin-bottom: 12px; box-shadow: 0 0 25px rgba(0,255,255,0.2);
-        }
-        iframe { width: 100%; height: 100%; border: none; }
-
-        .btn-main {
-            width: 90%; max-width: 340px; padding: 15px; border: none; border-radius: 12px;
-            color: #fff; font-weight: 900; font-size: 0.9rem; margin-bottom: 12px;
-            text-transform: uppercase; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; text-align: center;
-        }
-        .bg-purple { background: linear-gradient(90deg, var(--purple), #6a00ff); box-shadow: 0 5px 15px rgba(188, 19, 254, 0.4); }
-        .bg-red-alert { background: rgba(255, 0, 0, 0.2); border: 2px solid #ff0000; color: #ff0000; }
-        .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); }
-        .bg-ai-free { background: linear-gradient(90deg, #00d2ff, #3a7bd5); box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4); margin-top: 10px; }
-
-        .edu-section {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 255, 255, 0.1);
-            border-radius: 15px; width: 90%; max-width: 340px; padding: 15px; margin: 15px 0; text-align: center;
-        }
-        .edu-title { font-size: 0.85rem; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: 1px; }
-        .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn-edu {
-            padding: 12px 5px; border-radius: 8px; text-decoration: none; color: #fff;
-            font-size: 0.7rem; font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 5px;
-        }
-        .bg-spain { background: var(--blue-edu); }
-        .bg-uk { background: var(--red-edu); }
-
-        .t-card {
-            background: var(--dark-card); padding: 12px; border-radius: 10px; width: 90%; max-width: 330px;
-            margin-bottom: 8px; border-left: 5px solid var(--purple); font-size: 0.75rem;
-        }
-        .t-author { color: var(--cyan); font-weight: bold; display: block; margin-top: 5px; font-size: 0.65rem; text-align: right; }
-
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; max-width: 340px; margin: 15px 0; }
-        .grid-btn { background: #128C7E; color: #fff; text-decoration: none; padding: 14px; border-radius: 10px; text-align: center; font-size: 0.8rem; font-weight: bold; }
-
-        footer { font-size: 0.65rem; color: #777; text-align: center; padding: 30px 0 130px; line-height: 1.6; }
+        footer { font-size: 0.65rem; color: #555; text-align: center; padding: 40px 0 120px; }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <div class="logo-container">
-            <div class="logo-circle"></div>
-            <div class="logo-text">NEURAL<br>FOCUS AI</div>
-        </div>
-        <p style="margin-top: 20px; font-size: 0.8rem; color: var(--cyan); letter-spacing: 2px;">YÜKLENİYOR...</p>
+        <div class="logo-anim">NEURAL<br>FOCUS AI</div>
+        <p id="dynamic-greeting" style="margin-top: 25px; color: var(--cyan); letter-spacing: 3px; font-size: 0.7rem;">CARGANDO...</p>
     </div>
 
     <div id="main-content">
-        <div class="header-bridge">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" class="flag">
-            <span class="bridge-text">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" class="flag">
+        
+        <div class="reveal" style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 20px; margin: 10px 0; display: flex; align-items: center; gap: 10px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" width="25">
+            <span style="font-size: 0.6rem; font-weight: 900;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" width="25">
         </div>
 
-        <h1>NEURAL FOCUS AI</h1>
+        <h1 class="reveal" style="font-size: 1.4rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan);">NEURAL FOCUS AI</h1>
 
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/X-FWm-NHEBc" allowfullscreen></iframe>
+        <div class="reveal glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9;">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-main bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-        <a href="tel:112" class="btn-main bg-red-alert">🚨 ACİL YARDIM ÇAĞIR (112)</a>
-        <a href="https://www.turkiye.gov.tr/" class="btn-main bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+        <div class="reveal" style="width: 90%;">
+            <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-premium bg-gradient-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+            <a href="tel:112" class="btn-premium bg-outline-red">🚨 ACİL YARDIM ÇAĞIR (112)</a>
+            <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+        </div>
 
-        <div class="edu-section">
-            <div class="edu-title">ÜCRETSİZ DİL VE TEKNOLOJİ KURSLARI</div>
+        <div class="reveal glass-card">
+            <p style="font-size: 0.75rem; font-weight: 900; margin-bottom: 15px; text-align: center;">ÜCRETSİZ DİL VE TEKNOLOJİ KURSLARI</p>
             <div class="edu-grid">
-                <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri+turkce" target="_blank" class="btn-edu bg-spain">
-                    <span>🇪🇸 İSPANYOLCA KURSU</span>
-                </a>
-                <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri+turkce" target="_blank" class="btn-edu bg-uk">
-                    <span>🇬🇧 İNGİLİZCE KURSU</span>
-                </a>
+                <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri+turkce" target="_blank" class="btn-edu" style="background: var(--blue-edu);">🇪🇸 İSPANYOLCA</a>
+                <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri+turkce" target="_blank" class="btn-edu" style="background: var(--red-edu);">🇬🇧 İNGİLİZCE</a>
             </div>
-            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi+turkce+2026" target="_blank" class="btn-main bg-ai-free">🤖 ÜCRETSİZ YAPAY ZEKA KURSU</a>
+            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi+turkce+2026" target="_blank" class="btn-premium" style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); margin-top: 15px;">🤖 YAPAY ZEKA KURSU</a>
         </div>
 
-        <div class="t-card">
-            "Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."
-            <span class="t-author">— Ahmet Yılmaz, Sağlık Grubu</span>
+        <div class="reveal glass-card" style="border-left: 4px solid var(--purple);">
+            <p style="font-size: 0.7rem; font-style: italic;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
+            <p style="font-size: 0.6rem; text-align: right; color: var(--cyan);">- Ahmet Yılmaz, Sağlık Grubu</p>
         </div>
-        <div class="t-card">
-            "İnşaat projelerimizde 24/7 canlı yaşam ajanı ile tüm operasyonel soruları anında çözüyoruz."
-            <span class="t-author">— Caner Öztürk, İnşaat Müdürü</span>
-        </div>
-        <div class="t-card">
-            "Gastronomi sektöründe rezervasyon yönetimini yapay zeka ile dijitalleştirdik."
-            <span class="t-author">— Elif Demir, Restoran İşletmecisi</span>
+        <div class="reveal glass-card" style="border-left: 4px solid var(--cyan);">
+            <p style="font-size: 0.7rem; font-style: italic;">"İnşaat projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
+            <p style="font-size: 0.6rem; text-align: right; color: var(--cyan);">- Caner Öztürk, İnşaat Müdürü</p>
         </div>
 
-        <div class="grid">
-            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="grid-btn">🏥 Sağlık</a>
-            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="grid-btn">🍲 Gastronomi</a>
-            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="grid-btn">🏭 Sanayi</a>
-            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="grid-btn">🏗️ İnşaat</a>
+        <div class="wa-grid reveal">
+            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-btn">🏥 Sağlık</a>
+            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-btn">🏗️ İnşaat</a>
         </div>
 
-        <footer>
+        <footer class="reveal">
             © 2026 Lucas Guzmán | Neural Focus AI <br>
             24/7 Akıllı Ses & Yaşam Ajanı Çözümleri
         </footer>
@@ -169,22 +165,33 @@
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
-      // Lógica de la Pantalla de Carga
-      window.onload = function() {
-          setTimeout(function() {
-              const splash = document.getElementById('splash-screen');
-              const main = document.getElementById('main-content');
-              
-              splash.style.opacity = '0';
-              splash.style.visibility = 'hidden';
-              main.style.opacity = '1';
-          }, 3000); // 3 segundos de carga
-      };
+        // Lógica de Saludo en Turco según la hora
+        const hour = new Date().getHours();
+        const greetingElement = document.getElementById('dynamic-greeting');
+        if(hour < 12) greetingElement.innerText = "GÜNAYDIN...";
+        else if(hour < 18) greetingElement.innerText = "İYİ GÜNLER...";
+        else greetingElement.innerText = "İYİ AKŞAMLAR...";
 
-      var myLandbot = new Landbot.Livechat({
-        configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3290254-63C2C0W1J4D7S20O/index.json',
-      });
+        // Transición de Splash a Main
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('splash-screen').style.display = 'none';
+                    document.getElementById('main-content').style.opacity = '1';
+                    // Activar animaciones de cascada
+                    const reveals = document.querySelectorAll('.reveal');
+                    reveals.forEach((el, i) => {
+                        setTimeout(() => el.classList.add('active'), i * 150);
+                    });
+                }, 800);
+            }, 3000);
+        };
+
+        // Chatbot Landbot
+        var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3290254-63C2C0W1J4D7S20O/index.json',
+        });
     </script>
 </body>
-                        </html>
-                
+</html>
