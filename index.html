@@ -5,160 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Neural Focus AI | Global Tech</title>
     
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#000000">
-
     <style>
         :root { 
             --cyan: #00FFFF; 
             --purple: #bc13fe; 
             --dark-bg: #050505;
-            --glass: rgba(255, 255, 255, 0.03);
             --wa-green: #25D366;
+            --gold: #FFD700;
         }
         
         body { 
             background: radial-gradient(circle at top, #001f1f 0%, #000 100%); 
             color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 10px;
             display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden;
+            overflow-x: hidden; text-align: center;
         }
 
-        /* 1. SPLASH SCREEN PROFESIONAL */
+        /* SPLASH SCREEN */
         #splash-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 9999;
             transition: opacity 0.8s ease-out;
         }
-        
-        .logo-anim {
-            width: 160px; height: 160px; border-radius: 50%;
-            border: 2px solid var(--cyan);
-            display: flex; justify-content: center; align-items: center;
-            text-align: center; font-weight: 900; letter-spacing: 3px;
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
-            animation: pulse 2s infinite ease-in-out;
-        }
 
-        @keyframes pulse {
-            0% { transform: scale(0.98); box-shadow: 0 0 20px var(--cyan); }
-            50% { transform: scale(1.02); box-shadow: 0 0 50px var(--cyan), 0 0 30px var(--purple); }
-            100% { transform: scale(0.98); box-shadow: 0 0 20px var(--cyan); }
-        }
-
-        /* 2. LAYOUT */
+        /* CONTENEDOR PRINCIPAL */
         #main-content { opacity: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
 
-        .reveal { 
-            opacity: 0; transform: translateY(20px); 
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; width: 92%; max-width: 360px; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .glass-card {
-            background: var(--glass); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
-            width: 92%; max-width: 360px; padding: 20px; margin: 12px 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-        }
-
-        /* BOTONES DE ALTO IMPACTO */
+        /* ESTILO DE BOTONES CENTRADOS */
         .btn-premium {
-            width: 100%; padding: 18px; border-radius: 14px; border: none;
+            width: 100%; padding: 16px; border-radius: 12px; border: none;
             color: #fff; font-weight: 800; text-transform: uppercase;
-            margin: 10px 0; cursor: pointer; display: flex; align-items: center; 
-            justify-content: center; text-decoration: none; font-size: 0.8rem;
-            letter-spacing: 1px; transition: 0.3s;
+            margin: 10px auto; cursor: pointer; display: flex; align-items: center; 
+            justify-content: center; text-decoration: none; font-size: 0.85rem;
+            letter-spacing: 1px; box-sizing: border-box;
         }
 
-        .bg-purple { background: linear-gradient(135deg, #6a00ff, var(--purple)); }
+        .bg-purple { background: linear-gradient(90deg, #6a00ff, var(--purple)); }
         .bg-dark { background: #111; border: 1px solid #333; }
+        .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; }
         .bg-cyan { background: var(--cyan); color: #000; }
+        .btn-whatsapp { background: var(--wa-green); box-shadow: 0 0 15px rgba(37, 211, 102, 0.3); }
 
-        /* WHATSAPP VIRAL BUTTON */
-        .btn-whatsapp-share {
-            background: #25D366; color: #fff;
-            animation: glow 2s infinite;
-        }
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 10px rgba(37, 211, 102, 0.4); }
-            50% { box-shadow: 0 0 30px rgba(37, 211, 102, 0.8); }
+        /* TARJETAS */
+        .glass-card {
+            background: rgba(255,255,255,0.03); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+            padding: 20px; margin: 12px 0; width: 100%; box-sizing: border-box;
         }
 
-        /* GRID SECTORES */
-        .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 92%; margin-top: 15px; }
+        /* GRID DE SECTORES CENTRADO */
+        .sector-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin: 15px 0; 
+        }
         .sector-btn { 
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            color: #fff; padding: 15px; border-radius: 15px; text-align: center;
-            text-decoration: none; font-weight: 700; font-size: 0.75rem;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; 
+            font-weight: 700; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 5px;
         }
 
-        /* TESTIMONIOS CON AVATAR */
-        .testimonial { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #222; border: 1px solid var(--cyan); }
-
-        footer { font-size: 0.7rem; color: #444; text-align: center; padding: 50px 0 130px; line-height: 1.5; }
+        .testimonial { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; text-align: left; }
+        .avatar { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--cyan); flex-shrink: 0; }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <div class="logo-anim">NEURAL<br>FOCUS AI</div>
-        <p id="dynamic-greeting" style="margin-top: 25px; color: var(--cyan); letter-spacing: 5px; font-size: 0.6rem; font-weight: 900;">INICIALIZANDO...</p>
+        <div style="width: 150px; height: 150px; border: 2px solid var(--cyan); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 900; box-shadow: 0 0 20px var(--cyan);">NEURAL<br>FOCUS AI</div>
     </div>
 
     <div id="main-content">
         
-        <div class="reveal" style="background: rgba(0,255,255,0.1); padding: 8px 20px; border-radius: 30px; margin: 15px 0; border: 1px solid var(--cyan); display: flex; align-items: center; gap: 12px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" width="22">
-            <span style="font-size: 0.65rem; font-weight: 900; letter-spacing: 1px;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" width="22">
+        <div class="reveal" style="background: rgba(0,255,255,0.1); padding: 8px; border-radius: 30px; margin: 10px 0; border: 1px solid var(--cyan); display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" width="20">
+            <span style="font-size: 0.6rem; font-weight: 900;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" width="20">
         </div>
+
+        <h1 class="reveal" style="font-size: 1.6rem; color: var(--cyan); margin: 15px 0; text-shadow: 0 0 10px var(--cyan); letter-spacing: 2px;">NEURAL FOCUS AI</h1>
 
         <div class="reveal glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <div class="reveal" style="width: 92%;">
-            <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-            <a href="tel:112" class="btn-premium bg-dark" style="color: #ff4b2b; border-color: #ff4b2b;">🚨 ACİL YARDIM (112)</a>
+        <div class="reveal">
+            <a href="https://translate.google.com/?sl=tr&tl=es" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+            <a href="tel:112" class="btn-premium bg-dark" style="color: #ff4b2b; border-color: #ff4b2b;">🚨 ACİL YARDIM ÇAĞIR (112)</a>
+            <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
         </div>
 
         <div class="reveal glass-card">
-            <h3 style="font-size: 0.7rem; text-align: center; margin-top: 0; color: var(--cyan);">AKADEMİK MERKEZ</h3>
+            <h3 style="font-size: 0.75rem; color: var(--cyan); margin-bottom: 15px;">AKADEMİK MERKEZ</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri" class="sector-btn">🇪🇸 İspanyolca</a>
                 <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri" class="sector-btn">🇬🇧 İngilizce</a>
             </div>
-            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi+2026" class="btn-premium bg-cyan" style="margin-top: 10px; font-size: 0.7rem;">🤖 Yapay Zeka Kursu</a>
+            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi" class="btn-premium bg-cyan" style="margin-top: 15px; font-size: 0.7rem;">🤖 YAPAY ZEKA KURSU</a>
         </div>
 
-        <div class="reveal" style="width: 92%;">
-            <button onclick="shareApp()" class="btn-premium btn-whatsapp-share">
-                <span style="margin-right: 10px;">📲</span> UYGULAMAYI WHATSAPP İLE PAYLAŞ
+        <div class="reveal">
+            <button onclick="shareApp()" class="btn-premium btn-whatsapp">
+                📲 UYGULAMAYI WHATSAPP İLE PAYLAŞ
             </button>
         </div>
 
         <div class="reveal glass-card">
             <div class="testimonial">
-                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=11'); background-size: cover;"></div>
+                <img src="https://i.pravatar.cc/100?img=11" class="avatar">
                 <div>
                     <p style="font-size: 0.7rem; font-style: italic; margin: 0;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
-                    <p style="font-size: 0.55rem; color: var(--cyan); margin-top: 5px;">Ahmet Yılmaz, Sağlık Grubu</p>
+                    <p style="font-size: 0.55rem; color: var(--cyan); margin-top: 3px;">Ahmet Yılmaz, Sağlık Grubu</p>
                 </div>
             </div>
             <div class="testimonial">
-                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=12'); background-size: cover;"></div>
+                <img src="https://i.pravatar.cc/100?img=12" class="avatar">
                 <div>
                     <p style="font-size: 0.7rem; font-style: italic; margin: 0;">"Sanayi projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
-                    <p style="font-size: 0.55rem; color: var(--cyan); margin-top: 5px;">Caner Öztürk, Sanayi Müdürü</p>
+                    <p style="font-size: 0.55rem; color: var(--cyan); margin-top: 3px;">Caner Öztürk, Sanayi Müdürü</p>
                 </div>
             </div>
         </div>
 
-        <div class="sector-grid reveal">
+        <div class="reveal sector-grid">
             <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🏥 Sağlık</a>
             <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="sector-btn">🍲 Gastronomi</a>
             <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="sector-btn">🏭 Sanayi</a>
@@ -174,7 +145,6 @@
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
-        // FUNCIÓN DE COMPARTIR CORREGIDA (TURCO + INGLÉS)
         function shareApp() {
             const url = "https://lucas12981.github.io/NeuralFocus-Turkey-Beta/";
             const text = encodeURIComponent(
@@ -185,14 +155,6 @@
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
 
-        // SALUDO DINÁMICO
-        const hr = new Date().getHours();
-        const greet = document.getElementById('dynamic-greeting');
-        if(hr < 12) greet.innerText = "GÜNAYDIN...";
-        else if(hr < 18) greet.innerText = "İYİ GÜNLER...";
-        else greet.innerText = "İYİ AKŞAMLAR...";
-
-        // CONTROL DE CARGA
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
@@ -200,7 +162,7 @@
                     document.getElementById('splash-screen').style.display = 'none';
                     document.getElementById('main-content').style.opacity = '1';
                     document.querySelectorAll('.reveal').forEach((el, i) => {
-                        setTimeout(() => el.classList.add('active'), i * 120);
+                        setTimeout(() => el.classList.add('active'), i * 150);
                     });
                 }, 600);
             }, 2500);
@@ -211,4 +173,5 @@
         });
     </script>
 </body>
-</html>
+                </html>
+    
