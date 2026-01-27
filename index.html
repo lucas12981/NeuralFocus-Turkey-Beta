@@ -37,11 +37,13 @@
         }
 
         .splash-circle {
-            width: 140px; height: 140px; border: 3px solid var(--cyan); 
-            border-radius: 50%; display: flex; justify-content: center; 
+            width: 160px; height: 160px; border: 3px solid var(--cyan); 
+            border-radius: 50%; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; font-weight: 900; font-size: 0.9rem;
             box-shadow: 0 0 30px var(--cyan); animation: pulse 2s infinite;
         }
+
+        #greeting-text { font-size: 0.7rem; color: var(--cyan); margin-bottom: 5px; text-transform: uppercase; }
 
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 20px var(--cyan); }
@@ -49,13 +51,11 @@
             100% { transform: scale(1); box-shadow: 0 0 20px var(--cyan); }
         }
 
-        /* CONTENEDOR PRINCIPAL */
         #main-content { opacity: 0; width: 100%; display: flex; flex-direction: column; align-items: center; transition: opacity 1s; }
 
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; width: 92%; max-width: 380px; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* BOTONES PREMIUM CENTRADOS */
         .btn-premium {
             width: 100%; padding: 16px; border-radius: 14px; border: none;
             color: #fff; font-weight: 800; text-transform: uppercase;
@@ -71,7 +71,6 @@
         .bg-cyan { background: var(--cyan); color: #000; }
         .bg-whatsapp { background: var(--wa-green); box-shadow: 0 0 20px rgba(37, 211, 102, 0.3); }
 
-        /* TARJETAS */
         .glass-card {
             background: rgba(255,255,255,0.04); backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
@@ -92,7 +91,10 @@
 <body>
 
     <div id="splash-screen">
-        <div class="splash-circle">NEURAL<br>FOCUS AI</div>
+        <div class="splash-circle">
+            <span id="greeting-text">YÜKLENİYOR...</span>
+            NEURAL<br>FOCUS AI
+        </div>
     </div>
 
     <div id="main-content">
@@ -109,7 +111,7 @@
         </div>
 
         <div class="reveal">
-            <a href="https://maps.app.goo.gl/T6nN2vYm5xR2" target="_blank" class="btn-premium bg-maps">
+            <a href="https://maps.google.com" target="_blank" class="btn-premium bg-maps">
                 📍 KONUM / GLOBAL OFFICE (MAPS)
             </a>
         </div>
@@ -130,7 +132,7 @@
         </div>
 
         <div class="reveal">
-            <button onclick="shareApp()" class="btn-premium bg-whatsapp">📲 UYGULAMAYI PAYLAŞ</button>
+            <button onclick="shareApp()" class="btn-premium bg-whatsapp">📲 UYGULAMAYI WHATSAPP İLE PAYLAŞ</button>
         </div>
 
         <div class="reveal glass-card">
@@ -144,7 +146,7 @@
             <div class="testimonial">
                 <img src="https://i.pravatar.cc/100?img=12" class="avatar">
                 <div>
-                    <p style="font-size: 0.75rem; font-style: italic; margin: 0;">"Sanayi projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandrdık."</p>
+                    <p style="font-size: 0.75rem; font-style: italic; margin: 0;">"Sanayi projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
                     <p style="font-size: 0.6rem; color: var(--cyan);">Caner Öztürk, Sanayi Müdürü</p>
                 </div>
             </div>
@@ -153,20 +155,28 @@
         <div class="reveal sector-grid">
             <a href="#" class="sector-btn">🏥 Sağlık</a>
             <a href="#" class="sector-btn">🍲 Gastronomi</a>
-            <a href="#" class="sector-btn) ">🏭 Sanayi</a>
+            <a href="#" class="sector-btn">🏭 Sanayi</a>
             <a href="#" class="sector-btn">🏗️ İnşaat</a>
         </div>
 
         <footer class="reveal" style="font-size: 0.6rem; color: #555; padding: 20px 0;">
             © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
             Istanbul - Buenos Aires Excellence<br>
-            Smart Voice & Life Agent Solutions
+            Smart Voice & Life Agent Solutions [cite: 2026-01-12]
         </footer>
     </div>
 
-    <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
+        // LÓGICA DE SALUDOS SEGÚN HORA
+        const hours = new Date().getHours();
+        let greeting = "MERHABA"; // Default
+        if (hours >= 5 && hours < 12) greeting = "GÜNAYDIN";
+        else if (hours >= 12 && hours < 18) greeting = "İYİ GÜNLER";
+        else greeting = "İYİ AKŞAMLAR";
+        document.getElementById('greeting-text').innerText = greeting;
+
         function shareApp() {
+            const url = window.location.href;
             const text = encodeURIComponent("🚀 Neural Focus AI: Argentina-Turquía Innovación 🇦🇷🇹🇷");
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
@@ -183,11 +193,6 @@
                 }, 600);
             }, 2500);
         };
-
-        var myLandbot = new Landbot.Livechat({
-            configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3290254-63C2C0W1J4D7S20O/index.json',
-        });
     </script>
 </body>
-                </html>
-    
+</html>
