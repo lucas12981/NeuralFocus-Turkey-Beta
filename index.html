@@ -17,9 +17,9 @@
             background: linear-gradient(135deg, #000000 0%, #001f1f 50%, #050505 100%);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 10px;
+            color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0;
             display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden; text-align: center;
+            overflow-x: hidden; text-align: center; min-height: 100vh;
         }
 
         @keyframes gradientBG {
@@ -28,48 +28,52 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* SALUDO INICIAL (SPLASH SCREEN) */
+        /* SISTEMA DE NAVEGACIÓN POR PESTAÑAS */
+        .tab-bar {
+            display: flex; width: 100%; background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px); sticky: top; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,255,255,0.2);
+        }
+        .tab-item {
+            flex: 1; padding: 15px 5px; font-size: 0.65rem; font-weight: 900;
+            color: #555; cursor: pointer; transition: 0.3s; letter-spacing: 1px;
+        }
+        .tab-item.active { color: var(--cyan); border-bottom: 2px solid var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+
+        .tab-content { display: none; width: 92%; max-width: 380px; padding: 20px 0 80px 0; }
+        .tab-content.active { display: flex; flex-direction: column; align-items: center; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* SPLASH SCREEN CON SALUDO */
         #splash-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 9999;
             transition: opacity 0.8s ease-out;
         }
-
         .splash-circle {
             width: 160px; height: 160px; border: 3px solid var(--cyan); 
             border-radius: 50%; display: flex; flex-direction: column; justify-content: center; 
-            align-items: center; font-weight: 900; font-size: 0.9rem;
-            box-shadow: 0 0 30px var(--cyan); animation: pulse 2s infinite;
+            align-items: center; font-weight: 900; box-shadow: 0 0 30px var(--cyan); animation: pulse 2s infinite;
         }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        #greeting-text { font-size: 0.7rem; color: var(--cyan); margin-bottom: 5px; text-transform: uppercase; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px var(--cyan); }
-            50% { transform: scale(1.05); box-shadow: 0 0 40px var(--cyan); }
-            100% { transform: scale(1); box-shadow: 0 0 20px var(--cyan); }
-        }
-
-        #main-content { opacity: 0; width: 100%; display: flex; flex-direction: column; align-items: center; transition: opacity 1s; }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; width: 92%; max-width: 380px; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
+        /* BOTONES Y TARJETAS (MANTENIENDO TU DISEÑO) */
         .btn-premium {
             width: 100%; padding: 16px; border-radius: 14px; border: none;
             color: #fff; font-weight: 800; text-transform: uppercase;
-            margin: 10px auto; cursor: pointer; display: flex; align-items: center; 
-            justify-content: center; text-decoration: none; font-size: 0.85rem;
-            letter-spacing: 1px; box-sizing: border-box;
+            margin: 10px 0; cursor: pointer; display: flex; align-items: center; 
+            justify-content: center; text-decoration: none; font-size: 0.8rem;
+            box-sizing: border-box;
         }
-
         .bg-maps { background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853); }
         .bg-purple { background: linear-gradient(90deg, #6a00ff, var(--purple)); }
-        .bg-dark { background: #111; border: 1px solid #333; }
         .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; }
+        .bg-fizy { background: linear-gradient(90deg, #00d2ff, #3a7bd5); } /* Fizy Style */
+        .bg-challenge { background: linear-gradient(90deg, #f80759, #bc1272); }
         .bg-cyan { background: var(--cyan); color: #000; }
-        .bg-whatsapp { background: var(--wa-green); box-shadow: 0 0 20px rgba(37, 211, 102, 0.3); }
+        .bg-whatsapp { background: var(--wa-green); }
 
         .glass-card {
             background: rgba(255,255,255,0.04); backdrop-filter: blur(15px);
@@ -77,14 +81,11 @@
             padding: 20px; margin: 15px 0; width: 100%; box-sizing: border-box;
         }
 
-        .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin: 15px 0; }
+        .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
         .sector-btn { 
             background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
-            color: #fff; padding: 15px; border-radius: 14px; text-decoration: none; 
-            font-weight: 700; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;
+            color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.7rem;
         }
-
-        .testimonial { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; text-align: left; }
         .avatar { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--cyan); object-fit: cover; }
     </style>
 </head>
@@ -92,91 +93,100 @@
 
     <div id="splash-screen">
         <div class="splash-circle">
-            <span id="greeting-text">YÜKLENİYOR...</span>
+            <span id="greeting-text" style="font-size: 0.7rem; color: var(--cyan); margin-bottom: 5px; text-transform: uppercase;">YÜKLENİYOR...</span>
             NEURAL<br>FOCUS AI
         </div>
     </div>
 
-    <div id="main-content">
-        <div class="reveal" style="background: rgba(0,255,255,0.15); padding: 8px 15px; border-radius: 30px; margin: 10px 0; border: 1px solid var(--cyan); display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content;">
+    <div class="tab-bar">
+        <div class="tab-item active" onclick="openTab(event, 'business')">🏢 BUSINESS</div>
+        <div class="tab-item" onclick="openTab(event, 'academy')">🎓 ACADEMY</div>
+        <div class="tab-item" onclick="openTab(event, 'lifestyle')">🔥 LIFESTYLE</div>
+    </div>
+
+    <div id="business" class="tab-content active">
+        <div style="background: rgba(0,255,255,0.15); padding: 8px 15px; border-radius: 30px; margin: 10px 0; border: 1px solid var(--cyan); display: flex; align-items: center; gap: 10px; width: fit-content;">
             <img src="https://flagcdn.com/w40/tr.png" width="20">
-            <span style="font-size: 0.65rem; font-weight: 900;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
+            <span style="font-size: 0.6rem; font-weight: 900;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
             <img src="https://flagcdn.com/w40/ar.png" width="20">
         </div>
 
-        <h1 class="reveal" style="font-size: 1.8rem; color: var(--cyan); margin: 15px 0; text-shadow: 0 0 15px var(--cyan);">NEURAL FOCUS AI</h1>
+        <h1 style="font-size: 1.7rem; color: var(--cyan); margin: 10px 0; text-shadow: 0 0 15px var(--cyan);">NEURAL FOCUS AI</h1>
 
-        <div class="reveal glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
+        <div class="glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <div class="reveal">
-            <a href="https://maps.google.com" target="_blank" class="btn-premium bg-maps">
-                📍 KONUM / GLOBAL OFFICE (MAPS)
-            </a>
-        </div>
+        <a href="http://googleusercontent.com/maps.google.com/5" target="_blank" class="btn-premium bg-maps">📍 KONUM / GLOBAL OFFICE</a>
+        <a href="https://translate.google.com/?sl=tr&tl=es" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+        <a href="tel:112" class="btn-premium" style="background: #111; border: 1px solid #ff4b2b; color: #ff4b2b;">🚨 ACİL YARDIM ÇAĞIR (112)</a>
+        <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
-        <div class="reveal">
-            <a href="https://translate.google.com/?sl=tr&tl=es" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-            <a href="tel:112" class="btn-premium bg-dark" style="color: #ff4b2b; border-color: #ff4b2b;">🚨 ACİL YARDIM ÇAĞIR (112)</a>
-            <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+        <div class="sector-grid" style="margin-top: 15px;">
+            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🏥 Sağlık</a>
+            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="sector-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="sector-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="sector-btn">🏗️ İnşaat</a>
         </div>
+    </div>
 
-        <div class="reveal glass-card">
-            <h3 style="font-size: 0.8rem; color: var(--cyan); margin-bottom: 15px;">AKADEMİK MERKEZ</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <div id="academy" class="tab-content">
+        <h2 style="color: var(--cyan);">AKADEMİK MERKEZ</h2>
+        <div class="glass-card">
+            <a href="#" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU</a>
+            <div class="sector-grid" style="margin-top: 10px;">
                 <a href="#" class="sector-btn">🇪🇸 İspanyolca</a>
                 <a href="#" class="sector-btn">🇬🇧 İngilizce</a>
             </div>
-            <a href="#" class="btn-premium bg-cyan" style="margin-top: 15px;">🤖 YAPAY ZEKA KURSU</a>
         </div>
-
-        <div class="reveal">
-            <button onclick="shareApp()" class="btn-premium bg-whatsapp">📲 UYGULAMAYI WHATSAPP İLE PAYLAŞ</button>
-        </div>
-
-        <div class="reveal glass-card">
-            <div class="testimonial">
+        
+        <div class="glass-card" style="text-align: left;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                 <img src="https://i.pravatar.cc/100?img=11" class="avatar">
-                <div>
-                    <p style="font-size: 0.75rem; font-style: italic; margin: 0;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
-                    <p style="font-size: 0.6rem; color: var(--cyan);">Ahmet Yılmaz, Sağlık Grubu</p>
-                </div>
-            </div>
-            <div class="testimonial">
-                <img src="https://i.pravatar.cc/100?img=12" class="avatar">
-                <div>
-                    <p style="font-size: 0.75rem; font-style: italic; margin: 0;">"Sanayi projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
-                    <p style="font-size: 0.6rem; color: var(--cyan);">Caner Öztürk, Sanayi Müdürü</p>
-                </div>
+                <p style="font-size: 0.7rem; font-style: italic;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
             </div>
         </div>
-
-        <div class="reveal sector-grid">
-            <a href="#" class="sector-btn">🏥 Sağlık</a>
-            <a href="#" class="sector-btn">🍲 Gastronomi</a>
-            <a href="#" class="sector-btn">🏭 Sanayi</a>
-            <a href="#" class="sector-btn">🏗️ İnşaat</a>
-        </div>
-
-        <footer class="reveal" style="font-size: 0.6rem; color: #555; padding: 20px 0;">
-            © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
-            Istanbul - Buenos Aires Excellence<br>
-            Smart Voice & Life Agent Solutions
-        </footer>
     </div>
 
+    <div id="lifestyle" class="tab-content">
+        <h2 style="color: #bc13fe;">LIFESTYLE 🔥</h2>
+        <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">Gençler için günlük araçlar.</p>
+        
+        <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
+        <a href="#" class="btn-premium bg-challenge">🔥 IA SELFIE CHALLENGE</a>
+        
+        <div class="glass-card">
+            <button onclick="shareApp()" class="btn-premium bg-whatsapp">📲 UYGULAMAYI PAYLAŞ</button>
+        </div>
+    </div>
+
+    <footer style="font-size: 0.6rem; color: #444; padding: 20px 0;">
+        © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
+        Istanbul - Buenos Aires Excellence<br>
+        Smart Voice & Life Agent Solutions
+    </footer>
+
     <script>
-        // LÓGICA DE SALUDOS SEGÚN HORA
+        // SALUDOS DINÁMICOS (GÜNAYDIN, İYİ GÜNLER, İYİ AKŞAMLAR)
         const hours = new Date().getHours();
-        let greeting = "MERHABA"; // Default
+        let greeting = "MERHABA";
         if (hours >= 5 && hours < 12) greeting = "GÜNAYDIN";
         else if (hours >= 12 && hours < 18) greeting = "İYİ GÜNLER";
         else greeting = "İYİ AKŞAMLAR";
         document.getElementById('greeting-text').innerText = greeting;
 
+        // FUNCIÓN DE PESTAÑAS
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
+            tablinks = document.getElementsByClassName("tab-item");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
         function shareApp() {
-            const url = window.location.href;
             const text = encodeURIComponent("🚀 Neural Focus AI: Argentina-Turquía Innovación 🇦🇷🇹🇷");
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
@@ -184,13 +194,7 @@
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('splash-screen').style.display = 'none';
-                    document.getElementById('main-content').style.opacity = '1';
-                    document.querySelectorAll('.reveal').forEach((el, i) => {
-                        setTimeout(() => el.classList.add('active'), i * 150);
-                    });
-                }, 600);
+                setTimeout(() => { document.getElementById('splash-screen').style.display = 'none'; }, 800);
             }, 2500);
         };
     </script>
