@@ -82,9 +82,9 @@
         .sector-btn { 
             background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
             color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.7rem;
+            display: flex; align-items: center; justify-content: center;
         }
         
-        /* Estilo para el contador */
         .counter-badge {
             background: rgba(0, 255, 255, 0.1);
             color: var(--cyan);
@@ -125,27 +125,34 @@
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <a href="http://googleusercontent.com/maps.google.com/8" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
-        <a href="https://translate.google.com/?sl=tr&tl=es" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-        <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+        <a href="https://maps.app.goo.gl/9" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
+        <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+        <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
         <div class="sector-grid" style="margin-top: 15px;">
-            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🏥 Sağlık</a>
-            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="sector-btn">🍲 Gastronomi</a>
-            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="sector-btn">🏭 Sanayi</a>
-            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="sector-btn">🏗️ İnşaat</a>
+            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" target="_blank" class="sector-btn">🏥 Sağlık</a>
+            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" target="_blank" class="sector-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" target="_blank" class="sector-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" target="_blank" class="sector-btn">🏗️ İnşaat</a>
         </div>
     </div>
 
     <div id="academy" class="tab-content">
         <h2 style="color: var(--cyan);">ACADEMY</h2>
         <div class="glass-card">
-            <a href="#" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU</a>
+            <a href="https://www.google.com/search?q=yapay+zeka+kursu" target="_blank" class="btn-premium bg-cyan">
+                🤖 YAPAY ZEKA KURSU
+            </a>
             <div class="sector-grid" style="margin-top: 10px;">
-                <a href="#" class="sector-btn">🇪🇸 İspanyolca</a>
-                <a href="#" class="sector-btn">🇬🇧 İngilizce</a>
+                <a href="https://www.google.com/search?q=ispanyolca+ogren" target="_blank" class="sector-btn" style="background: rgba(255,255,255,0.15); border: 1px solid var(--cyan);">
+                    🇪🇸 İspanyolca
+                </a>
+                <a href="https://www.google.com/search?q=ingilizce+ogren" target="_blank" class="sector-btn" style="background: rgba(255,255,255,0.15); border: 1px solid var(--cyan);">
+                    🇬🇧 İngilizce
+                </a>
             </div>
         </div>
+        <p style="font-size: 0.7rem; color: #888; margin-top: 10px;">Geleceğin dillerini ve teknolojisini ücretsiz öğrenin.</p>
     </div>
 
     <div id="lifestyle" class="tab-content">
@@ -204,7 +211,6 @@
                 ];
                 const res = falYorumlari[Math.floor(Math.random() * falYorumlari.length)];
                 
-                // Aumentar el contador visualmente
                 let currentCount = parseInt(document.getElementById('fal-count').innerText.replace(',',''));
                 document.getElementById('fal-count').innerText = (currentCount + 1).toLocaleString();
                 
@@ -228,5 +234,4 @@
         };
     </script>
 </body>
-                </html>
-    
+</html>
