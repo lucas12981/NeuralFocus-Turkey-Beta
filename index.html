@@ -28,11 +28,11 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ANIMACIÓN DEL LOGO (TITILEO) */
+        /* ANIMACIÓN DE TITILEO DEL LOGO */
         @keyframes logoPulse {
-            0% { box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); transform: scale(1); }
-            50% { box-shadow: 0 0 40px var(--cyan), 0 0 70px rgba(0,255,255,0.3); border-color: #fff; transform: scale(1.05); }
-            100% { box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); transform: scale(1); }
+            0% { box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); transform: scale(1); opacity: 0.8; }
+            50% { box-shadow: 0 0 45px var(--cyan), 0 0 80px rgba(0,255,255,0.4); border-color: #fff; transform: scale(1.05); opacity: 1; }
+            100% { box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); transform: scale(1); opacity: 0.8; }
         }
 
         #splash-screen {
@@ -45,7 +45,7 @@
             width: 170px; height: 170px; border: 3px solid var(--cyan); 
             border-radius: 50%; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; font-weight: 900; 
-            animation: logoPulse 2s infinite ease-in-out; /* Activa el titileo */
+            animation: logoPulse 1.5s infinite ease-in-out;
         }
 
         .tab-bar {
@@ -104,8 +104,8 @@
 
     <div id="splash-screen">
         <div class="splash-circle">
-            <span id="greeting-text" style="font-size: 0.7rem; color: #fff; margin-bottom: 5px; text-transform: uppercase;"></span>
-            <span style="color: var(--cyan); font-size: 1.2rem;">NEURAL<br>FOCUS AI</span>
+            <span id="greeting-text" style="font-size: 0.8rem; color: #fff; margin-bottom: 5px; text-transform: uppercase; font-weight: 400;"></span>
+            <span style="color: var(--cyan); font-size: 1.2rem; letter-spacing: 1px;">NEURAL<br>FOCUS AI</span>
         </div>
     </div>
 
@@ -120,7 +120,7 @@
         <div class="glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
-        <a href="https://maps.app.goo.gl/9" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
+        <a href="https://www.google.com/maps" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
         <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
         <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
@@ -135,19 +135,19 @@
     <div id="academy" class="tab-content">
         <h2 style="color: var(--cyan);">ACADEMY</h2>
         <div class="glass-card">
-            <a href="https://www.youtube.com/results?search_query=yapay+zeka+e%C4%9Fitimi+ba%C5%9Flang%C4%B1%C3%A7" target="_blank" class="btn-premium bg-cyan">
+            <a href="https://www.youtube.com/playlist?list=PLp_R1pA_L6M_mYmK6nC65O397n_fD1f7i" target="_blank" class="btn-premium bg-cyan">
                 🤖 YAPAY ZEKA KURSU (ÜCRETSİZ)
             </a>
             <div class="sector-grid" style="margin-top: 10px;">
-                <a href="https://www.youtube.com/results?search_query=ispanyolca+%C3%B6%C4%9Frenme+1.+ders" target="_blank" class="sector-btn" style="background: rgba(255,255,255,0.15); border: 1px solid var(--cyan);">
+                <a href="https://www.youtube.com/playlist?list=PL7f_5n-W_I-Z9mIe2A4T6-z5X5oG6W0T3" target="_blank" class="sector-btn" style="background: rgba(255,255,255,0.15); border: 1px solid var(--cyan);">
                     🇪🇸 İspanyolca
                 </a>
-                <a href="https://www.youtube.com/results?search_query=ingilizce+%C3%B6%C4%9Frenme+dersleri" target="_blank" class="sector-btn" style="background: rgba(255,255,255,0.15); border: 1px solid var(--cyan);">
+                <a href="https://www.youtube.com/playlist?list=PLV9pL7O_P_sPsqS_NnN0g9M_sA_m9fO4x" target="_blank" class="sector-btn" style="background: rgba(255,255,255,0.15); border: 1px solid var(--cyan);">
                     🇬🇧 İngilizce
                 </a>
             </div>
         </div>
-        <p style="font-size: 0.7rem; color: #888; margin-top: 10px;">Geleceğin dillerini ve teknolojisini ana dilinizde öğrenin.</p>
+        <p style="font-size: 0.7rem; color: #888; margin-top: 10px;">Ana dilinizde ücretsiz eğitimlerle geleceği inşa edin.</p>
     </div>
 
     <div id="lifestyle" class="tab-content">
@@ -170,7 +170,7 @@
     </footer>
 
     <script>
-        // Saludo dinámico según la hora
+        // Saludo dinámico automático
         const hours = new Date().getHours();
         let greeting = (hours >= 5 && hours < 12) ? "Günaydın" : (hours >= 12 && hours < 18) ? "İyi Günler" : "İyi Akşamlar";
         document.getElementById('greeting-text').innerText = greeting;
@@ -204,16 +204,16 @@
         }
 
         function shareApp() {
-            window.open(`https://wa.me/?text=🚀 Neural Focus AI ile geleceği keşfet!`, '_blank');
+            window.open(`https://wa.me/?text=🚀 Neural Focus AI: Geleceğin iş birliği burada!`, '_blank');
         }
 
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 800);
-            }, 3000); // 3 segundos para que se aprecie el titileo del logo
+            }, 3000); // Mantiene el logo titilando 3 segundos antes de entrar
         };
     </script>
 </body>
-        </html>
-    
+                    </html>
+                    
