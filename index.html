@@ -82,7 +82,7 @@
             padding: 20px; margin: 15px 0; width: 100%; box-sizing: border-box;
         }
 
-        .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+        .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-top: 15px; }
         .sector-btn { 
             background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
             color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.7rem;
@@ -112,30 +112,33 @@
 
     <div id="business" class="tab-content active">
         <h1 style="font-size: 1.7rem; color: var(--cyan); margin: 10px 0;">NEURAL FOCUS AI</h1>
+        
         <div class="glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="lira-box">
-            <span style="font-size: 0.7rem; color: var(--gold);">CONVERSOR LIRA TURCA (TRY)</span><br>
+            <span style="font-size: 0.7rem; color: var(--gold);">CURRENCY CONVERTER (USD TO TRY)</span><br>
             <input type="number" id="usdInput" placeholder="USD" oninput="convertTRY()" style="background:transparent; border:none; border-bottom:1px solid var(--cyan); color:white; text-align:center; width:60px; outline:none; margin-top:5px;">
             <span id="tryOutput" style="font-weight:bold; color:var(--cyan); margin-left:10px;">₺ 0.00</span>
         </div>
 
-        <a href="https://www.google.com/maps" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
+        <a href="https://maps.google.com/?q=Istanbul" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
         <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
         <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
         <div class="sector-grid">
             <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" target="_blank" class="sector-btn">🏥 Sağlık</a>
             <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" target="_blank" class="sector-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" target="_blank" class="sector-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" target="_blank" class="sector-btn">🏗️ İnşaat</a>
         </div>
     </div>
 
     <div id="academy" class="tab-content">
         <h2 style="color: var(--cyan);">ACADEMY</h2>
         <div class="glass-card">
-            <a href="https://www.youtube.com/watch?v=R36mH6C8mFA&list=PLp_R1pA_L6M_mYmK6nC65O397n_fD1f7i" target="_blank" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU</a>
+            <a href="https://www.youtube.com/watch?v=R36mH6C8mFA&list=PLp_R1pA_L6M_mYmK6nC65O397n_fD1f7i" target="_blank" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU (ÜCRETSİZ)</a>
             <div class="sector-grid" style="margin-top: 10px;">
                 <a href="https://www.youtube.com/watch?v=Jm_rV6GvB5o&list=PL7f_5n-W_I-Z9mIe2A4T6-z5X5oG6W0T3" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇪🇸 İspanyolca</a>
                 <a href="https://www.youtube.com/watch?v=F3S_X87MshM&list=PLV9pL7O_P_sPsqS_NnN0g9M_sA_m9fO4x" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇬🇧 İngilizce</a>
@@ -161,12 +164,14 @@
 
     <footer style="font-size: 0.6rem; color: #555; padding: 20px; line-height: 1.5;">
         © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
-        <b>Hizmetler:</b> Voz Inteligente (Yazılı) & Agente de Vida (Canlı) 24/7<br>
-        Sağlık ve Gastronomi Sektörlerinde Küresel İş Birliği.
+        <b>Servisler:</b> Voz Inteligente (Yazılı 24/7) & Agente de Vida (Canlı 24/7)<br>
+        Sağlık, Gastronomi, Sanayi ve İnşaat Sektörleri.
     </footer>
 
     <script>
-        document.getElementById('greeting-text').innerText = (new Date().getHours() < 12) ? "Günaydın" : "İyi Günler";
+        // Saludo dinámico
+        const greeting = (new Date().getHours() < 12) ? "Günaydın" : (new Date().getHours() < 18) ? "İyi Günler" : "İyi Akşamlar";
+        document.getElementById('greeting-text').innerText = greeting;
         
         function openTab(evt, tabName) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -180,6 +185,7 @@
             document.getElementById('tryOutput').innerText = usd > 0 ? "₺ " + (usd * 30.25).toFixed(2) : "₺ 0.00";
         }
 
+        // ACTIVAR CÁMARA
         function startAiFal() {
             document.getElementById('cameraInput').click();
         }
@@ -194,6 +200,7 @@
                 const res = [
                     "Kısmetin teknoloji sektöründe! Neural Focus ile büyük bir iş birliği görünüyor. 🚀",
                     "Yolların açılıyor! Gastronomi dünyasında dijital bir devrim yapacaksın. 🍲",
+                    "Sanayi ve inşaat projelerinde yıldızın parlayacak, hazırlıklı ol! 🏗️",
                     "Sağlık ve huzur dolu bir dönem başlıyor. 🏥"
                 ];
                 text.innerText = res[Math.floor(Math.random() * res.length)];
@@ -208,7 +215,7 @@
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
-            }, 1000);
+            }, 1000); // 1 segundo de entrada
         };
     </script>
 </body>
