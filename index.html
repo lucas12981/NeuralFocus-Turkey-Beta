@@ -13,21 +13,19 @@
         :root { 
             --cyan: #00FFFF; 
             --purple: #bc13fe; 
-            --gold: #FFD700; 
-            --dark-card: rgba(255, 255, 255, 0.05);
-            --blue-edu: #0052D4;
-            --red-edu: #ff4b2b;
+            --dark-bg: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
             --wa-green: #25D366;
         }
         
         body { 
             background: radial-gradient(circle at top, #001f1f 0%, #000 100%); 
-            color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px;
+            color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 10px;
             display: flex; flex-direction: column; align-items: center;
             overflow-x: hidden;
         }
 
-        /* 1. PANTALLA DE CARGA (SPLASH SCREEN) */
+        /* 1. SPLASH SCREEN PROFESIONAL */
         #splash-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; flex-direction: column;
@@ -36,172 +34,176 @@
         }
         
         .logo-anim {
-            width: 180px; height: 180px; border-radius: 50%;
-            border: 3px solid var(--cyan);
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 2px solid var(--cyan);
             display: flex; justify-content: center; align-items: center;
-            text-align: center; font-weight: 900; letter-spacing: 2px;
-            box-shadow: 0 0 30px var(--cyan);
+            text-align: center; font-weight: 900; letter-spacing: 3px;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
             animation: pulse 2s infinite ease-in-out;
-            background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%);
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 20px var(--cyan); }
-            50% { transform: scale(1.05); box-shadow: 0 0 50px var(--cyan), 0 0 30px var(--purple); }
-            100% { transform: scale(0.95); box-shadow: 0 0 20px var(--cyan); }
+            0% { transform: scale(0.98); box-shadow: 0 0 20px var(--cyan); }
+            50% { transform: scale(1.02); box-shadow: 0 0 50px var(--cyan), 0 0 30px var(--purple); }
+            100% { transform: scale(0.98); box-shadow: 0 0 20px var(--cyan); }
         }
 
-        /* 2. CONTENIDO PRINCIPAL (EFECTO CASCADA) */
+        /* 2. LAYOUT */
         #main-content { opacity: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
 
         .reveal { 
-            opacity: 0; transform: translateY(30px); 
-            transition: all 0.8s ease-out; 
+            opacity: 0; transform: translateY(20px); 
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 3. DISEÑO DE ALTO NIVEL (GLASSMORPHISM) */
         .glass-card {
-            background: var(--dark-card); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;
-            width: 90%; max-width: 340px; padding: 20px; margin: 10px 0;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
+            background: var(--glass); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+            width: 92%; max-width: 360px; padding: 20px; margin: 12px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
-        .glass-card:active { transform: scale(0.98); }
 
-        /* BOTONES PROFESIONALES */
+        /* BOTONES DE ALTO IMPACTO */
         .btn-premium {
-            width: 100%; padding: 16px; border-radius: 12px; border: none;
-            color: #fff; font-weight: 900; text-transform: uppercase;
-            margin: 8px 0; cursor: pointer; display: block; text-decoration: none;
-            text-align: center; font-size: 0.85rem;
-            transition: filter 0.3s;
-        }
-        .btn-premium:active { filter: brightness(1.3); }
-
-        .bg-gradient-purple { background: linear-gradient(90deg, var(--purple), #6a00ff); }
-        .bg-outline-red { border: 2px solid #ff4b2b; color: #ff4b2b; background: rgba(255,75,43,0.1); }
-        .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; }
-
-        /* BOTÓN VIRAL WHATSAPP */
-        .btn-share-viral {
-            background: linear-gradient(90deg, var(--wa-green), #128C7E);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            animation: glow-pulse 2s infinite;
-        }
-        @keyframes glow-pulse {
-            0% { box-shadow: 0 0 5px var(--wa-green); transform: scale(1); }
-            50% { box-shadow: 0 0 25px var(--wa-green), 0 0 10px #fff; transform: scale(1.02); }
-            100% { box-shadow: 0 0 5px var(--wa-green); transform: scale(1); }
+            width: 100%; padding: 18px; border-radius: 14px; border: none;
+            color: #fff; font-weight: 800; text-transform: uppercase;
+            margin: 10px 0; cursor: pointer; display: flex; align-items: center; 
+            justify-content: center; text-decoration: none; font-size: 0.8rem;
+            letter-spacing: 1px; transition: 0.3s;
         }
 
-        .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
-        .btn-edu { 
-            padding: 15px; border-radius: 10px; text-decoration: none; color: #fff; 
-            font-size: 0.7rem; font-weight: bold; text-align: center;
+        .bg-purple { background: linear-gradient(135deg, #6a00ff, var(--purple)); }
+        .bg-dark { background: #111; border: 1px solid #333; }
+        .bg-cyan { background: var(--cyan); color: #000; }
+
+        /* WHATSAPP VIRAL BUTTON */
+        .btn-whatsapp-share {
+            background: #25D366; color: #fff;
+            animation: glow 2s infinite;
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(37, 211, 102, 0.8); }
         }
 
-        /* WHATSAPP GRID */
-        .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px 0; }
-        .wa-btn { background: #128C7E; color: #fff; padding: 12px; border-radius: 10px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+        /* GRID SECTORES */
+        .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 92%; margin-top: 15px; }
+        .sector-btn { 
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 15px; border-radius: 15px; text-align: center;
+            text-decoration: none; font-weight: 700; font-size: 0.75rem;
+        }
 
-        footer { font-size: 0.65rem; color: #555; text-align: center; padding: 40px 0 120px; }
+        /* TESTIMONIOS CON AVATAR */
+        .testimonial { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #222; border: 1px solid var(--cyan); }
+
+        footer { font-size: 0.7rem; color: #444; text-align: center; padding: 50px 0 130px; line-height: 1.5; }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
         <div class="logo-anim">NEURAL<br>FOCUS AI</div>
-        <p id="dynamic-greeting" style="margin-top: 25px; color: var(--cyan); letter-spacing: 3px; font-size: 0.7rem;">CARGANDO...</p>
+        <p id="dynamic-greeting" style="margin-top: 25px; color: var(--cyan); letter-spacing: 5px; font-size: 0.6rem; font-weight: 900;">INICIALIZANDO...</p>
     </div>
 
     <div id="main-content">
         
-        <div class="reveal" style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 20px; margin: 10px 0; display: flex; align-items: center; gap: 10px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" width="25">
-            <span style="font-size: 0.6rem; font-weight: 900;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" width="25">
+        <div class="reveal" style="background: rgba(0,255,255,0.1); padding: 8px 20px; border-radius: 30px; margin: 15px 0; border: 1px solid var(--cyan); display: flex; align-items: center; gap: 12px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" width="22">
+            <span style="font-size: 0.65rem; font-weight: 900; letter-spacing: 1px;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" width="22">
         </div>
 
-        <h1 class="reveal" style="font-size: 1.4rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan);">NEURAL FOCUS AI</h1>
-
-        <div class="reveal glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9;">
+        <div class="reveal glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <div class="reveal" style="width: 90%;">
-            <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-premium bg-gradient-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-            <a href="tel:112" class="btn-premium bg-outline-red">🚨 ACİL YARDIM ÇAĞIR (112)</a>
-            <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+        <div class="reveal" style="width: 92%;">
+            <a href="https://translate.google.com/?sl=tr&tl=es&op=translate" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+            <a href="tel:112" class="btn-premium bg-dark" style="color: #ff4b2b; border-color: #ff4b2b;">🚨 ACİL YARDIM (112)</a>
         </div>
 
         <div class="reveal glass-card">
-            <p style="font-size: 0.75rem; font-weight: 900; margin-bottom: 15px; text-align: center;">ÜCRETSİZ DİL VE TEKNOLOJİ KURSLARI</p>
-            <div class="edu-grid">
-                <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri+turkce" target="_blank" class="btn-edu" style="background: var(--blue-edu);">🇪🇸 İSPANYOLCA</a>
-                <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri+turkce" target="_blank" class="btn-edu" style="background: var(--red-edu);">🇬🇧 İNGİLİZCE</a>
+            <h3 style="font-size: 0.7rem; text-align: center; margin-top: 0; color: var(--cyan);">AKADEMİK MERKEZ</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri" class="sector-btn">🇪🇸 İspanyolca</a>
+                <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri" class="sector-btn">🇬🇧 İngilizce</a>
             </div>
-            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi+turkce+2026" target="_blank" class="btn-premium" style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); margin-top: 15px;">🤖 YAPAY ZEKA KURSU</a>
+            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi+2026" class="btn-premium bg-cyan" style="margin-top: 10px; font-size: 0.7rem;">🤖 Yapay Zeka Kursu</a>
         </div>
 
-        <div class="reveal" style="width: 90%; margin: 10px 0;">
-            <a href="javascript:void(0);" onclick="shareApp()" class="btn-premium btn-share-viral">🚀 UYGULAMAYI PAYLAŞ</a>
+        <div class="reveal" style="width: 92%;">
+            <button onclick="shareApp()" class="btn-premium btn-whatsapp-share">
+                <span style="margin-right: 10px;">📲</span> UYGULAMAYI WHATSAPP İLE PAYLAŞ
+            </button>
         </div>
 
-        <div class="reveal glass-card" style="border-left: 4px solid var(--purple);">
-            <p style="font-size: 0.7rem; font-style: italic;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
-            <p style="font-size: 0.6rem; text-align: right; color: var(--cyan);">- Ahmet Yılmaz, Sağlık Grubu</p>
-        </div>
-        <div class="reveal glass-card" style="border-left: 4px solid var(--cyan);">
-            <p style="font-size: 0.7rem; font-style: italic;">"İnşaat projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
-            <p style="font-size: 0.6rem; text-align: right; color: var(--cyan);">- Caner Öztürk, İnşaat Müdürü</p>
+        <div class="reveal glass-card">
+            <div class="testimonial">
+                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=11'); background-size: cover;"></div>
+                <div>
+                    <p style="font-size: 0.7rem; font-style: italic; margin: 0;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
+                    <p style="font-size: 0.55rem; color: var(--cyan); margin-top: 5px;">Ahmet Yılmaz, Sağlık Grubu</p>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=12'); background-size: cover;"></div>
+                <div>
+                    <p style="font-size: 0.7rem; font-style: italic; margin: 0;">"Sanayi projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
+                    <p style="font-size: 0.55rem; color: var(--cyan); margin-top: 5px;">Caner Öztürk, Sanayi Müdürü</p>
+                </div>
+            </div>
         </div>
 
-        <div class="wa-grid reveal">
-            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="wa-btn">🏥 Sağlık</a>
-            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="wa-btn">🍲 Gastronomi</a>
-            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="wa-btn">🏭 Sanayi</a>
-            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="wa-btn">🏗️ İnşaat</a>
+        <div class="sector-grid reveal">
+            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🏥 Sağlık</a>
+            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="sector-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="sector-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="sector-btn">🏗️ İnşaat</a>
         </div>
 
         <footer class="reveal">
-            © 2026 Lucas Guzmán | Neural Focus AI <br>
-            24/7 Akıllı Ses & Yaşam Ajanı Çözümleri
+            © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
+            Istanbul - Buenos Aires Excellence<br>
+            Smart Voice & Life Agent Solutions
         </footer>
     </div>
 
     <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
     <script>
+        // FUNCIÓN DE COMPARTIR CORREGIDA (TURCO + INGLÉS)
         function shareApp() {
-            const message = encodeURIComponent(
-                "🚀 ¡Mira esta innovación de Neural Focus AI! \n\n" +
-                "Una plataforma inteligente que ofrece Voz 24/7 y Agentes de Vida para Salud, Gastronomía y Construcción. \n\n" +
-                "¡Únete a la colaboración entre Argentina y Turquía! 🇦🇷🇹🇷\n" +
-                "Explora la app aquí: [TU_URL_AQUÍ]"
+            const url = "https://lucas12981.github.io/NeuralFocus-Turkey-Beta/";
+            const text = encodeURIComponent(
+                "🚀 Neural Focus AI İnovasyonuna Göz Atın!\n\n" +
+                "Sağlık, Gastronomi ve Sanayi sektörleri için 7/24 Akıllı Ses ve Yaşam Ajanları sunan platformumuz yayında. Arjantin ve Türkiye arasındaki bu iş birliğine katılın! 🇦🇷🇹🇷\n\n" +
+                "Explore here: " + url
             );
-            window.open(`https://wa.me/?text=${message}`, '_blank');
+            window.open(`https://wa.me/?text=${text}`, '_blank');
         }
 
-        const hour = new Date().getHours();
-        const greetingElement = document.getElementById('dynamic-greeting');
-        if(hour < 12) greetingElement.innerText = "GÜNAYDIN...";
-        else if(hour < 18) greetingElement.innerText = "İYİ GÜNLER...";
-        else greetingElement.innerText = "İYİ AKŞAMLAR...";
+        // SALUDO DINÁMICO
+        const hr = new Date().getHours();
+        const greet = document.getElementById('dynamic-greeting');
+        if(hr < 12) greet.innerText = "GÜNAYDIN...";
+        else if(hr < 18) greet.innerText = "İYİ GÜNLER...";
+        else greet.innerText = "İYİ AKŞAMLAR...";
 
+        // CONTROL DE CARGA
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('splash-screen').style.display = 'none';
                     document.getElementById('main-content').style.opacity = '1';
-                    const reveals = document.querySelectorAll('.reveal');
-                    reveals.forEach((el, i) => {
-                        setTimeout(() => el.classList.add('active'), i * 150);
+                    document.querySelectorAll('.reveal').forEach((el, i) => {
+                        setTimeout(() => el.classList.add('active'), i * 120);
                     });
-                }, 800);
-            }, 3000);
+                }, 600);
+            }, 2500);
         };
 
         var myLandbot = new Landbot.Livechat({
@@ -209,5 +211,4 @@
         });
     </script>
 </body>
-    </html>
-                
+</html>
