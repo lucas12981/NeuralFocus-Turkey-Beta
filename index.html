@@ -83,6 +83,18 @@
             background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
             color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.7rem;
         }
+        
+        /* Estilo para el contador */
+        .counter-badge {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--cyan);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            border: 1px solid var(--cyan);
+        }
     </style>
 </head>
 <body>
@@ -107,13 +119,13 @@
             <img src="https://flagcdn.com/w40/ar.png" width="20">
         </div>
 
-        <h1 style="font-size: 1.7rem; color: var(--cyan); margin: 10px 0; text-shadow: 0 0 15px var(--cyan);">NEURAL FOCUS AI</h1>
+        <h1 style="font-size: 1.7rem; color: var(--cyan); margin: 10px 0;">NEURAL FOCUS AI</h1>
 
         <div class="glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <a href="http://googleusercontent.com/maps.google.com/7" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
+        <a href="http://googleusercontent.com/maps.google.com/8" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
         <a href="https://translate.google.com/?sl=tr&tl=es" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
         <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
@@ -138,6 +150,11 @@
 
     <div id="lifestyle" class="tab-content">
         <h2 style="color: #bc13fe;">LIFESTYLE 🔥</h2>
+        
+        <div class="counter-badge">
+            ✨ <span id="fal-count">1,284</span> KAHVE FALI BAKILDI
+        </div>
+
         <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
         
         <button onclick="startAiFal()" class="btn-premium bg-fal">
@@ -171,12 +188,11 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // LÓGICA DE LA FUNCIÓN DIARIA: LECTURA DE CAFÉ (FAL)
         function startAiFal() {
             const input = document.createElement('input');
             input.type = 'file';
             input.accept = 'image/*';
-            input.capture = 'environment'; // Abre la cámara trasera para la taza
+            input.capture = 'environment'; 
             
             input.onchange = (e) => {
                 const falYorumlari = [
@@ -187,6 +203,10 @@
                     "Sanayi ve inşaat projelerinde yıldızın parlayacak, hazırlıklı ol! 🏗️"
                 ];
                 const res = falYorumlari[Math.floor(Math.random() * falYorumlari.length)];
+                
+                // Aumentar el contador visualmente
+                let currentCount = parseInt(document.getElementById('fal-count').innerText.replace(',',''));
+                document.getElementById('fal-count').innerText = (currentCount + 1).toLocaleString();
                 
                 document.getElementById('fal-display').style.display = 'block';
                 document.getElementById('fal-text').innerText = res;
@@ -209,4 +229,4 @@
     </script>
 </body>
                 </html>
-                
+    
