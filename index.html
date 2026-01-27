@@ -123,7 +123,7 @@
             <span id="tryOutput" style="font-weight:bold; color:var(--cyan); margin-left:10px;">₺ 0.00</span>
         </div>
 
-        <a href="https://maps.google.com/?q=Istanbul" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Istanbul+Turkey" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
         <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
         <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
@@ -138,24 +138,26 @@
     <div id="academy" class="tab-content">
         <h2 style="color: var(--cyan);">ACADEMY</h2>
         <div class="glass-card">
-            <a href="https://www.youtube.com/watch?v=R36mH6C8mFA&list=PLp_R1pA_L6M_mYmK6nC65O397n_fD1f7i" target="_blank" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU (ÜCRETSİZ)</a>
+            <a href="https://www.youtube.com/watch?v=F3S_X87MshM" target="_blank" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU</a>
+            
             <div class="sector-grid" style="margin-top: 10px;">
-                <a href="https://www.youtube.com/watch?v=Jm_rV6GvB5o&list=PL7f_5n-W_I-Z9mIe2A4T6-z5X5oG6W0T3" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇪🇸 İspanyolca</a>
-                <a href="https://www.youtube.com/watch?v=F3S_X87MshM&list=PLV9pL7O_P_sPsqS_NnN0g9M_sA_m9fO4x" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇬🇧 İngilizce</a>
+                <a href="https://www.youtube.com/playlist?list=PL7f_5n-W_I-Z9mIe2A4T6-z5X5oG6W0T3" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇪🇸 İspanyolca</a>
+                
+                <a href="https://www.youtube.com/playlist?list=PLV9pL7O_P_sPsqS_NnN0g9M_sA_m9fO4x" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇬🇧 İngilizce</a>
             </div>
         </div>
-        <p style="font-size: 0.7rem; color: #888; margin-top:10px;">Ana dilinizde ücretsiz eğitimlerle geleceği inşa edin.</p>
+        <p style="font-size: 0.7rem; color: #888; margin-top:10px;">Geleceğin dillerini ve teknolojisini ücretsiz öğrenin.</p>
     </div>
 
     <div id="lifestyle" class="tab-content">
         <h2 style="color: #bc13fe;">LIFESTYLE 🔥</h2>
-        <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ</a>
+        <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
         
         <button onclick="startAiFal()" class="btn-premium bg-fal">☕ YAPAY ZEKA KAHVE FALI</button>
         <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="processFal()">
         
         <div id="fal-display" style="display:none;" class="glass-card">
-            <h3 style="color: var(--gold); font-size: 0.9rem;">🔮 FALINIZ:</h3>
+            <h3 style="color: var(--gold); font-size: 0.9rem;">🔮 FALINIZ ÇIKTI:</h3>
             <p id="fal-text" style="font-size: 0.8rem; line-height: 1.4;"></p>
         </div>
         
@@ -169,9 +171,7 @@
     </footer>
 
     <script>
-        // Saludo dinámico
-        const greeting = (new Date().getHours() < 12) ? "Günaydın" : (new Date().getHours() < 18) ? "İyi Günler" : "İyi Akşamlar";
-        document.getElementById('greeting-text').innerText = greeting;
+        document.getElementById('greeting-text').innerText = (new Date().getHours() < 12) ? "Günaydın" : "İyi Günler";
         
         function openTab(evt, tabName) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -185,7 +185,6 @@
             document.getElementById('tryOutput').innerText = usd > 0 ? "₺ " + (usd * 30.25).toFixed(2) : "₺ 0.00";
         }
 
-        // ACTIVAR CÁMARA
         function startAiFal() {
             document.getElementById('cameraInput').click();
         }
@@ -215,7 +214,7 @@
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
-            }, 1000); // 1 segundo de entrada
+            }, 1000);
         };
     </script>
 </body>
