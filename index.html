@@ -28,12 +28,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        @keyframes logoPulse {
-            0% { box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); transform: scale(1); opacity: 0.8; }
-            50% { box-shadow: 0 0 45px var(--cyan), 0 0 80px rgba(0,255,255,0.4); border-color: #fff; transform: scale(1.05); opacity: 1; }
-            100% { box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); transform: scale(1); opacity: 0.8; }
-        }
-
         #splash-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; flex-direction: column;
@@ -45,6 +39,10 @@
             border-radius: 50%; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; font-weight: 900; 
             animation: logoPulse 1.2s infinite ease-in-out;
+        }
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 15px var(--cyan); transform: scale(1); }
+            50% { box-shadow: 0 0 35px var(--cyan); transform: scale(1.05); }
         }
 
         .tab-bar {
@@ -60,7 +58,6 @@
 
         .tab-content { display: none; width: 92%; max-width: 380px; padding: 20px 0 80px 0; }
         .tab-content.active { display: flex; flex-direction: column; align-items: center; animation: fadeIn 0.4s ease; }
-
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .btn-premium {
@@ -115,14 +112,13 @@
 
     <div id="business" class="tab-content active">
         <h1 style="font-size: 1.7rem; color: var(--cyan); margin: 10px 0;">NEURAL FOCUS AI</h1>
-        
         <div class="glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="lira-box">
             <span style="font-size: 0.7rem; color: var(--gold);">CONVERSOR LIRA TURCA (TRY)</span><br>
-            <input type="number" id="usdInput" placeholder="USD" oninput="convertTRY()" style="background:transparent; border:none; border-bottom:1px solid var(--cyan); color:white; text-align:center; width:60px; outline:none;">
+            <input type="number" id="usdInput" placeholder="USD" oninput="convertTRY()" style="background:transparent; border:none; border-bottom:1px solid var(--cyan); color:white; text-align:center; width:60px; outline:none; margin-top:5px;">
             <span id="tryOutput" style="font-weight:bold; color:var(--cyan); margin-left:10px;">₺ 0.00</span>
         </div>
 
@@ -130,46 +126,43 @@
         <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
         <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
-        <div class="sector-grid" style="margin-top: 15px;">
+        <div class="sector-grid">
             <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" target="_blank" class="sector-btn">🏥 Sağlık</a>
             <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" target="_blank" class="sector-btn">🍲 Gastronomi</a>
-            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" target="_blank" class="sector-btn">🏭 Sanayi</a>
-            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" target="_blank" class="sector-btn">🏗️ İnşaat</a>
         </div>
     </div>
 
     <div id="academy" class="tab-content">
         <h2 style="color: var(--cyan);">ACADEMY</h2>
         <div class="glass-card">
-            <a href="https://www.youtube.com/playlist?list=PLp_R1pA_L6M_mYmK6nC65O397n_fD1f7i" target="_blank" class="btn-premium bg-cyan">
-                🤖 YAPAY ZEKA KURSU (ÜCRETSİZ)
-            </a>
+            <a href="https://www.youtube.com/watch?v=R36mH6C8mFA&list=PLp_R1pA_L6M_mYmK6nC65O397n_fD1f7i" target="_blank" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU</a>
             <div class="sector-grid" style="margin-top: 10px;">
-                <a href="https://www.youtube.com/playlist?list=PL7f_5n-W_I-Z9mIe2A4T6-z5X5oG6W0T3" target="_blank" class="sector-btn" style="border: 1px solid var(--cyan);">
-                    🇪🇸 İspanyolca
-                </a>
-                <a href="https://www.youtube.com/playlist?list=PLV9pL7O_P_sPsqS_NnN0g9M_sA_m9fO4x" target="_blank" class="sector-btn" style="border: 1px solid var(--cyan);">
-                    🇬🇧 İngilizce
-                </a>
+                <a href="https://www.youtube.com/watch?v=Jm_rV6GvB5o&list=PL7f_5n-W_I-Z9mIe2A4T6-z5X5oG6W0T3" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇪🇸 İspanyolca</a>
+                <a href="https://www.youtube.com/watch?v=F3S_X87MshM&list=PLV9pL7O_P_sPsqS_NnN0g9M_sA_m9fO4x" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇬🇧 İngilizce</a>
             </div>
         </div>
-        <p style="font-size: 0.7rem; color: #888;">Ana dilinizde ücretsiz eğitimlerle geleceği inşa edin.</p>
+        <p style="font-size: 0.7rem; color: #888; margin-top:10px;">Ana dilinizde ücretsiz eğitimlerle geleceği inşa edin.</p>
     </div>
 
     <div id="lifestyle" class="tab-content">
         <h2 style="color: #bc13fe;">LIFESTYLE 🔥</h2>
-        <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
+        <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ</a>
+        
         <button onclick="startAiFal()" class="btn-premium bg-fal">☕ YAPAY ZEKA KAHVE FALI</button>
+        <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="processFal()">
+        
         <div id="fal-display" style="display:none;" class="glass-card">
-            <p id="fal-text" style="font-size: 0.8rem;"></p>
+            <h3 style="color: var(--gold); font-size: 0.9rem;">🔮 FALINIZ:</h3>
+            <p id="fal-text" style="font-size: 0.8rem; line-height: 1.4;"></p>
         </div>
+        
         <button onclick="shareApp()" class="btn-premium bg-whatsapp">📲 UYGULAMAYI PAYLAŞ</button>
     </div>
 
     <footer style="font-size: 0.6rem; color: #555; padding: 20px; line-height: 1.5;">
         © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
-        <b>Servicios:</b> Voz Inteligente (Escrito 24/7) & Agente de Vida (Live 24/7)<br>
-        Especialistas en Salud y Gastronomía.
+        <b>Hizmetler:</b> Voz Inteligente (Yazılı) & Agente de Vida (Canlı) 24/7<br>
+        Sağlık ve Gastronomi Sektörlerinde Küresel İş Birliği.
     </footer>
 
     <script>
@@ -184,27 +177,39 @@
 
         function convertTRY() {
             const usd = document.getElementById('usdInput').value;
-            const res = document.getElementById('tryOutput');
-            res.innerText = usd > 0 ? "₺ " + (usd * 30.25).toFixed(2) : "₺ 0.00";
+            document.getElementById('tryOutput').innerText = usd > 0 ? "₺ " + (usd * 30.25).toFixed(2) : "₺ 0.00";
         }
 
         function startAiFal() {
-            alert("Analizando tu café...");
-            document.getElementById('fal-display').style.display = 'block';
-            document.getElementById('fal-text').innerText = "Kısmetin teknoloji sektöründe! Neural Focus ile büyük bir iş birliği görünüyor. 🚀";
+            document.getElementById('cameraInput').click();
+        }
+
+        function processFal() {
+            const display = document.getElementById('fal-display');
+            const text = document.getElementById('fal-text');
+            display.style.display = 'block';
+            text.innerText = "Yapay Zeka fincanınızı analiz ediyor...";
+            
+            setTimeout(() => {
+                const res = [
+                    "Kısmetin teknoloji sektöründe! Neural Focus ile büyük bir iş birliği görünüyor. 🚀",
+                    "Yolların açılıyor! Gastronomi dünyasında dijital bir devrim yapacaksın. 🍲",
+                    "Sağlık ve huzur dolu bir dönem başlıyor. 🏥"
+                ];
+                text.innerText = res[Math.floor(Math.random() * res.length)];
+            }, 2500);
         }
 
         function shareApp() {
-            window.open('https://wa.me/?text=Neural Focus AI: Global Collaboration!', '_blank');
+            window.open('https://wa.me/?text=Neural Focus AI: Geleceğin iş birliği burada!', '_blank');
         }
 
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
-            }, 1000); // 1 segundo para rapidez máxima
+            }, 1000);
         };
     </script>
 </body>
-                </html>
-    
+</html>
