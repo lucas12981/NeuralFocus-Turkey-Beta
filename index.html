@@ -2,213 +2,191 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Focus AI - Arjantin & Türkiye</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neural Focus AI | Global Innovation</title>
+    
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
+        :root { 
+            --cyan: #00FFFF; 
+            --purple: #bc13fe; 
+            --wa-green: #25D366;
+            --gold: #FFD700;
         }
-        .container {
-            padding: 20px;
-            max-width: 500px;
-            margin: auto;
+        
+        body { 
+            /* Fondo con degradado profundo y elegante */
+            background: linear-gradient(135deg, #000000 0%, #001f1f 50%, #050505 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 10px;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden; text-align: center;
         }
-        .header-badge {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 5px 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        h1 {
-            color: #00f2ff;
-            text-shadow: 0 0 10px #00f2ff;
-            font-size: 24px;
-            margin-bottom: 30px;
+
+        /* SPLASH SCREEN */
+        #splash-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+            transition: opacity 0.8s ease-out;
         }
-        .video-container {
-            border: 1px solid #00f2ff;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 15px;
+
+        /* CONTENEDOR PRINCIPAL */
+        #main-content { opacity: 0; width: 100%; display: flex; flex-direction: column; align-items: center; transition: opacity 1s; }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; width: 92%; max-width: 380px; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* BOTONES PREMIUM ALINEADOS Y CENTRADOS */
+        .btn-premium {
+            width: 100%; padding: 16px; border-radius: 14px; border: none;
+            color: #fff; font-weight: 800; text-transform: uppercase;
+            margin: 12px auto; cursor: pointer; display: flex; align-items: center; 
+            justify-content: center; text-decoration: none; font-size: 0.85rem;
+            letter-spacing: 1px; box-sizing: border-box; transition: 0.3s;
         }
-        /* BOTÓN GOOGLE MAPS - NUEVO */
-        .maps-button {
-            background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            width: 100%;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            text-decoration: none;
+        .btn-premium:active { transform: scale(0.97); filter: brightness(1.2); }
+
+        .bg-purple { background: linear-gradient(90deg, #6a00ff, var(--purple)); }
+        .bg-dark { background: #111; border: 1px solid #333; }
+        .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; }
+        .bg-cyan { background: var(--cyan); color: #000; }
+        .bg-maps { background: linear-gradient(90deg, #4285F4, #34A853); }
+        .bg-whatsapp { background: var(--wa-green); box-shadow: 0 0 20px rgba(37, 211, 102, 0.3); }
+
+        /* TARJETAS GLASSMORPHISM */
+        .glass-card {
+            background: rgba(255,255,255,0.04); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            padding: 20px; margin: 15px 0; width: 100%; box-sizing: border-box;
         }
-        .main-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: none;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
+
+        /* GRID CENTRADO */
+        .sector-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin: 15px 0; 
         }
-        .btn-purple { background-color: #a020f0; }
-        .btn-red { background-color: #d32f2f; }
-        .btn-orange { background-color: #ff9800; }
-        .btn-whatsapp { 
-            background-color: #25d366; 
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+        .sector-btn { 
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 15px; border-radius: 14px; text-decoration: none; 
+            font-weight: 700; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;
         }
-        .academic-center {
-            background-color: #111;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            border: 1px solid #222;
-        }
-        .lang-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .btn-lang {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 10px;
-            border-radius: 8px;
-        }
-        .btn-ai {
-            background-color: #00f2ff;
-            color: #000;
-            width: 100%;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        .testimonial {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-align: left;
-            margin: 15px 0;
-        }
-        .testimonial img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-        .testimonial p {
-            font-size: 12px;
-            font-style: italic;
-            margin: 0;
-        }
-        .sector-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .btn-sector {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        footer {
-            font-size: 10px;
-            color: #555;
-            margin-top: 30px;
-            line-height: 1.5;
-        }
+
+        .testimonial { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; text-align: left; }
+        .avatar { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--cyan); object-fit: cover; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header-badge">
-        <img src="https://flagcdn.com/w20/tr.png" width="20"> 
-        ARJANTİN - TÜRKİYE İŞ BİRLİĞİ 
-        <img src="https://flagcdn.com/w20/ar.png" width="20">
+    <div id="splash-screen">
+        <div style="width: 140px; height: 140px; border: 3px solid var(--cyan); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 900; box-shadow: 0 0 30px var(--cyan); animation: pulse 2s infinite;">NEURAL<br>FOCUS AI</div>
     </div>
 
-    <h1>NEURAL FOCUS AI</h1>
-
-    <div class="video-container">
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/TU_ID_AQUI" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <a href="https://www.google.com/maps?q=Estambul,Turquia" target="_blank" class="maps-button">
-        📍 KONUM / GLOBAL OFFICE (MAPS)
-    </a>
-
-    <a href="#" class="main-button btn-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-    <a href="#" class="main-button btn-red">🚨 ACİL YARDIM ÇAĞIR (112)</a>
-    <a href="#" class="main-button btn-orange">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
-
-    <div class="academic-center">
-        <p style="color: #00f2ff; font-weight: bold; margin-bottom: 15px;">AKADEMİK MERKEZ</p>
-        <div class="lang-grid">
-            <button class="btn-lang">🇪🇸 İspanyolca</button>
-            <button class="btn-lang">🇬🇧 İngilizce</button>
+    <div id="main-content">
+        
+        <div class="reveal" style="background: rgba(0,255,255,0.15); padding: 8px 15px; border-radius: 30px; margin: 10px 0; border: 1px solid var(--cyan); display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content;">
+            <img src="https://flagcdn.com/w40/tr.png" width="20">
+            <span style="font-size: 0.65rem; font-weight: 900; letter-spacing: 1px;">ARJANTİN - TÜRKİYE İŞ BİRLİĞİ</span>
+            <img src="https://flagcdn.com/w40/ar.png" width="20">
         </div>
-        <button class="btn-ai">🤖 YAPAY ZEKA KURSU</button>
-    </div>
 
-    <a href="#" class="main-button btn-whatsapp">📲 UYGULAMAYI WHATSAPP İLE PAYLAŞ</a>
+        <h1 class="reveal" style="font-size: 1.8rem; color: var(--cyan); margin: 15px 0; text-shadow: 0 0 15px var(--cyan); letter-spacing: 2px;">NEURAL FOCUS AI</h1>
 
-    <div class="testimonial">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmet">
-        <div>
-            <p>"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
-            <small style="color: #00f2ff;">Ahmet Yılmaz, Sağlık Grubu</small>
+        <div class="reveal glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-    </div>
 
-    <div class="testimonial">
-        <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Caner">
-        <div>
-            <p>"Sanayi projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
-            <small style="color: #00f2ff;">Caner Öztürk, Sanayi Müdürü</small>
+        <div class="reveal">
+            <a href="https://maps.app.goo.gl/YourLocationLink" target="_blank" class="btn-premium bg-maps">
+                📍 KONUM / GLOBAL OFFICE (MAPS)
+            </a>
         </div>
+
+        <div class="reveal">
+            <a href="https://translate.google.com/?sl=tr&tl=es" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+            <a href="tel:112" class="btn-premium bg-dark" style="color: #ff4b2b; border-color: #ff4b2b;">🚨 ACİL YARDIM ÇAĞIR (112)</a>
+            <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+        </div>
+
+        <div class="reveal glass-card">
+            <h3 style="font-size: 0.8rem; color: var(--cyan); margin-bottom: 15px; letter-spacing: 1px;">AKADEMİK MERKEZ</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <a href="https://www.youtube.com/results?search_query=ispanyolca+dersleri" class="sector-btn">🇪🇸 İspanyolca</a>
+                <a href="https://www.youtube.com/results?search_query=ingilizce+dersleri" class="sector-btn">🇬🇧 İngilizce</a>
+            </div>
+            <a href="https://www.youtube.com/results?search_query=yapay+zeka+egitimi" class="btn-premium bg-cyan" style="margin-top: 15px;">🤖 YAPAY ZEKA KURSU</a>
+        </div>
+
+        <div class="reveal">
+            <button onclick="shareApp()" class="btn-premium bg-whatsapp">
+                📲 UYGULAMAYI WHATSAPP İLE PAYLAŞ
+            </button>
+        </div>
+
+        <div class="reveal glass-card">
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/100?img=11" class="avatar">
+                <div>
+                    <p style="font-size: 0.75rem; font-style: italic; margin: 0;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
+                    <p style="font-size: 0.6rem; color: var(--cyan); margin-top: 4px;">Ahmet Yılmaz, Sağlık Grubu</p>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/100?img=12" class="avatar">
+                <div>
+                    <p style="font-size: 0.75rem; font-style: italic; margin: 0;">"Sanayi projelerimizde 24/7 canlı yaşam ajanı ile operasyonları hızlandırdık."</p>
+                    <p style="font-size: 0.6rem; color: var(--cyan); margin-top: 4px;">Caner Öztürk, Sanayi Müdürü</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal sector-grid">
+            <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" class="sector-btn">🏥 Sağlık</a>
+            <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" class="sector-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" class="sector-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" class="sector-btn">🏗️ İnşaat</a>
+        </div>
+
+        <footer class="reveal">
+            © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
+            Istanbul - Buenos Aires Excellence<br>
+            Smart Voice & Life Agent Solutions
+        </footer>
     </div>
 
-    <div class="sector-grid">
-        <div class="btn-sector">🏥 Sağlık</div>
-        <div class="btn-sector">🍲 Gastronomi</div>
-        <div class="btn-sector">🏭 Sanayi</div>
-        <div class="btn-sector">🏗️ İnşaat</div>
-    </div>
+    <script src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
+    <script>
+        function shareApp() {
+            const url = window.location.href;
+            const text = encodeURIComponent(
+                "🚀 Neural Focus AI İnovasyonuna Göz Atın!\n\n" +
+                "Sağlık, Gastronomi ve Sanayi için 7/24 Akıllı Ses ve Yaşam Ajanları. Arjantin-Türkiye iş birliği! 🇦🇷🇹🇷\n\n" +
+                "Explore: " + url
+            );
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
 
-    <footer>
-        © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
-        Istanbul - Buenos Aires Excellence<br>
-        Smart Voice & Life Agent Solutions
-    </footer>
-</div>
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('splash-screen').style.display = 'none';
+                    document.getElementById('main-content').style.opacity = '1';
+                    document.querySelectorAll('.reveal').forEach((el, i) => {
+                        setTimeout(() => el.classList.add('active'), i * 150);
+                    });
+                }, 600);
+            }, 2500);
+        };
 
+        var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3290254-63C2C0W1J4D7S20O/index.json',
+        });
+    </script>
 </body>
-            </html>
-                                            
+</html>
