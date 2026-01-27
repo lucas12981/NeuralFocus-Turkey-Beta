@@ -28,10 +28,9 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* SISTEMA DE NAVEGACIÓN POR PESTAÑAS */
         .tab-bar {
             display: flex; width: 100%; background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(15px); sticky: top; top: 0; z-index: 1000;
+            backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(0,255,255,0.2);
         }
         .tab-item {
@@ -45,7 +44,6 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* SPLASH SCREEN CON SALUDO */
         #splash-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; flex-direction: column;
@@ -57,21 +55,20 @@
             border-radius: 50%; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; font-weight: 900; box-shadow: 0 0 30px var(--cyan); animation: pulse 2s infinite;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        /* BOTONES Y TARJETAS (MANTENIENDO TU DISEÑO) */
         .btn-premium {
             width: 100%; padding: 16px; border-radius: 14px; border: none;
             color: #fff; font-weight: 800; text-transform: uppercase;
             margin: 10px 0; cursor: pointer; display: flex; align-items: center; 
             justify-content: center; text-decoration: none; font-size: 0.8rem;
-            box-sizing: border-box;
+            box-sizing: border-box; transition: 0.3s;
         }
+
         .bg-maps { background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853); }
         .bg-purple { background: linear-gradient(90deg, #6a00ff, var(--purple)); }
         .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; }
-        .bg-fizy { background: linear-gradient(90deg, #00d2ff, #3a7bd5); } /* Fizy Style */
-        .bg-challenge { background: linear-gradient(90deg, #f80759, #bc1272); }
+        .bg-fizy { background: linear-gradient(90deg, #00d2ff, #3a7bd5); }
+        .bg-fal { background: linear-gradient(135deg, #6a00ff, #bc13fe); box-shadow: 0 0 15px rgba(188, 19, 254, 0.4); border: 1px solid var(--cyan); }
         .bg-cyan { background: var(--cyan); color: #000; }
         .bg-whatsapp { background: var(--wa-green); }
 
@@ -86,7 +83,6 @@
             background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
             color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.7rem;
         }
-        .avatar { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--cyan); object-fit: cover; }
     </style>
 </head>
 <body>
@@ -117,9 +113,8 @@
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <a href="http://googleusercontent.com/maps.google.com/5" target="_blank" class="btn-premium bg-maps">📍 KONUM / GLOBAL OFFICE</a>
+        <a href="http://googleusercontent.com/maps.google.com/7" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
         <a href="https://translate.google.com/?sl=tr&tl=es" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-        <a href="tel:112" class="btn-premium" style="background: #111; border: 1px solid #ff4b2b; color: #ff4b2b;">🚨 ACİL YARDIM ÇAĞIR (112)</a>
         <a href="https://www.turkiye.gov.tr/" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
         <div class="sector-grid" style="margin-top: 15px;">
@@ -131,7 +126,7 @@
     </div>
 
     <div id="academy" class="tab-content">
-        <h2 style="color: var(--cyan);">AKADEMİK MERKEZ</h2>
+        <h2 style="color: var(--cyan);">ACADEMY</h2>
         <div class="glass-card">
             <a href="#" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSU</a>
             <div class="sector-grid" style="margin-top: 10px;">
@@ -139,22 +134,21 @@
                 <a href="#" class="sector-btn">🇬🇧 İngilizce</a>
             </div>
         </div>
-        
-        <div class="glass-card" style="text-align: left;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                <img src="https://i.pravatar.cc/100?img=11" class="avatar">
-                <p style="font-size: 0.7rem; font-style: italic;">"Sağlık randevularımızda yapay zeka asistanı %100 doğrulukla çalışıyor."</p>
-            </div>
-        </div>
     </div>
 
     <div id="lifestyle" class="tab-content">
         <h2 style="color: #bc13fe;">LIFESTYLE 🔥</h2>
-        <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">Gençler için günlük araçlar.</p>
-        
         <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
-        <a href="#" class="btn-premium bg-challenge">🔥 IA SELFIE CHALLENGE</a>
         
+        <button onclick="startAiFal()" class="btn-premium bg-fal">
+            ☕ YAPAY ZEKA KAHVE FALI (ÜCRETSİZ)
+        </button>
+
+        <div id="fal-display" style="display:none;" class="glass-card">
+            <h3 style="color: var(--gold); font-size: 0.9rem;">🔮 FALINIZ ÇIKTI:</h3>
+            <p id="fal-text" style="font-size: 0.8rem; line-height: 1.5; color: #fff;"></p>
+        </div>
+
         <div class="glass-card">
             <button onclick="shareApp()" class="btn-premium bg-whatsapp">📲 UYGULAMAYI PAYLAŞ</button>
         </div>
@@ -162,28 +156,43 @@
 
     <footer style="font-size: 0.6rem; color: #444; padding: 20px 0;">
         © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
-        Istanbul - Buenos Aires Excellence<br>
-        Smart Voice & Life Agent Solutions
+        Istanbul - Buenos Aires Excellence
     </footer>
 
     <script>
-        // SALUDOS DINÁMICOS (GÜNAYDIN, İYİ GÜNLER, İYİ AKŞAMLAR)
         const hours = new Date().getHours();
-        let greeting = "MERHABA";
-        if (hours >= 5 && hours < 12) greeting = "GÜNAYDIN";
-        else if (hours >= 12 && hours < 18) greeting = "İYİ GÜNLER";
-        else greeting = "İYİ AKŞAMLAR";
+        let greeting = (hours >= 5 && hours < 12) ? "GÜNAYDIN" : (hours >= 12 && hours < 18) ? "İYİ GÜNLER" : "İYİ AKŞAMLAR";
         document.getElementById('greeting-text').innerText = greeting;
 
-        // FUNCIÓN DE PESTAÑAS
         function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
-            tablinks = document.getElementsByClassName("tab-item");
-            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // LÓGICA DE LA FUNCIÓN DIARIA: LECTURA DE CAFÉ (FAL)
+        function startAiFal() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.capture = 'environment'; // Abre la cámara trasera para la taza
+            
+            input.onchange = (e) => {
+                const falYorumlari = [
+                    "Kısmetin teknoloji sektöründe! Neural Focus ile büyük bir iş birliği görünüyor. 🚀",
+                    "Yolların açılıyor! Gastronomi dünyasında dijital bir devrim yapacaksın. 🍲",
+                    "Yüzyüze bir görüşme var, bu kişi sana yapay zeka ile ilgili bir kapı açacak. 🤖",
+                    "Sağlık ve huzur dolu bir dönem başlıyor. Yeniliklere hazır ol! 🏥",
+                    "Sanayi ve inşaat projelerinde yıldızın parlayacak, hazırlıklı ol! 🏗️"
+                ];
+                const res = falYorumlari[Math.floor(Math.random() * falYorumlari.length)];
+                
+                document.getElementById('fal-display').style.display = 'block';
+                document.getElementById('fal-text').innerText = res;
+                alert("Yapay Zeka fincanınızı analiz etti... İşte sonucunuz!");
+            };
+            input.click();
         }
 
         function shareApp() {
@@ -194,9 +203,10 @@
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
-                setTimeout(() => { document.getElementById('splash-screen').style.display = 'none'; }, 800);
+                setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 800);
             }, 2500);
         };
     </script>
 </body>
-</html>
+                </html>
+                
