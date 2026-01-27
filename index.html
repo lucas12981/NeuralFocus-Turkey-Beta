@@ -128,7 +128,6 @@
 
         <a href="https://www.google.com/maps" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
         <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-        
         <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
 
         <div class="sector-grid" style="margin-top: 15px;">
@@ -174,7 +173,6 @@
     </footer>
 
     <script>
-        // Saludo y Splash rápido
         document.getElementById('greeting-text').innerText = (new Date().getHours() < 12) ? "Günaydın" : "İyi Günler";
         
         function openTab(evt, tabName) {
@@ -184,7 +182,6 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // Función Lira Turca
         function convertTRY() {
             const usd = document.getElementById('usdInput').value;
             const res = document.getElementById('tryOutput');
@@ -192,7 +189,7 @@
         }
 
         function startAiFal() {
-            alert("Análisis de café iniciado...");
+            alert("Analizando tu café...");
             document.getElementById('fal-display').style.display = 'block';
             document.getElementById('fal-text').innerText = "Kısmetin teknoloji sektöründe! Neural Focus ile büyük bir iş birliği görünüyor. 🚀";
         }
@@ -205,9 +202,9 @@
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
-            }, 1500); // Solo 1.5 segundos de espera
+            }, 1000); // 1 segundo para rapidez máxima
         };
     </script>
 </body>
                 </html>
-                
+    
