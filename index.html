@@ -28,7 +28,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ANIMACIÓN DE TITILEO DEL LOGO */
         @keyframes logoPulse {
             0% { box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); transform: scale(1); opacity: 0.8; }
             50% { box-shadow: 0 0 45px var(--cyan), 0 0 80px rgba(0,255,255,0.4); border-color: #fff; transform: scale(1.05); opacity: 1; }
@@ -92,6 +91,23 @@
             color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.7rem;
             display: flex; align-items: center; justify-content: center;
         }
+
+        /* ESTILO PARA EL CONVERSOR */
+        .converter-container {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .converter-input {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--cyan);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+        }
         
         .counter-badge {
             background: rgba(0, 255, 255, 0.1); color: var(--cyan);
@@ -120,10 +136,18 @@
         <div class="glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc" frameborder="0" allowfullscreen></iframe>
         </div>
+        
+        <div class="glass-card">
+            <h3 style="color: var(--gold); font-size: 0.8rem; margin-top:0;">CURRENCY CONVERTER (USD to TRY)</h3>
+            <div class="converter-container">
+                <input type="number" id="usdAmount" class="converter-input" placeholder="Amount in USD" oninput="convertToLira()">
+                <div id="liraResult" style="color: var(--cyan); font-weight: bold; font-size: 1.1rem;">₺ 0.00 TRY</div>
+            </div>
+        </div>
+
         <a href="https://www.google.com/maps" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
         <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
-        <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
-
+        
         <div class="sector-grid" style="margin-top: 15px;">
             <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" target="_blank" class="sector-btn">🏥 Sağlık</a>
             <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" target="_blank" class="sector-btn">🍲 Gastronomi</a>
@@ -164,13 +188,13 @@
         </div>
     </div>
 
-    <footer style="font-size: 0.6rem; color: #444; padding: 20px 0;">
+    <footer style="font-size: 0.65rem; color: #666; padding: 20px 0; line-height: 1.4;">
         © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
-        Istanbul - Buenos Aires Excellence
+        <span style="color: var(--cyan);">Hizmetlerimiz:</span> Voz Inteligente (24/7 Yazılı Çözüm) & Agente de Vida (24/7 Canlı Etkileşim)<br>
+        Sağlık ve Gastronomi Sektörlerinde Küresel İş Birliği
     </footer>
 
     <script>
-        // Saludo dinámico automático
         const hours = new Date().getHours();
         let greeting = (hours >= 5 && hours < 12) ? "Günaydın" : (hours >= 12 && hours < 18) ? "İyi Günler" : "İyi Akşamlar";
         document.getElementById('greeting-text').innerText = greeting;
@@ -180,6 +204,19 @@
             document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
             evt.currentTarget.classList.add('active');
+        }
+
+        // FUNCIÓN DE CONVERSIÓN LIRA TURCA
+        function convertToLira() {
+            const usd = document.getElementById('usdAmount').value;
+            const rate = 30.25; // Tasa referencial 2026
+            const resultElement = document.getElementById('liraResult');
+            if(usd > 0) {
+                const total = (usd * rate).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
+                resultElement.innerText = `₺ ${total} TRY`;
+            } else {
+                resultElement.innerText = `₺ 0.00 TRY`;
+            }
         }
 
         function startAiFal() {
@@ -211,9 +248,9 @@
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 800);
-            }, 3000); // Mantiene el logo titilando 3 segundos antes de entrar
+            }, 3000);
         };
     </script>
 </body>
-                    </html>
-                    
+            </html>
+    
