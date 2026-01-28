@@ -163,7 +163,7 @@
         <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
         
         <button onclick="startAiFal()" class="btn-premium bg-fal">☕ YAPAY ZEKA KAHVE FALI</button>
-        <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="processFal()">
+        <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="processFal(event)">
         
         <div id="fal-display" style="display:none;" class="glass-card">
             <h3 style="color: var(--gold); font-size: 0.9rem;">🔮 FALINIZ ÇIKTI:</h3>
@@ -195,7 +195,7 @@
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
-            evt.currentTarget.classList.add('active');
+            if(evt) evt.currentTarget.classList.add('active');
         }
 
         function convertTRY() {
@@ -207,9 +207,16 @@
             document.getElementById('cameraInput').click();
         }
 
-        function processFal() {
+        function processFal(event) {
+            // Evitamos que el navegador recargue o pierda el foco
+            if(event) event.preventDefault();
+            
             const display = document.getElementById('fal-display');
             const text = document.getElementById('fal-text');
+            
+            // Forzamos que se mantenga en la pestaña Lifestyle
+            openTab(null, 'lifestyle');
+            
             display.style.display = 'block';
             text.innerText = "Yapay Zeka fincanınızı analiz ediyor...";
             
@@ -221,13 +228,16 @@
                     nameTag + "yaratıcılığın zirvede olduğu bir dönemdesin, hayallerin gerçeğe dönüşecek. 🌟",
                     nameTag + "iç huzurun artacağı, sevdiklerinle mutlu anlar yaşayacağın bir zaman başlıyor. 😊",
                     nameTag + "kariyerinde ve eğitiminde parlayacağın, başarı dolu adımlar seni bekliyor. 🎓",
-                    nameTag + "sağlık ve esenlik dolu, huzurlu bir gelecek fincanında görünüyor. 🏥",
+                    nameTag + "sağlık yolların temiz, huzur dolu bir periodo başlıyor. 🏥",
                     nameTag + "beklenmedik sürprizlerle dolu, neşe verici bir yolculuğa çıkabilirsin. ✈️",
                     nameTag + "azimle attığın her adım seni hayal ettiğin o büyük başarıya ulaştıracak. 💪",
                     nameTag + "çevrendeki insanların desteğiyle her zorluğu kolayca aşacaksın. 🤝",
                     nameTag + "yıldızın hiç olmadığı kadar parlak, bugün senin günün olsun! 🌠"
                 ];
                 text.innerText = res[Math.floor(Math.random() * res.length)];
+                
+                // Scroll suave hacia el resultado para que el usuario lo vea
+                display.scrollIntoView({ behavior: 'smooth' });
             }, 2500);
         }
 
@@ -244,5 +254,5 @@
         };
     </script>
 </body>
-    </html>
-            
+            </html>
+                
