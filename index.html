@@ -108,9 +108,9 @@
     </div>
 
     <div class="tab-bar">
-        <div class="tab-item active" onclick="openTab(event, 'business')">🏢 BUSINESS</div>
-        <div class="tab-item" onclick="openTab(event, 'academy')">🎓 ACADEMY</div>
-        <div class="tab-item" onclick="event.preventDefault(); openTab(event, 'lifestyle')">🔥 LIFESTYLE</div>
+        <div id="btn-business" class="tab-item active" onclick="openTab('business')">🏢 BUSINESS</div>
+        <div id="btn-academy" class="tab-item" onclick="openTab('academy')">🎓 ACADEMY</div>
+        <div id="btn-lifestyle" class="tab-item" onclick="openTab('lifestyle')">🔥 LIFESTYLE</div>
     </div>
 
     <div id="business" class="tab-content active">
@@ -191,11 +191,12 @@
             localStorage.setItem('neuralName', userName);
         }
 
-        function openTab(evt, tabName) {
+        function openTab(tabName) {
+            localStorage.setItem('lastTab', tabName);
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
-            if(evt) evt.currentTarget.classList.add('active');
+            document.getElementById('btn-' + tabName).classList.add('active');
         }
 
         function convertTRY() {
@@ -204,18 +205,13 @@
         }
 
         function startAiFal() {
+            localStorage.setItem('processingFal', 'true');
             document.getElementById('cameraInput').click();
         }
 
         function processFal(event) {
-            // Evitamos que el navegador recargue o pierda el foco
-            if(event) event.preventDefault();
-            
             const display = document.getElementById('fal-display');
             const text = document.getElementById('fal-text');
-            
-            // Forzamos que se mantenga en la pestaña Lifestyle
-            openTab(null, 'lifestyle');
             
             display.style.display = 'block';
             text.innerText = "Yapay Zeka fincanınızı analiz ediyor...";
@@ -235,18 +231,28 @@
                     nameTag + "yıldızın hiç olmadığı kadar parlak, bugün senin günün olsun! 🌠"
                 ];
                 text.innerText = res[Math.floor(Math.random() * res.length)];
-                
-                // Scroll suave hacia el resultado para que el usuario lo vea
+                localStorage.removeItem('processingFal');
                 display.scrollIntoView({ behavior: 'smooth' });
             }, 2500);
         }
 
         function shareApp() {
-            const text = encodeURIComponent("Neural Focus AI: Arjantinli bir girişimciden Türkiye'ye teknolojik hediye! Kahve falı, E-Devlet ve eğitim burada. Hemen dene: https://lucas12981.github.io/NeuralFocus-Turkey-Beta/");
+            const text = encodeURIComponent("Neural Focus AI: Arjantinli bir girişimciden Türkiye'ye teknolojik hediye! Kahve falı, E-Devlet y eğitimi burada. Hemen dene: https://lucas12981.github.io/NeuralFocus-Turkey-Beta/");
             window.open('https://wa.me/?text=' + text, '_blank');
         }
 
         window.onload = () => {
+            // RECUPERACIÓN DE ESTADO SI EL NAVEGADOR SE REINICIÓ
+            const lastTab = localStorage.getItem('lastTab');
+            const isProcessing = localStorage.getItem('processingFal');
+
+            if (isProcessing === 'true' || lastTab === 'lifestyle') {
+                openTab('lifestyle');
+                if (isProcessing === 'true') processFal();
+            } else if (lastTab) {
+                openTab(lastTab);
+            }
+
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
@@ -254,5 +260,5 @@
         };
     </script>
 </body>
-            </html>
-                
+                </html>
+            
