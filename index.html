@@ -7,43 +7,74 @@
     
     <style>
         :root { 
-            --cyan: #00FFFF; --purple: #bc13fe; --wa-green: #25D366; --gold: #FFD700;
+            --cyan: #00FFFF; 
+            --purple: #bc13fe; 
+            --wa-green: #25D366;
+            --gold: #FFD700;
         }
         
         body { 
             background: linear-gradient(135deg, #000000 0%, #001f1f 50%, #050505 100%);
-            background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0;
-            display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden; text-align: center; min-height: 100vh;
         }
 
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
         #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000;
-            display: flex; justify-content: center; align-items: center; z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .splash-circle {
+            width: 170px; height: 170px; border: 3px solid var(--cyan); 
+            border-radius: 50%; display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; font-weight: 900; 
+            animation: logoPulse 1.2s infinite ease-in-out;
+        }
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 15px var(--cyan); transform: scale(1); }
+            50% { box-shadow: 0 0 35px var(--cyan); transform: scale(1.05); }
         }
 
         .tab-bar {
-            display: flex; width: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px);
-            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,255,255,0.2);
+            display: flex; width: 100%; background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,255,255,0.2);
         }
-        .tab-item { flex: 1; padding: 15px 5px; font-size: 0.65rem; font-weight: 900; color: #555; cursor: pointer; }
-        .tab-item.active { color: var(--cyan); border-bottom: 2px solid var(--cyan); }
+        .tab-item {
+            flex: 1; padding: 15px 5px; font-size: 0.65rem; font-weight: 900;
+            color: #555; cursor: pointer; transition: 0.3s;
+        }
+        .tab-item.active { color: var(--cyan); border-bottom: 2px solid var(--cyan); text-shadow: 0 0 10px var(--cyan); }
 
         .tab-content { display: none; width: 92%; max-width: 380px; padding: 20px 0 80px 0; }
-        .tab-content.active { display: flex; flex-direction: column; align-items: center; }
+        .tab-content.active { display: flex; flex-direction: column; align-items: center; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .btn-premium {
-            width: 100%; padding: 16px; border-radius: 14px; border: none; color: #fff;
-            font-weight: 800; text-transform: uppercase; margin: 10px 0; text-decoration: none;
-            display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+            width: 100%; padding: 16px; border-radius: 14px; border: none;
+            color: #fff; font-weight: 800; text-transform: uppercase;
+            margin: 10px 0; cursor: pointer; display: flex; align-items: center; 
+            justify-content: center; text-decoration: none; font-size: 0.8rem;
+            box-sizing: border-box; transition: 0.3s;
         }
 
         .bg-maps { background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853); }
         .bg-purple { background: linear-gradient(90deg, #6a00ff, var(--purple)); }
         .bg-gold { background: linear-gradient(90deg, #ffcc00, #ff9900); color: #000; }
+        .bg-fizy { background: linear-gradient(90deg, #00d2ff, #3a7bd5); }
         .bg-fal { background: linear-gradient(135deg, #6a00ff, #bc13fe); border: 1px solid var(--cyan); }
+        .bg-cyan { background: var(--cyan); color: #000; }
+        .bg-whatsapp { background: var(--wa-green); }
         .bg-cay { background: linear-gradient(90deg, #d32f2f, #b71c1c); }
 
         .glass-card {
@@ -59,13 +90,21 @@
             display: flex; align-items: center; justify-content: center;
         }
 
-        .lira-box { background: rgba(0, 255, 255, 0.05); border: 1px solid var(--cyan); border-radius: 12px; padding: 10px; margin: 10px 0; width: 100%; }
+        .lira-box {
+            background: rgba(0, 255, 255, 0.05); border: 1px solid var(--cyan);
+            border-radius: 12px; padding: 10px; margin: 10px 0; width: 100%;
+        }
+        
+        input::placeholder { color: rgba(255,255,255,0.3); }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <div style="color: var(--cyan); font-weight: 900; font-size: 1.2rem;">NEURAL FOCUS AI</div>
+        <div class="splash-circle">
+            <span id="greeting-text" style="font-size: 0.8rem; color: #fff; margin-bottom: 5px; text-transform: uppercase;"></span>
+            <span style="color: var(--cyan); font-size: 1.2rem; letter-spacing: 1px;">NEURAL<br>FOCUS AI</span>
+        </div>
     </div>
 
     <div class="tab-bar">
@@ -75,71 +114,103 @@
     </div>
 
     <div id="business" class="tab-content active">
-        <h1 style="color: var(--cyan);">NEURAL FOCUS AI</h1>
-        <div class="lira-box">
-            <input type="text" id="userName" placeholder="Adınızı girin" oninput="saveName()" style="background:transparent; border:none; color:white; text-align:center; width:100%; outline:none; font-weight:bold;">
+        <h1 style="font-size: 1.7rem; color: var(--cyan); margin: 10px 0;">NEURAL FOCUS AI</h1>
+        
+        <div class="lira-box" style="border-color: var(--purple);">
+            <input type="text" id="userName" placeholder="Adınızı girin (İsim)" oninput="saveName()" style="background:transparent; border:none; color:white; text-align:center; width:100%; outline:none; font-weight:bold;">
         </div>
+
         <div class="glass-card" style="padding: 0; overflow: hidden; aspect-ratio: 16/9; border: 2px solid var(--cyan);">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X-FWm-NHEBc?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
         </div>
-        <a href="https://www.google.com/maps" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE</a>
-        <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN</a>
+
+        <div class="lira-box">
+            <div style="display:flex; justify-content: space-around; font-size: 0.6rem; color: var(--gold); margin-bottom:5px;">
+                <span>USD/TRY: 30.25 🟢</span>
+                <span>ALTIN (GR): 2045 🟡</span>
+            </div>
+            <input type="number" id="usdInput" placeholder="USD Miktar" oninput="convertTRY()" style="background:transparent; border:none; border-bottom:1px solid var(--cyan); color:white; text-align:center; width:80px; outline:none;">
+            <span id="tryOutput" style="font-weight:bold; color:var(--cyan); margin-left:10px;">₺ 0.00</span>
+        </div>
+
+        <a href="https://www.google.com/maps" target="_blank" class="btn-premium bg-maps">📍 GLOBAL OFFICE (MAPS)</a>
+        <a href="https://translate.google.com/?sl=tr&tl=es" target="_blank" class="btn-premium bg-purple">🌍 AKILLI ÇEVİRMEN (TR-ES)</a>
+        <a href="https://www.turkiye.gov.tr/" target="_blank" class="btn-premium bg-gold">🏛️ E-DEVLET & BİLGİ REHBERİ</a>
+
         <div class="sector-grid">
             <a href="https://chat.whatsapp.com/FPplgqnE2NiHmahVJXCic2" target="_blank" class="sector-btn">🏥 Sağlık</a>
             <a href="https://chat.whatsapp.com/KQBkGZhDnJt2vxk7x5VdRI" target="_blank" class="sector-btn">🍲 Gastronomi</a>
+            <a href="https://chat.whatsapp.com/IsvihivL7Bb0uwEV4ALIb5" target="_blank" class="sector-btn">🏭 Sanayi</a>
+            <a href="https://chat.whatsapp.com/CPddy8AAILL2uSaTcRpHj1" target="_blank" class="sector-btn">🏗️ İnşaat</a>
         </div>
     </div>
 
     <div id="academy" class="tab-content">
         <h2 style="color: var(--cyan);">ACADEMY</h2>
-        <a href="https://www.coursera.org/" target="_blank" class="btn-premium bg-purple">🤖 YAPAY ZEKA KURSLARI</a>
+        <div class="glass-card">
+            <a href="https://www.coursera.org/courses?query=artificial%20intelligence" target="_blank" class="btn-premium bg-cyan">🤖 YAPAY ZEKA KURSLARI</a>
+            <div class="sector-grid" style="margin-top: 10px;">
+                <a href="https://www.saylor.org/course/span101/" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇪🇸 İspanyolca</a>
+                <a href="https://www.saylor.org/course/engl000/" target="_blank" class="sector-btn" style="border:1px solid var(--cyan);">🇬🇧 İngilizce</a>
+            </div>
+        </div>
     </div>
 
     <div id="lifestyle" class="tab-content">
         <h2 style="color: #bc13fe;">LIFESTYLE 🔥</h2>
+        <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
+        
         <button onclick="startAiFal()" class="btn-premium bg-fal">☕ YAPAY ZEKA KAHVE FALI</button>
         <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="processFal()">
         
         <div id="fal-display" style="display:none;" class="glass-card">
-            <h3 style="color: var(--gold);">🔮 FALINIZ:</h3>
-            <p id="fal-text" style="font-size: 0.85rem;"></p>
+            <h3 style="color: var(--gold); font-size: 0.9rem;">🔮 FALINIZ ÇIKTI:</h3>
+            <p id="fal-text" style="font-size: 0.8rem; line-height: 1.4;"></p>
         </div>
         
+        <button onclick="shareApp()" class="btn-premium bg-whatsapp">📲 UYGULAMAYI PAYLAŞ</button>
         <a href="https://wa.me/5492246496971?text=Merhaba%20Lucas!" target="_blank" class="btn-premium bg-cay">☕ BİR ÇAY ISMARLA (İLETİŞİM)</a>
     </div>
 
-    <footer style="font-size: 0.6rem; color: #555; padding: 20px;">
+    <footer style="font-size: 0.6rem; color: #555; padding: 20px; line-height: 1.5;">
         © 2026 LUCAS GUZMÁN | NEURAL FOCUS AI<br>
-        Servisler: Voz Inteligente & Agente de Vida 24/7.
+        <b>Servisler:</b> Voz Inteligente (Yazılı 24/7) & Agente de Vida (Live 24/7)<br>
+        Sağlık, Gastronomi, Sanayi ve İnşaat Sektörleri.
     </footer>
 
     <script>
         let userName = localStorage.getItem('neuralName') || "";
         if(userName) document.getElementById('userName').value = userName;
 
+        const hours = new Date().getHours();
+        document.getElementById('greeting-text').innerText = (hours < 12) ? "Günaydın" : (hours < 18 ? "İyi Günler" : "İyi Akşamlar");
+        
         function saveName() {
             userName = document.getElementById('userName').value;
             localStorage.setItem('neuralName', userName);
         }
 
         function openTab(tabName) {
+            localStorage.setItem('lastTab', tabName);
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
             document.getElementById('btn-' + tabName).classList.add('active');
         }
 
+        function convertTRY() {
+            const usd = document.getElementById('usdInput').value;
+            document.getElementById('tryOutput').innerText = usd > 0 ? "₺ " + (usd * 30.25).toFixed(2) : "₺ 0.00";
+        }
+
         function startAiFal() {
-            // Limpiamos cualquier rastro anterior para liberar memoria
-            document.getElementById('cameraInput').value = "";
+            localStorage.setItem('processingFal', 'true');
             document.getElementById('cameraInput').click();
         }
 
         function processFal() {
             const display = document.getElementById('fal-display');
             const text = document.getElementById('fal-text');
-            
-            // Liberación inmediata: no leemos el archivo, solo detectamos la acción
             display.style.display = 'block';
             text.innerText = "Yapay Zeka fincanınızı analiz ediyor...";
             
@@ -147,20 +218,39 @@
                 const nameTag = userName ? "Sevgili " + userName + ", " : "";
                 const res = [
                     nameTag + "hayatında yeni ve aydınlık bir sayfa açılıyor! ✨",
-                    nameTag + "beklediğin güzel haberler kapıda! 🍀",
-                    nameTag + "yaratıcılığın zirvesinde olduğun bir dönemdesin. 🌟",
-                    nameTag + "iç huzurun artacağı mutlu anlar başlıyor. 😊",
-                    nameTag + "yıldızın hiç olmadığı kadar parlak! 🌠"
+                    nameTag + "beklediğin güzel haberler kapıda, şansın artıyor! 🍀",
+                    nameTag + "yaratıcılığın zirvesinde olduğun bir dönemdesin! 🌟",
+                    nameTag + "iç huzurun artacağı harika bir zaman başlıyor! 😊",
+                    nameTag + "yıldızın hiç olmadığı kadar parlak, bugün senin günün! 🌠"
                 ];
                 text.innerText = res[Math.floor(Math.random() * res.length)];
+                localStorage.removeItem('processingFal');
                 display.scrollIntoView({ behavior: 'smooth' });
-            }, 1000);
+            }, 2000);
+        }
+
+        function shareApp() {
+            const text = encodeURIComponent("Neural Focus AI: Arjantinli bir girişimciden Türkiye'ye teknolojik hediye! Hemen dene: https://lucas12981.github.io/NeuralFocus-Turkey-Beta/");
+            window.open('https://wa.me/?text=' + text, '_blank');
         }
 
         window.onload = () => {
-            setTimeout(() => { document.getElementById('splash-screen').style.display = 'none'; }, 1000);
+            const isProcessing = localStorage.getItem('processingFal');
+            const lastTab = localStorage.getItem('lastTab');
+            
+            if (isProcessing === 'true') {
+                openTab('lifestyle');
+                processFal();
+            } else if (lastTab) {
+                openTab(lastTab);
+            }
+
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.opacity = '0';
+                setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
+            }, 1500);
         };
     </script>
 </body>
-            </html>
-                
+                </html>
+    
