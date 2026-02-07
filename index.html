@@ -6,7 +6,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-KXB18T4285');
     </script>
 
@@ -107,6 +106,12 @@
         
         input::placeholder { color: rgba(255,255,255,0.3); }
         #loading-ai { display: none; color: var(--cyan); font-weight: bold; margin: 10px 0; font-size: 0.8rem; }
+
+        .neural-input {
+            background: rgba(255,255,255,0.1); border: 1px solid var(--cyan);
+            color: #fff; padding: 10px; border-radius: 8px; width: 100%;
+            margin-bottom: 10px; text-align: center; outline: none;
+        }
     </style>
 </head>
 <body>
@@ -171,8 +176,9 @@
         <h2 style="color: #bc13fe;">LIFESTYLE 🔥</h2>
 
         <div class="glass-card" style="border: 1px solid var(--cyan);">
-            <h3 style="color: var(--cyan); font-size: 0.8rem; margin: 0 0 10px 0;">📸 GASTRO-SAĞLIK ANALİZİ (AI)</h3>
-            <button onclick="startGastroAI()" class="btn-premium bg-gastro">YEMEĞİ ANALİZ ET</button>
+            <h3 style="color: var(--cyan); font-size: 0.8rem; margin: 0 0 10px 0;">📸 GASTRO-SAĞLIK VİZYONU (AI)</h3>
+            <input type="text" id="foodName" class="neural-input" placeholder="Hangi yemeği analiz edelim?">
+            <button onclick="startGastroAI()" class="btn-premium bg-gastro">FOTOĞRAFI TARA</button>
             <input type="file" id="gastroInput" accept="image/*" capture="environment" style="display: none;" onchange="processGastroImage(this)">
             <div id="loading-ai">⌛ Analiz ediliyor...</div>
             <div id="gastro-result" style="display:none; font-size: 0.75rem; text-align: left; margin-top: 10px; padding: 10px; background: rgba(0,255,255,0.05); border-radius: 10px;"></div>
@@ -180,7 +186,7 @@
 
         <a href="https://fizy.com/" target="_blank" class="btn-premium bg-fizy">🎧 GÜNÜN PLAYLIST'İ (FIZY)</a>
         
-        <button onclick="startAiFal()" class="btn-premium bg-fal">☕ YAPAY ZEKA KAHVE FALI</button>
+        <button onclick="startAiFal()" class="btn-premium bg-fal">🔮 YAPAY ZEKA KAHVE FALI</button>
         <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="processFal()">
         
         <div id="fal-display" style="display:none;" class="glass-card">
@@ -199,7 +205,14 @@
     </footer>
 
     <script>
-        // CONFIGURACIÓN
+        // CONFIGURACIÓN VOZ
+        function speak(text) {
+            const synth = window.speechSynthesis;
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = 'tr-TR'; 
+            synth.speak(utter);
+        }
+
         let userName = localStorage.getItem('neuralName') || "";
         if(userName) document.getElementById('userName').value = userName;
 
@@ -227,15 +240,19 @@
             document.getElementById('tryOutput').innerText = usd > 0 ? "₺ " + (usd * 30.25).toFixed(2) : "₺ 0.00";
         }
 
-        // --- SISTEMA NEURAL VISION (GRATUITO Y PROFESIONAL) ---
+        // --- SISTEMA NEURAL VISION CON VOZ ---
         function startGastroAI() {
-            alert("NeuralFocus Vision Aktif: Lütfen yemeğin fotoğrafını çekin.");
+            const food = document.getElementById('foodName').value;
+            if(!food) {
+                alert("Lütfen yemeğin adını yazın.");
+                return;
+            }
+            speak("Nöral Vizyon aktif. Lütfen fotoğraf çekin.");
             document.getElementById('gastroInput').click();
         }
 
         function processGastroImage(input) {
-            if (!input.files || !input.files[0]) return;
-            
+            const food = document.getElementById('foodName').value;
             const loader = document.getElementById('loading-ai');
             const resDiv = document.getElementById('gastro-result');
             
@@ -243,28 +260,29 @@
             loader.style.display = 'block';
             resDiv.style.display = 'none';
 
-            // Efecto de escaneo para impresionar a los usuarios
+            speak("Nöral Link bağlanıyor. Veriler analiz ediliyor.");
+
             setTimeout(() => {
                 loader.innerHTML = "🧠 IA ANALİZ EDİLİYOR (100%)...";
                 
                 setTimeout(() => {
-                    // Motor de búsqueda visual infalible
-                    window.open(`https://www.google.com/search?q=sağlık+bilgileri+ve+kalori+sorgulama`, '_blank');
+                    speak("Analiz tamamlandı. İşte sonuçlar.");
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(food)}+kalori+ve+sağlık+bilgisi`, '_blank');
                     
                     resDiv.innerHTML = `
                         <div style="border: 1px solid var(--cyan); padding: 12px; border-radius: 12px; background: rgba(0,255,255,0.1); text-align: center;">
-                            <strong style="color:var(--cyan); font-size: 0.8rem;">ANALİZ TAMAMLANDI</strong><br>
-                            <p style="margin: 5px 0; font-size: 0.7rem;">NeuralFocus Vision, en doğru sonuçları yeni sekmede hazırladı.</p>
+                            <strong style="color:var(--cyan); font-size: 0.8rem;">${food.toUpperCase()} ANALİZİ</strong><br>
+                            <p style="margin: 5px 0; font-size: 0.7rem;">NeuralFocus Vision, Google altyapısını kullanarak verileri yeni sekmede açtı.</p>
                         </div>
                     `;
                     resDiv.style.display = 'block';
                     loader.style.display = 'none';
-                }, 1200);
-            }, 1000);
+                }, 1500);
+            }, 1500);
         }
 
         function startAiFal() {
-            localStorage.setItem('processingFal', 'true');
+            speak("Fincanınızı tarıyorum. Lütfen bekleyin.");
             document.getElementById('cameraInput').click();
         }
 
@@ -277,15 +295,16 @@
             setTimeout(() => {
                 const nameTag = userName ? "Sevgili " + userName + ", " : "";
                 const res = [
-                    nameTag + "hayatında yeni ve aydınlık bir sayfa açılıyor! ✨",
-                    nameTag + "beklediğin güzel haberler kapıda, şansın artıyor! 🍀",
-                    nameTag + "yaratıcılığın zirvesinde olduğun bir dönemdesin! 🌟",
-                    nameTag + "iç huzurun artacağı harika bir zaman başlıyor! 😊",
-                    nameTag + "yıldızın hiç olmadığı kadar parlak, bugün senin günün! 🌠"
+                    "Hayatında yeni bir sayfa açılıyor.",
+                    "Güzel haberler kapıda, şansın artıyor.",
+                    "Yaratıcılığın zirvesindesin.",
+                    "İç huzurun artacağı bir zaman başlıyor.",
+                    "Yıldızın hiç olmadığı kadar parlak."
                 ];
-                text.innerText = res[Math.floor(Math.random() * res.length)];
-                localStorage.removeItem('processingFal');
-            }, 2000);
+                const msg = res[Math.floor(Math.random() * res.length)];
+                text.innerText = nameTag + msg;
+                speak(nameTag + msg);
+            }, 2500);
         }
 
         function shareApp() {
@@ -304,5 +323,5 @@
         };
     </script>
 </body>
-    </html>
+                </html>
     
